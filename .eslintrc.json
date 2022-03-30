@@ -19,6 +19,9 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "@typescript-eslint/explicit-function-return-type": [
+          "error"
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -44,7 +47,9 @@
       "extends": [
         "plugin:@angular-eslint/template/recommended"
       ],
-      "rules": {}
+      "rules": {
+
+      }
     }
   ]
 }
