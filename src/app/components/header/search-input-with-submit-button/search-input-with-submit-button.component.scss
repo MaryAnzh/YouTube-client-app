@@ -1,0 +1,25 @@
+.header-search-input {
+  width: 476px;
+  height: 24px;
+  display: flex;
+
+  input {
+     width: 396px;
+     display: flex;
+     align-items: center;
+     padding: 6px;
+     font-size: 12px;
+     font-family: Roboto;
+     color: #333333;
+     border: none;
+  }
+
+  button {
+    width: 80px;
+    height: 24px;
+    border-radius: 0px 4px 4px 0px;
+    color: white;
+    background: #2F80ED;
+    box-shadow: 2px 2px 2px 0px rgba(34, 60, 80, 0.3);
+  }
+}

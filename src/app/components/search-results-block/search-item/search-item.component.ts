@@ -6,4 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-item.component.scss']
 })
 
-export class SearchItemComponent {  }
+export class SearchItemComponent {
+
+}
