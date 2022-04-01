@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SearchItemComponent } from './components/search-results-block/search-item/search-item.component';
-import { SearchResultsComponent } from './components/search-results-block/search-results/search-results.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogoComponent } from './components/header/logo/logo.component';
 import { SearchInputWithSubmitButtonComponent } from './components/header/search-input-with-submit-button/search-input-with-submit-button.component';
@@ -20,8 +18,6 @@ import { VideoCardComponent } from './components/search-results-block/video-card
   declarations: [
     AppComponent,
     HeaderComponent,
-    SearchItemComponent,
-    SearchResultsComponent,
     LogoComponent,
     SearchInputWithSubmitButtonComponent,
     SettingsButtonComponent,

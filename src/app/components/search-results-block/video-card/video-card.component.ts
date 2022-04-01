@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { videoSearchResults } from 'src/app/services/videoSearchResults';
+import { ISearchResults } from 'src/app/model/search-response.model';
 
 @Component({
   selector: 'app-video-card',
@@ -7,5 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class VideoCardComponent {
+  videoSearchResults: ISearchResults = videoSearchResults;
 
 }

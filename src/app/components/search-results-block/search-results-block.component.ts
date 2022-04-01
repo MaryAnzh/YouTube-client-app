@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './search-results-block.component.html',
   styleUrls: ['./search-results-block.component.scss']
 })
+
 export class SearchResultsBlockComponent {
 
 }
