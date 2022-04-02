@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HeaderComponent {
+  #isSettingsBlockOpened: boolean = false;
 
+  get isSettingsBlockOpened() {
+    return this.#isSettingsBlockOpened;
+  }
+
+  @Input() set isSettingsBlockOpened(value: boolean) {
+    this.#isSettingsBlockOpened = value;
+    this.isSettingsBlockOpenedChange.emit(this.isSettingsBlockOpened);
+
+    console.log(`Filter visible: ${value}`);
+  }
+
+  @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
 }

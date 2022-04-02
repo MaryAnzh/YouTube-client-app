@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-settings-button',
@@ -7,5 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SettingsButtonComponent {
+  @Input() isSettingsOpened: boolean = false;
+  @Output() isSettingsOpenedChange = new EventEmitter<boolean>();
 
+  constructor() { }
+
+  submitButtonOnClick() {
+    this.isSettingsOpened = !this.isSettingsOpened;
+    this.isSettingsOpenedChange.emit(this.isSettingsOpened);
+  }
 }

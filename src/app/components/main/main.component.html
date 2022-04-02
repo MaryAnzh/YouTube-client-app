@@ -1,6 +1,6 @@
 <main class="main">
 
-  <app-filtering-criteria-block></app-filtering-criteria-block>
+  <app-filtering-criteria-block *ngIf="isSettingsBlockOpened"></app-filtering-criteria-block>
 
   <app-search-results-block></app-search-results-block>
 
