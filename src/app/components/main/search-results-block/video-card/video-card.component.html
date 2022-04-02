@@ -1,0 +1,40 @@
+<div class="video-cards-wrap">
+  <div class="video-cards-wrap__video-card" *ngFor="let item of items">
+
+    <div class="video-cards-wrap__video-card__Video-thumbnail">
+      <img class="video-cards-wrap__video-card__Video-thumbnail__icon" src="{{item.snippet.thumbnails.medium.url}}">
+    </div>
+
+    <div class="video-cards-wrap__video-card__counts">
+      <li class="video-cards-wrap__video-card__counts__count">
+        <img class="video-cards-wrap__video-card__counts__count__icon"
+          src="../../../../assets/viewed.png" alt="Views count">
+        <p class="video-cards-wrap__video-card__counts__count__text">{{item.statistics.viewCount}}</p>
+      </li>
+      <li class="video-cards-wrap__video-card__counts__count">
+        <img class="video-cards-wrap__video-card__counts__count__icon"
+          src="../../../../assets/liked.png" alt="like count">
+        <p class="video-cards-wrap__video-card__counts__count__text">{{item.statistics.likeCount}}</p>
+      </li>
+      <li class="video-cards-wrap__video-card__counts__count">
+        <img class="video-cards-wrap__video-card__counts__count__icon"
+          src="../../../../assets/desLike.png" alt="dislik count">
+        <p class="video-cards-wrap__video-card__counts__count__text">{{item.statistics.dislikeCount}}</p>
+      </li>
+      <li class="video-cards-wrap__video-card__counts__count">
+        <img class="video-cards-wrap__video-card__counts__count__icon"
+          src="../../../../assets/comments.svg" alt="comments count">
+        <p class="video-cards-wrap__video-card__counts__count__text">{{item.statistics.commentCount}}</p>
+      </li>
+    </div>
+
+    <p class="video-cards-wrap__video-card__Video-title">
+      {{item.snippet.title}}
+    </p>
+
+    <button class="video-cards-wrap__video-card__button-more">
+      more...
+    </button>
+
+  </div>
+</div>

@@ -1,10 +1,17 @@
-.video-card {
+.video-cards-wrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__video-card {
   width: 263px;
   height: 327px;
   position: relative;
   display: flex;
   flex-direction: column;
-    align-items: center;
+  align-items: center;
+  margin-bottom: 29px;
   padding: 20px 20px 10px 20px;
   border-radius: 5px;
   background: #E5E5E5;
@@ -13,7 +20,16 @@
   &__Video-thumbnail {
     width: 223px;
     height: 123px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #c4b4b4;
+
+    &__icon {
+      width: 100%;
+
+    }
+
   }
 
   &__counts {
@@ -66,3 +82,6 @@
   }
 
 }
+}
+
+
