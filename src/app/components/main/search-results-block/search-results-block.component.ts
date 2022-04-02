@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Item } from 'src/app/model/search-item.model';
 
 @Component({
   selector: 'app-search-results-block',
@@ -6,4 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-results-block.component.scss']
 })
 
-export class SearchResultsBlockComponent {  }
+export class SearchResultsBlockComponent {
+  #items: Item[] = [];
+
+  get items() {
+    return this.#items;
+  }
+
+  @Input() set items(value: Item[]) {
+    this.#items = value;
+    this.itemsChange.emit(this.items);
+    console.log('Отработало на блоке поиска');
+  };
+
+  @Output() itemsChange = new EventEmitter<Item[]>();
+
+ }

@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Item } from './model/search-item.model';
+import { items } from './services/items';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +12,7 @@ export class AppComponent {
   title = 'YouTube-client-app';
 
   #isSettingsBlockOpened: boolean = false;
+  #items: Item[] = [];
 
   get isSettingsBlockOpened() {
     return this.#isSettingsBlockOpened;
@@ -23,4 +26,17 @@ export class AppComponent {
   }
 
   @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
+
+  get items() {
+    return this.#items;
+  }
+
+  @Input() set items(value: Item[]) {
+    this.#items = value;
+    this.itemsChange.emit(this.items);
+    console.log(this.#items);
+  };
+
+  @Output() itemsChange = new EventEmitter<Item[]>();
+
 }

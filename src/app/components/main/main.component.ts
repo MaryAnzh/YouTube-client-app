@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Item } from 'src/app/model/search-item.model';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +8,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class MainComponent {
+
   #isSettingsBlockOpened: boolean = false;
+
+  #items: Item[] = [];
 
   get isSettingsBlockOpened() {
     return this.#isSettingsBlockOpened;
@@ -21,4 +25,16 @@ export class MainComponent {
   }
 
   @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
+
+  get items() {
+    return this.#items;
+  }
+
+  @Input() set items(value: Item[]) {
+    this.#items = value;
+    this.itemsChange.emit(this.items);
+  };
+
+  @Output() itemsChange = new EventEmitter<Item[]>();
+
  }

@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Item } from 'src/app/model/search-item.model';
+import { items } from 'src/app/services/items';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +10,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export class HeaderComponent {
   #isSettingsBlockOpened: boolean = false;
+  #items: Item[] = [];
 
   get isSettingsBlockOpened() {
     return this.#isSettingsBlockOpened;
@@ -16,9 +19,19 @@ export class HeaderComponent {
   @Input() set isSettingsBlockOpened(value: boolean) {
     this.#isSettingsBlockOpened = value;
     this.isSettingsBlockOpenedChange.emit(this.isSettingsBlockOpened);
-
-    console.log(`Filter visible: ${value}`);
   }
 
   @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
+
+  get items() {
+    return this.#items;
+  }
+
+  @Input() set items(value: Item[]) {
+    this.#items = value;
+    this.itemsChange.emit(this.items);
+  };
+
+  @Output() itemsChange = new EventEmitter<Item[]>();
+
 }

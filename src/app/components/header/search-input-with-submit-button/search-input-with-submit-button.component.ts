@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
-import { appModel } from 'src/app/model/appModel';
+import { Item } from 'src/app/model/search-item.model';
+import { items } from 'src/app/services/items';
 
 @Component({
   selector: 'app-search-input-with-submit-button',
@@ -9,13 +10,15 @@ import { appModel } from 'src/app/model/appModel';
 })
 
 export class SearchInputWithSubmitButtonComponent {
-  @Input() isSearchStarted: boolean = false;
-  @Output() isSearchStartedChange = new EventEmitter<boolean>();
+
+  @Input() items: Item[] = [];
+
+  @Output() itemsChange = new EventEmitter<Item[]>();
 
   constructor() { }
 
   submitButtonOnClick() {
-    this.isSearchStarted = true;
-    this.isSearchStartedChange.emit(this.isSearchStarted);
+    this.items = items;
+    this.itemsChange.emit(this.items);
   }
 }

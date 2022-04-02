@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { items } from 'src/app/services/items';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from 'src/app/model/search-item.model';
-import { appModel } from 'src/app/model/appModel';
 
 @Component({
   selector: 'app-video-card',
@@ -10,17 +8,18 @@ import { appModel } from 'src/app/model/appModel';
 })
 
 export class VideoCardComponent {
+  #items: Item[] = [];
 
-  public items: Item[] = items;
+  get items() {
+    return this.#items;
+  }
 
-  public isSearchResultsBlockVisible: boolean = appModel.isSearchResultsBlockVisible;
+  @Input() set items(value: Item[]) {
+    this.#items = value;
+    this.itemsChange.emit(this.items);
+    console.log('Отработало на блоке результатов');
+  };
 
-  // public get isSearchResultsBlockVisible(): boolean {
-  //   return appModel.isSearchResultsBlockVisible;
-  // }
-
-  // public set isSearchResultsBlockVisible(value: boolean) {
-  //   appModel.isSearchResultsBlockVisible = value;
-  // }
+  @Output() itemsChange = new EventEmitter<Item[]>();
 
 }
