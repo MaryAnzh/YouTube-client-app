@@ -6,6 +6,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-results-block.component.scss']
 })
 
-export class SearchResultsBlockComponent {
-
-}
+export class SearchResultsBlockComponent {  }

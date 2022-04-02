@@ -4,7 +4,12 @@
 
   p {
     padding-right: 4px;
+    cursor: pointer;
   }
+
+  p:hover {
+      text-decoration: underline;
+    }
 
   input {
     border: none;

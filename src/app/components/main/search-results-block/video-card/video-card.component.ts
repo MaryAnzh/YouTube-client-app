@@ -10,6 +10,14 @@ import { Item } from 'src/app/model/search-item.model';
 
 export class VideoCardComponent {
 
-  items: Item[] = items;
+  public items: Item[] = items;
+
+  public get isSearchResultsBlockVisible(): boolean {
+    return false;
+  }
+
+  public set isSearchResultsBlockVisible(value: boolean) {
+    this.isSearchResultsBlockVisible = value;
+  }
 
 }

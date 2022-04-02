@@ -8,4 +8,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class FilteringCriteriaBlockComponent {
 
+  public get isFilteringCriteriaBlockVisible(): boolean {
+    return false;
+  }
+
+  public set isFilteringCriteriaBlockVisible(value: boolean) {
+    this.isFilteringCriteriaBlockVisible = value;
+  }
+
 }

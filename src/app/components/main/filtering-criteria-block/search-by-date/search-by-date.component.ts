@@ -5,11 +5,4 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './search-by-date.component.html',
   styleUrls: ['./search-by-date.component.scss']
 })
-export class SearchByDateComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class SearchByDateComponent {  }
