@@ -17,7 +17,6 @@ export class SearchResultsBlockComponent {
   @Input() set items(value: Item[]) {
     this.#items = value;
     this.itemsChange.emit(this.items);
-    console.log('Отработало на блоке поиска');
   };
 
   @Output() itemsChange = new EventEmitter<Item[]>();

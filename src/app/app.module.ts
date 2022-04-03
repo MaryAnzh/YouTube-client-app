@@ -15,6 +15,7 @@ import { VideoCardComponent } from './components/main/search-results-block/video
 import { MainComponent } from './components/main/main.component';
 import { SearchByDateComponent } from './components/main/filtering-criteria-block/search-by-date/search-by-date.component';
 import { SearchByViewsCountComponent } from './components/main/filtering-criteria-block/search-by-views-count/search-by-views-count.component';
+import { DateColorDirective } from './directives/dateColor.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SearchByViewsCountComponent } from './components/main/filtering-criteri
     VideoCardComponent,
     MainComponent,
     SearchByDateComponent,
-    SearchByViewsCountComponent
+    SearchByViewsCountComponent,
+    DateColorDirective
   ],
   imports: [
     BrowserModule,
