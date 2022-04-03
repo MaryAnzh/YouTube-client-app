@@ -18,6 +18,7 @@ import { SearchByViewsCountComponent } from './components/main/filtering-criteri
 import { DateColorDirective } from './directives/dateColor.directive';
 import { SortPipe } from './pipes/sort.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { LikeCountPipe } from './pipes/likecount-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     DateColorDirective,
 
     SortPipe,
-    FilterPipe
+    FilterPipe,
+    LikeCountPipe
   ],
   imports: [
     BrowserModule,
