@@ -1,6 +1,7 @@
 <div class="video-cards-wrap" >
   <div class="video-cards-wrap__video-card"
-  *ngFor="let item of items" [appDateColor]="item.snippet.publishedAt">
+  *ngFor="let item of currentItems | filter:word"
+  [appDateColor]="item.snippet.publishedAt">
 
   <!-- style="border-bottom: 5px solid {{dateColor(item.snippet.publishedAt)}} -->
 

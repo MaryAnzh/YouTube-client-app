@@ -16,6 +16,8 @@ import { MainComponent } from './components/main/main.component';
 import { SearchByDateComponent } from './components/main/filtering-criteria-block/search-by-date/search-by-date.component';
 import { SearchByViewsCountComponent } from './components/main/filtering-criteria-block/search-by-views-count/search-by-views-count.component';
 import { DateColorDirective } from './directives/dateColor.directive';
+import { SortPipe } from './pipes/sort.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,11 @@ import { DateColorDirective } from './directives/dateColor.directive';
     MainComponent,
     SearchByDateComponent,
     SearchByViewsCountComponent,
-    DateColorDirective
+
+    DateColorDirective,
+
+    SortPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -9,8 +9,11 @@ import { Item } from 'src/app/model/search-item.model';
 
 export class VideoCardComponent {
   #items: Item[] = [];
+  currentItems: Item[] = [];
 
-  #date: Date = new Date();
+  #word: string = '';
+  //фильтрация работает пока только от сюда, если изсенить #word:, например,
+  //если ввести '40', найдется только одна карточка
 
   get items() {
     return this.#items;
@@ -18,32 +21,21 @@ export class VideoCardComponent {
 
   @Input() set items(value: Item[]) {
     this.#items = value;
+    this.currentItems = [...value];
     this.itemsChange.emit(this.items);
   };
 
   @Output() itemsChange = new EventEmitter<Item[]>()
 
-  dateColor(dateString: string): string {
-    const itemDate = Date.parse(dateString);
-    const itemAgeInMilliseconds = +this.#date - +itemDate;
-    const millisecondsInDay = 86400000;
-    const itemAgeInDay = (itemAgeInMilliseconds / millisecondsInDay);
-    let color = '';
-    const week = 7;
-    const manth = 31;
-    const halfAYear = 184;
-
-    if (itemAgeInDay < week) {
-      color = 'blue';
-    } else if (itemAgeInDay > week && itemAgeInDay <= manth) {
-      color = 'green';
-    } else if (itemAgeInDay > manth && itemAgeInDay <= halfAYear) {
-      color = 'yellow';
-    } else {
-      color = 'red';
-    }
-
-    return color;
+  get word() {
+    return this.#word;
   }
+
+  @Input() set word(value: string) {
+    this.#word = value;
+    this.wordChange.emit(this.word);
+  }
+
+  @Output() wordChange = new EventEmitter<string>()
 
 }

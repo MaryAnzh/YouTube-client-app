@@ -13,6 +13,8 @@ export class MainComponent {
 
   #items: Item[] = [];
 
+  #word: string = '';
+
   get isSettingsBlockOpened() {
     return this.#isSettingsBlockOpened;
   }
@@ -34,5 +36,16 @@ export class MainComponent {
   };
 
   @Output() itemsChange = new EventEmitter<Item[]>();
+
+  get word() {
+    return this.#word;
+  }
+
+  @Input() set word(value: string) {
+    this.#word = value;
+    this.wordChange.emit(this.word);
+  }
+
+  @Output() wordChange = new EventEmitter<string>()
 
  }

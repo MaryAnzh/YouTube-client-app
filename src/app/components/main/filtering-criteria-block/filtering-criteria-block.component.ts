@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filtering-criteria-block',
@@ -7,5 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class FilteringCriteriaBlockComponent {
+
+  #word: string = '';
+
+  get word() {
+    return this.#word;
+  }
+
+  @Input() set word(value: string) {
+    this.#word = value;
+    this.wordChange.emit(this.word);
+  }
+
+  @Output() wordChange = new EventEmitter<string>()
 
 }
