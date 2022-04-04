@@ -12,7 +12,7 @@ export class InputSearchByWordOrSentenceComponent {
 
   #word: string = '';
 
-  get word() {
+  get word(): string {
     return this.#word;
   }
 
@@ -23,7 +23,7 @@ export class InputSearchByWordOrSentenceComponent {
 
   @Output() wordChange = new EventEmitter<string>()
 
-  clickme(value: string) {
+  clickme(value: string): void {
     this.userWord = value;
     this.word = value;
   }

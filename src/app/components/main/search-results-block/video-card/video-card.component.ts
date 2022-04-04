@@ -20,7 +20,7 @@ export class VideoCardComponent {
 
   #sortProps: string = 'date';
 
-  get sortOn() {
+  get sortOn(): boolean {
     return this.#sortOn;
   }
 
@@ -31,7 +31,7 @@ export class VideoCardComponent {
 
   @Output() sortOnChange = new EventEmitter<boolean>()
 
-  get sortProps() {
+  get sortProps(): string {
     return this.#sortProps;
   }
 
@@ -42,7 +42,7 @@ export class VideoCardComponent {
 
   @Output() sortPropsChange = new EventEmitter<string>()
 
-  get sortIncreasing() {
+  get sortIncreasing(): boolean {
     return this.#sortIncreasing;
   }
 
@@ -53,7 +53,7 @@ export class VideoCardComponent {
 
   @Output() sortIncreasingChange = new EventEmitter<boolean>()
 
-  get items() {
+  get items(): Item[] {
     return this.#items;
   }
 
@@ -65,7 +65,7 @@ export class VideoCardComponent {
 
   @Output() itemsChange = new EventEmitter<Item[]>()
 
-  get word() {
+  get word(): string {
     return this.#word;
   }
 

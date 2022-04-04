@@ -17,7 +17,7 @@ export class SearchInputWithSubmitButtonComponent {
 
   constructor() { }
 
-  submitButtonOnClick() {
+  submitButtonOnClick():void {
     this.items = items;
     this.itemsChange.emit(this.items);
   }

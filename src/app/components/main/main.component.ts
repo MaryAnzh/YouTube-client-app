@@ -15,7 +15,7 @@ export class MainComponent {
 
   #word: string = '';
 
-  get isSettingsBlockOpened() {
+  get isSettingsBlockOpened(): boolean {
     return this.#isSettingsBlockOpened;
   }
 
@@ -26,7 +26,7 @@ export class MainComponent {
 
   @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
 
-  get items() {
+  get items(): Item[] {
     return this.#items;
   }
 
@@ -37,7 +37,7 @@ export class MainComponent {
 
   @Output() itemsChange = new EventEmitter<Item[]>();
 
-  get word() {
+  get word(): string {
     return this.#word;
   }
 
@@ -54,7 +54,7 @@ export class MainComponent {
 
   #sortProps: string = 'date';
 
-  get sortOn() {
+  get sortOn(): boolean {
     return this.#sortOn;
   }
 
@@ -65,7 +65,7 @@ export class MainComponent {
 
   @Output() sortOnChange = new EventEmitter<boolean>()
 
-  get sortProps() {
+  get sortProps(): string {
     return this.#sortProps;
   }
 
@@ -76,7 +76,7 @@ export class MainComponent {
 
   @Output() sortPropsChange = new EventEmitter<string>()
 
-  get sortIncreasing() {
+  get sortIncreasing(): boolean {
     return this.#sortIncreasing;
   }
 

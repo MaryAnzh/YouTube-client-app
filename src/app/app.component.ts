@@ -17,7 +17,7 @@ export class AppComponent {
 
   #word: string = '';
 
-  get isSettingsBlockOpened() {
+  get isSettingsBlockOpened(): boolean {
     return this.#isSettingsBlockOpened;
   }
 
@@ -30,7 +30,7 @@ export class AppComponent {
 
   @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
 
-  get items() {
+  get items(): Item[] {
     return this.#items;
   }
 
@@ -42,7 +42,7 @@ export class AppComponent {
 
   @Output() itemsChange = new EventEmitter<Item[]>();
 
-  get word() {
+  get word(): string {
     return this.#word;
   }
 

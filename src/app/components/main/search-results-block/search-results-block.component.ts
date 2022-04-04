@@ -12,7 +12,7 @@ export class SearchResultsBlockComponent {
 
   #word: string = '';
 
-  get items() {
+  get items(): Item[] {
     return this.#items;
   }
 
@@ -23,7 +23,7 @@ export class SearchResultsBlockComponent {
 
   @Output() itemsChange = new EventEmitter<Item[]>();
 
-  get word() {
+  get word(): string {
     return this.#word;
   }
 
@@ -40,7 +40,7 @@ export class SearchResultsBlockComponent {
 
   #sortProps: string = 'date';
 
-  get sortOn() {
+  get sortOn(): boolean {
     return this.#sortOn;
   }
 
@@ -51,7 +51,7 @@ export class SearchResultsBlockComponent {
 
   @Output() sortOnChange = new EventEmitter<boolean>()
 
-  get sortProps() {
+  get sortProps(): string {
     return this.#sortProps;
   }
 
@@ -62,7 +62,7 @@ export class SearchResultsBlockComponent {
 
   @Output() sortPropsChange = new EventEmitter<string>()
 
-  get sortIncreasing() {
+  get sortIncreasing(): boolean {
     return this.#sortIncreasing;
   }
 

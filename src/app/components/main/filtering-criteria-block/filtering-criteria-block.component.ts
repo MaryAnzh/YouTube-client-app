@@ -10,7 +10,7 @@ export class FilteringCriteriaBlockComponent {
 
   #word: string = '';
 
-  get word() {
+  get word(): string {
     return this.#word;
   }
 
@@ -27,7 +27,7 @@ export class FilteringCriteriaBlockComponent {
 
   #sortProps: string = 'date';
 
-  get sortOn() {
+  get sortOn(): boolean {
     return this.#sortOn;
   }
 
@@ -38,7 +38,7 @@ export class FilteringCriteriaBlockComponent {
 
   @Output() sortOnChange = new EventEmitter<boolean>()
 
-  get sortProps() {
+  get sortProps(): string {
     return this.#sortProps;
   }
 
@@ -49,7 +49,7 @@ export class FilteringCriteriaBlockComponent {
 
   @Output() sortPropsChange = new EventEmitter<string>()
 
-  get sortIncreasing() {
+  get sortIncreasing(): boolean {
     return this.#sortIncreasing;
   }
 

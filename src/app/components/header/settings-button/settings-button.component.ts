@@ -8,11 +8,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export class SettingsButtonComponent {
   @Input() isSettingsOpened: boolean = false;
+
   @Output() isSettingsOpenedChange = new EventEmitter<boolean>();
 
   constructor() { }
 
-  submitButtonOnClick() {
+  submitButtonOnClick():void {
     this.isSettingsOpened = !this.isSettingsOpened;
     this.isSettingsOpenedChange.emit(this.isSettingsOpened);
   }

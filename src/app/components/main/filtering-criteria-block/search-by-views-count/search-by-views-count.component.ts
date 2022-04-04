@@ -16,7 +16,7 @@ export class SearchByViewsCountComponent {
 
   public sortIncreasingDate: boolean = true;
 
-  get sortOn() {
+  get sortOn(): boolean {
     return this.#sortOn;
   }
 
@@ -27,7 +27,7 @@ export class SearchByViewsCountComponent {
 
   @Output() sortOnChange = new EventEmitter<boolean>()
 
-  get sortProps() {
+  get sortProps(): string {
     return this.#sortProps;
   }
 
@@ -38,7 +38,7 @@ export class SearchByViewsCountComponent {
 
   @Output() sortPropsChange = new EventEmitter<string>()
 
-  get sortIncreasing() {
+  get sortIncreasing(): boolean {
     return this.#sortIncreasing;
   }
 
@@ -49,7 +49,7 @@ export class SearchByViewsCountComponent {
 
   @Output() sortIncreasingChange = new EventEmitter<boolean>()
 
-  sortByLikesOnClick() {
+  sortByLikesOnClick(): void {
     this.sortOn = true;
     this.sortIncreasingDate = !this.sortIncreasingDate;
     this.sortIncreasing = this.sortIncreasingDate;

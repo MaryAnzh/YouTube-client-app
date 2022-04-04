@@ -15,7 +15,7 @@ export class DateColorDirective {
     this.renderBorder(this.date);
   }
 
-  renderBorder(dateStr: string) {
+  renderBorder(dateStr: string): void {
 
     const color = this.dateColor(dateStr);
 

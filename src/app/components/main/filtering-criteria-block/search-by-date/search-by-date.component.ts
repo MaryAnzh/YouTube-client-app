@@ -17,7 +17,7 @@ export class SearchByDateComponent {
 
   public sortIncreasingDate: boolean = true;
 
-  get sortOn() {
+  get sortOn(): boolean {
     return this.#sortOn;
   }
 
@@ -28,7 +28,7 @@ export class SearchByDateComponent {
 
   @Output() sortOnChange = new EventEmitter<boolean>()
 
-  get sortProps() {
+  get sortProps(): string {
     return this.#sortProps;
   }
 
@@ -39,7 +39,7 @@ export class SearchByDateComponent {
 
   @Output() sortPropsChange = new EventEmitter<string>()
 
-  get sortIncreasing() {
+  get sortIncreasing(): boolean {
     return this.#sortIncreasing;
   }
 
@@ -50,7 +50,7 @@ export class SearchByDateComponent {
 
   @Output() sortIncreasingChange = new EventEmitter<boolean>()
 
-  sortDateOnClick() {
+  sortDateOnClick(): void {
     this.sortOn = true;
     this.sortIncreasingDate = !this.sortIncreasingDate;
     this.sortIncreasing = this.sortIncreasingDate;
