@@ -6,10 +6,6 @@ export interface Item {
   statistics: Statistics;
 }
 
-// export enum Kind {
-//   YoutubeVideo = "youtube#video",
-// }
-
 export interface Snippet {
   publishedAt: string;
   channelId: string;
@@ -24,16 +20,6 @@ export interface Snippet {
   defaultAudioLanguage: string;
   defaultLanguage?: string;
 }
-
-// export enum DefaultLanguage {
-//   En = "en",
-//   EnUS = "en-US",
-//   Ru = "ru",
-// }
-
-// export enum LiveBroadcastContent {
-//   None = "none",
-// }
 
 export interface Localized {
   title: string;

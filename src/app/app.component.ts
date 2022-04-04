@@ -24,8 +24,6 @@ export class AppComponent {
   @Input() set isSettingsBlockOpened(value: boolean) {
     this.#isSettingsBlockOpened = value;
     this.isSettingsBlockOpenedChange.emit(this.isSettingsBlockOpened);
-
-    console.log(`Filter visible from App: ${value}`);
   }
 
   @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
@@ -37,7 +35,6 @@ export class AppComponent {
   @Input() set items(value: Item[]) {
     this.#items = value;
     this.itemsChange.emit(this.items);
-    console.log(this.#items);
   };
 
   @Output() itemsChange = new EventEmitter<Item[]>();
@@ -48,8 +45,5 @@ export class AppComponent {
 
   @Input() set word(value: string) {
     this.#word = value;
-    this.wordChange.emit(this.word);
   }
-
-  @Output() wordChange = new EventEmitter<string>()
 }

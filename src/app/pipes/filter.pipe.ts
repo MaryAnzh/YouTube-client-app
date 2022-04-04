@@ -8,14 +8,10 @@ import { Item } from '../model/search-item.model';
 export class FilterPipe implements PipeTransform {
 
   transform(items: Item[], word: string): Item[] {
-    const filteredItems: Item[] = [];
-    items.forEach(element => {
-      if (element.snippet.title.indexOf(word) > -1) {
-        filteredItems.push(element);
-      }
-    });
 
-    items = filteredItems;
+    const filterItems = items.filter(item => item.snippet.title.indexOf(word) > -1);
+
+    items = filterItems;
 
     return items;
 
