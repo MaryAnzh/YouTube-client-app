@@ -2,9 +2,13 @@
 
   <p>Sorting by: </p>
 
-  <app-search-by-date></app-search-by-date>
-
-  <app-search-by-views-count></app-search-by-views-count>
-
+  <app-search-by-date
+    [(sortOn)]="sortOn"
+    [(sortProps)]="sortProps"
+    [(sortIncreasing)]="sortIncreasing"></app-search-by-date>
+  <app-search-by-views-count
+    [(sortOn)]="sortOn"
+    [(sortProps)]="sortProps"
+    [(sortIncreasing)]="sortIncreasing"></app-search-by-views-count>
   <app-input-search-by-word-or-sentence [(word)]="word"></app-input-search-by-word-or-sentence>
 </div>

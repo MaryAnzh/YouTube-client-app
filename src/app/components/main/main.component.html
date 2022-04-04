@@ -1,7 +1,15 @@
 <main class="main">
 
-  <app-filtering-criteria-block *ngIf="isSettingsBlockOpened" [(word)]="word"></app-filtering-criteria-block>
-
-  <app-search-results-block [(items)]="items" [(word)]="word"></app-search-results-block>
+  <app-filtering-criteria-block *ngIf="isSettingsBlockOpened"
+    [(word)]="word"
+    [(sortOn)]="sortOn"
+    [(sortProps)]="sortProps"
+    [(sortIncreasing)]="sortIncreasing"></app-filtering-criteria-block>
+  <app-search-results-block
+    [(items)]="items"
+    [(word)]="word"
+    [(sortOn)]="sortOn"
+    [(sortProps)]="sortProps"
+    [(sortIncreasing)]="sortIncreasing"></app-search-results-block>
 
 </main>

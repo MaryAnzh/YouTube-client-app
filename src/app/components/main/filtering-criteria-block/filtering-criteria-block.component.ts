@@ -21,4 +21,43 @@ export class FilteringCriteriaBlockComponent {
 
   @Output() wordChange = new EventEmitter<string>()
 
+  #sortOn: boolean = false;
+
+  #sortIncreasing: boolean = true;
+
+  #sortProps: string = 'date';
+
+  get sortOn() {
+    return this.#sortOn;
+  }
+
+  @Input() set sortOn(value: boolean) {
+    this.#sortOn = value;
+    this.sortOnChange.emit(this.sortOn);
+  }
+
+  @Output() sortOnChange = new EventEmitter<boolean>()
+
+  get sortProps() {
+    return this.#sortProps;
+  }
+
+  @Input() set sortProps(value: string) {
+    this.#sortProps = value;
+    this.sortPropsChange.emit(this.sortProps);
+  }
+
+  @Output() sortPropsChange = new EventEmitter<string>()
+
+  get sortIncreasing() {
+    return this.#sortIncreasing;
+  }
+
+  @Input() set sortIncreasing(value: boolean) {
+    this.#sortIncreasing = value;
+    this.sortIncreasingChange.emit(this.sortIncreasing);
+  }
+
+  @Output() sortIncreasingChange = new EventEmitter<boolean>()
+
 }
