@@ -8,21 +8,47 @@ import { Item } from '../model/search-item.model';
 
 export class SortPipe implements PipeTransform {
 
-  transform(items: Item[]): Item[] {
+  public sortPropDate: string = 'date';
 
-    items.sort((a, b) => {
+  public sortPropLikes: string = 'likes';
 
-      if (SortPipe.itemAgeCalculated(a.snippet.publishedAt) > SortPipe.itemAgeCalculated(b.snippet.publishedAt)) {
+  transform(items: Item[], on: boolean, increasing: boolean, sortProp: string): Item[] {
+    if (on) {
+      if (sortProp === this.sortPropDate) {
+        items.sort((a, b) => {
 
-        return 1;
-      } else if (SortPipe.itemAgeCalculated(a.snippet.publishedAt) < SortPipe.itemAgeCalculated(b.snippet.publishedAt)) {
+          if (SortPipe.itemAgeCalculated(a.snippet.publishedAt) > SortPipe.itemAgeCalculated(b.snippet.publishedAt)) {
 
-        return -1;
-      } else {
+            return 1;
+          } else if (SortPipe.itemAgeCalculated(a.snippet.publishedAt) < SortPipe.itemAgeCalculated(b.snippet.publishedAt)) {
 
-        return 0;
+            return -1;
+          } else {
+
+            return 0;
+          }
+        })
+      } else if (sortProp === this.sortPropLikes) {
+        items.sort((a, b) => {
+
+          if (+a.statistics.likeCount > +b.statistics.likeCount) {
+
+            return 1;
+          } else if (+a.statistics.likeCount < +b.statistics.likeCount) {
+
+            return -1;
+          } else {
+
+            return 0;
+          }
+        })
       }
-    })
+
+
+      if (!increasing) {
+        items.reverse();
+      }
+    }
 
     return items;
 

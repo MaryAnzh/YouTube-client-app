@@ -1,6 +1,6 @@
 <div class="video-cards-wrap" >
   <div class="video-cards-wrap__video-card"
-  *ngFor="let item of currentItems | filter:word | likeCountSort"
+  *ngFor="let item of currentItems | filter:word | sort:true:false:'likes'"
   [appDateColor]="item.snippet.publishedAt">
 
   <!-- style="border-bottom: 5px solid {{dateColor(item.snippet.publishedAt)}} -->
