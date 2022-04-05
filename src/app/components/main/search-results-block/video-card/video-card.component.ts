@@ -49,18 +49,9 @@ export class VideoCardComponent {
 
   @Output() sortIncreasingChange = new EventEmitter<boolean>()
 
-  #words: string = '';
+  //words: string = ''
 
-  get words(): string {
-    return this.#words;
-  }
-
-  @Input() set words(value: string) {
-    this.#words = value;
-    this.wordsChange.emit(this.words);
-  }
-
-  @Output() wordsChange = new EventEmitter<string>();
+  @Input() words: string = '';
 
   currentItems: Item[] = [];
 
@@ -70,7 +61,7 @@ export class VideoCardComponent {
       console.log('Изменение');
       console.log(this.words);
     } else {
-      console.log('Не сенялось');
+      console.log('Не менялось');
       console.log(items);
     }
   }
