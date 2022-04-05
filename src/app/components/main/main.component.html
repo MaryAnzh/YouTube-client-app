@@ -1,14 +1,16 @@
 <main class="main">
 
   <app-filtering-criteria-block *ngIf="isSettingsBlockOpened"
-    [words]="words"
-    [(sortOn)]="sortOn"
-    [(sortProps)]="sortProps"
-    [(sortIncreasing)]="sortIncreasing"></app-filtering-criteria-block>
+    (sortOnChange)="sortOnChange($event)"
+    (sortPropsChange)="sortPropsChange($event)"
+    (sortIncreasingChange)="sortIncreasingChange($event)"
+    (wordsChange)="wordsChange($event)"
+    >
+  </app-filtering-criteria-block>
   <app-search-results-block
     [words]="words"
-    [(sortOn)]="sortOn"
-    [(sortProps)]="sortProps"
-    [(sortIncreasing)]="sortIncreasing"></app-search-results-block>
+    [sortOn]="sortOn"
+    [sortProps]="sortProps"
+    [sortIncreasing]="sortIncreasing"></app-search-results-block>
 
 </main>

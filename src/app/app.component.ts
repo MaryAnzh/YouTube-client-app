@@ -15,24 +15,7 @@ export class AppComponent {
 
   wordsChange(words: string) {
     this.words = words;
-    console.log('App');
-    console.log(words);
   }
-
-
-
-  // @Output() wordsChange = new EventEmitter<string>();
-
-  // get words(): string {
-  //   return this.#words;
-  // }
-
-  // @Input() set words(value: string) {
-  //   this.#words = value;
-  //   this.wordsChange.emit(this.words);
-  // }
-
-
 
   #isSettingsBlockOpened: boolean = false;
 

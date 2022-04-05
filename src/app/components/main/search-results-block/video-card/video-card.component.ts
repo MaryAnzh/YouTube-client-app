@@ -9,47 +9,11 @@ import { items } from 'src/app/services/items';
 })
 
 export class VideoCardComponent {
+  @Input() sortOn: boolean = false;
 
-  #sortOn: boolean = false;
+  @Input() sortProps: string = '';
 
-  #sortIncreasing: boolean = true;
-
-  #sortProps: string = 'date';
-
-  get sortOn(): boolean {
-    return this.#sortOn;
-  }
-
-  @Input() set sortOn(value: boolean) {
-    this.#sortOn = value;
-    this.sortOnChange.emit(this.sortOn);
-  }
-
-  @Output() sortOnChange = new EventEmitter<boolean>()
-
-  get sortProps(): string {
-    return this.#sortProps;
-  }
-
-  @Input() set sortProps(value: string) {
-    this.#sortProps = value;
-    this.sortPropsChange.emit(this.sortProps);
-  }
-
-  @Output() sortPropsChange = new EventEmitter<string>()
-
-  get sortIncreasing(): boolean {
-    return this.#sortIncreasing;
-  }
-
-  @Input() set sortIncreasing(value: boolean) {
-    this.#sortIncreasing = value;
-    this.sortIncreasingChange.emit(this.sortIncreasing);
-  }
-
-  @Output() sortIncreasingChange = new EventEmitter<boolean>()
-
-  //words: string = ''
+  @Input() sortIncreasing: boolean = true;
 
   @Input() words: string = '';
 
@@ -59,10 +23,10 @@ export class VideoCardComponent {
     if (this.words !== '') {
       this.currentItems = items;
       console.log('Изменение');
-      console.log(this.words);
+      console.log(this.currentItems);
     } else {
       console.log('Не менялось');
-      console.log(items);
+      console.log(this.currentItems);
     }
   }
 }

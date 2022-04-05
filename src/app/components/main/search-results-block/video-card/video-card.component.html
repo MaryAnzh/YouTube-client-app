@@ -3,7 +3,6 @@
 
   *ngFor="let item of currentItems | filter:words | sort:sortOn:sortIncreasing:sortProps"
   [appDateColor]="item.snippet.publishedAt">
-  <!-- style="border-bottom: 5px solid {{dateColor(item.snippet.publishedAt)}} -->
 
     <div class="video-cards-wrap__video-card__Video-thumbnail">
       <img class="video-cards-wrap__video-card__Video-thumbnail__icon" src="{{item.snippet.thumbnails.medium.url}}">

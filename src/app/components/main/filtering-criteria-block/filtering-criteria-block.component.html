@@ -3,12 +3,15 @@
   <p>Sorting by: </p>
 
   <app-search-by-date
-    [(sortOn)]="sortOn"
-    [(sortProps)]="sortProps"
-    [(sortIncreasing)]="sortIncreasing"></app-search-by-date>
+    (sortOnChange)="sortOnChange.emit($event)"
+    (sortPropsChange)="sortPropsChange.emit($event)"
+    (sortIncreasingChange)="sortIncreasingChange.emit($event)"></app-search-by-date>
   <app-search-by-views-count
-    [(sortOn)]="sortOn"
-    [(sortProps)]="sortProps"
-    [(sortIncreasing)]="sortIncreasing"></app-search-by-views-count>
-  <app-input-search-by-word-or-sentence [(words)]="words"></app-input-search-by-word-or-sentence>
+    (sortOnChange)="sortOnChange.emit($event)"
+    (sortPropsChange)="sortPropsChange.emit($event)"
+    (sortIncreasingChange)="sortIncreasingChange.emit($event)">
+  </app-search-by-views-count>
+  <app-input-search-by-word-or-sentence
+    (wordsChange)="wordsChange.emit($event)">
+</app-input-search-by-word-or-sentence>
 </div>

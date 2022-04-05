@@ -8,69 +8,28 @@ import { Item } from 'src/app/model/search-item.model';
 })
 
 export class MainComponent {
+  @Input() sortOn: boolean = false;
 
-  #isSettingsBlockOpened: boolean = false;
+  @Input() sortProps: string = '';
 
-  #items: Item[] = [];
+  @Input() sortIncreasing: boolean = true;
 
   @Input() words: string = '';
 
-
-  // @Input()  words(value: string) {
-  //   this.#words = value;
-  //   this.wordsChange.emit(this.words);
-  // }
-
-  // @Output() wordsChange = new EventEmitter<string>();
-
-  get isSettingsBlockOpened(): boolean {
-    return this.#isSettingsBlockOpened;
+  sortOnChange(events: boolean) {
+    this.sortOn = events;
   }
 
-  @Input() set isSettingsBlockOpened(value: boolean) {
-    this.#isSettingsBlockOpened = value;
-    this.isSettingsBlockOpenedChange.emit(this.isSettingsBlockOpened);
+  sortPropsChange(events: string) {
+    this.sortProps = events;
   }
 
-  @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
-
-  #sortOn: boolean = false;
-
-  #sortIncreasing: boolean = true;
-
-  #sortProps: string = 'date';
-
-  get sortOn(): boolean {
-    return this.#sortOn;
+  sortIncreasingChange(events: boolean) {
+    this.sortIncreasing = events;
   }
 
-  @Input() set sortOn(value: boolean) {
-    this.#sortOn = value;
-    this.sortOnChange.emit(this.sortOn);
+  wordsChange(events: string) {
+    this.words = events;
   }
-
-  @Output() sortOnChange = new EventEmitter<boolean>()
-
-  get sortProps(): string {
-    return this.#sortProps;
-  }
-
-  @Input() set sortProps(value: string) {
-    this.#sortProps = value;
-    this.sortPropsChange.emit(this.sortProps);
-  }
-
-  @Output() sortPropsChange = new EventEmitter<string>()
-
-  get sortIncreasing(): boolean {
-    return this.#sortIncreasing;
-  }
-
-  @Input() set sortIncreasing(value: boolean) {
-    this.#sortIncreasing = value;
-    this.sortIncreasingChange.emit(this.sortIncreasing);
-  }
-
-  @Output() sortIncreasingChange = new EventEmitter<boolean>()
 
  }

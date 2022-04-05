@@ -7,57 +7,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class FilteringCriteriaBlockComponent {
+  public sortOn: boolean = false;
 
-  #words: string = '';
+  public sortProps: string = '';
 
-  get words(): string {
-    return this.#words;
-  }
+  public sortIncreasing: boolean = true;
 
-  @Input() set words(value: string) {
-    this.#words = value;
-    this.wordsChange.emit(this.words);
-  }
+  public words: string = '';
 
+  @Output() sortOnChange = new EventEmitter<boolean>();
+  @Output() sortPropsChange = new EventEmitter<string>();
+  @Output() sortIncreasingChange = new EventEmitter<boolean>();
   @Output() wordsChange = new EventEmitter<string>();
-
-  #sortOn: boolean = false;
-
-  #sortIncreasing: boolean = true;
-
-  #sortProps: string = 'date';
-
-  get sortOn(): boolean {
-    return this.#sortOn;
-  }
-
-  @Input() set sortOn(value: boolean) {
-    this.#sortOn = value;
-    this.sortOnChange.emit(this.sortOn);
-  }
-
-  @Output() sortOnChange = new EventEmitter<boolean>()
-
-  get sortProps(): string {
-    return this.#sortProps;
-  }
-
-  @Input() set sortProps(value: string) {
-    this.#sortProps = value;
-    this.sortPropsChange.emit(this.sortProps);
-  }
-
-  @Output() sortPropsChange = new EventEmitter<string>()
-
-  get sortIncreasing(): boolean {
-    return this.#sortIncreasing;
-  }
-
-  @Input() set sortIncreasing(value: boolean) {
-    this.#sortIncreasing = value;
-    this.sortIncreasingChange.emit(this.sortIncreasing);
-  }
-
-  @Output() sortIncreasingChange = new EventEmitter<boolean>()
 
 }
