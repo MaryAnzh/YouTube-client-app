@@ -68,7 +68,7 @@ export class VideoCardComponent {
     if (this.words !== '') {
       this.currentItems = items;
       console.log('Изменение');
-      console.log();
+      console.log(this.words);
     } else {
       console.log('Не сенялось');
       console.log(items);
