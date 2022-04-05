@@ -9,18 +9,7 @@ import { Item } from 'src/app/model/search-item.model';
 
 export class SearchResultsBlockComponent {
 
-  #words: string = '';
-
-  get words(): string {
-    return this.#words;
-  }
-
-  @Input() set words(value: string) {
-    this.#words = value;
-    this.wordsChange.emit(this.words);
-  }
-
-  @Output() wordsChange = new EventEmitter<string>();
+  @Input() words: string = '';
 
   #sortOn: boolean = false;
 

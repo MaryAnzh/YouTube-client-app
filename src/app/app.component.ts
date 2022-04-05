@@ -11,7 +11,15 @@ import { items } from './services/items';
 export class AppComponent {
   title = 'YouTube-client-app';
 
-  words: string = '';
+  @Input() words: string = '';
+
+  wordsChange(words: string) {
+    this.words = words;
+    console.log('App');
+    console.log(words);
+  }
+
+
 
   // @Output() wordsChange = new EventEmitter<string>();
 
@@ -24,7 +32,7 @@ export class AppComponent {
   //   this.wordsChange.emit(this.words);
   // }
 
-  @Output() wordsChange = new EventEmitter<string>();
+
 
   #isSettingsBlockOpened: boolean = false;
 

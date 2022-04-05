@@ -64,14 +64,14 @@ export class VideoCardComponent {
 
   currentItems: Item[] = [];
 
-  // ngOnChanges(changes: SimpleChange) {
-  //   if (this.words !== '') {
-  //     this.currentItems = items;
-  //     console.log('Изменение');
-  //     console.log(this.currentItems);
-  //   } else {
-  //     console.log('Не сенялось');
-  //     console.log(this.currentItems);
-  //   }
-  // }
+  ngOnChanges(changes: SimpleChange) {
+    if (this.words !== '') {
+      this.currentItems = items;
+      console.log('Изменение');
+      console.log();
+    } else {
+      console.log('Не сенялось');
+      console.log(items);
+    }
+  }
 }
