@@ -9,16 +9,7 @@ import { items } from 'src/app/services/items';
 })
 
 export class HeaderComponent {
-  #words: string = '';
-
-  get words(): string {
-    return this.#words;
-  }
-
-  @Input() set words(value: string) {
-    this.#words = value;
-    this.wordsChange.emit(this.words);
-  }
+  words: string = '';
 
   @Output() wordsChange = new EventEmitter<string>();
 

@@ -11,16 +11,18 @@ import { items } from './services/items';
 export class AppComponent {
   title = 'YouTube-client-app';
 
-  #words: string = '';
+  words: string = '';
 
-  get words(): string {
-    return this.#words;
-  }
+  // @Output() wordsChange = new EventEmitter<string>();
 
-  @Input() set words(value: string) {
-    this.#words = value;
-    this.wordsChange.emit(this.words);
-  }
+  // get words(): string {
+  //   return this.#words;
+  // }
+
+  // @Input() set words(value: string) {
+  //   this.#words = value;
+  //   this.wordsChange.emit(this.words);
+  // }
 
   @Output() wordsChange = new EventEmitter<string>();
 

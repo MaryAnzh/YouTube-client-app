@@ -1,10 +1,12 @@
 <app-header
   [(isSettingsBlockOpened)]="isSettingsBlockOpened"
-  [(words)]="words">
+  (wordsChange)="wordsChange.emit($event)">
 </app-header>
 
 <app-main
   [(isSettingsBlockOpened)]="isSettingsBlockOpened"
-  [(words)]="words"></app-main>
+
+
+  ></app-main>
 
 <router-outlet></router-outlet>

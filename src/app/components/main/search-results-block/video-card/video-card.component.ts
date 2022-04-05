@@ -62,7 +62,16 @@ export class VideoCardComponent {
 
   @Output() wordsChange = new EventEmitter<string>();
 
-  currentItems: Item[] = items;
+  currentItems: Item[] = [];
 
-
+  // ngOnChanges(changes: SimpleChange) {
+  //   if (this.words !== '') {
+  //     this.currentItems = items;
+  //     console.log('Изменение');
+  //     console.log(this.currentItems);
+  //   } else {
+  //     console.log('Не сенялось');
+  //     console.log(this.currentItems);
+  //   }
+  // }
 }

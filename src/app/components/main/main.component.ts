@@ -13,18 +13,15 @@ export class MainComponent {
 
   #items: Item[] = [];
 
-  #words: string = '';
+  @Input() words: string = '';
 
-  get words(): string {
-    return this.#words;
-  }
 
-  @Input() set words(value: string) {
-    this.#words = value;
-    this.wordsChange.emit(this.words);
-  }
+  // @Input()  words(value: string) {
+  //   this.#words = value;
+  //   this.wordsChange.emit(this.words);
+  // }
 
-  @Output() wordsChange = new EventEmitter<string>();
+  // @Output() wordsChange = new EventEmitter<string>();
 
   get isSettingsBlockOpened(): boolean {
     return this.#isSettingsBlockOpened;

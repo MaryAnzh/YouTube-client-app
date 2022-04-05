@@ -4,7 +4,7 @@
     <section class="app-header__wrap__center-block">
       <app-logo></app-logo>
       <app-search-input-with-submit-button
-      [(words)]="words"></app-search-input-with-submit-button>
+      (wordsChange)="wordsChange.emit($event)"></app-search-input-with-submit-button>
       <app-settings-button [(isSettingsOpened)]="isSettingsBlockOpened"></app-settings-button>
     </section>
     <section class="app-header__wrap__logo-info">

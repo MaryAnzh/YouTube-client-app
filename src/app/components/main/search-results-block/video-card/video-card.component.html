@@ -1,4 +1,4 @@
-<div class="video-cards-wrap" *ngIf="words !== ''">
+<div class="video-cards-wrap">
   <div class="video-cards-wrap__video-card"
   *ngFor="let item of currentItems | filter:words | sort:sortOn:sortIncreasing:sortProps"
   [appDateColor]="item.snippet.publishedAt">

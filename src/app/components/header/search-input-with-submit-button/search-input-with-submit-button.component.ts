@@ -9,16 +9,7 @@ import { VideoCardComponent } from '../../main/search-results-block/video-card/v
 
 export class SearchInputWithSubmitButtonComponent {
 
-  #words: string = '';
-
-  get words(): string {
-    return this.#words;
-  }
-
-  @Input() set words(value: string) {
-    this.#words = value;
-    this.wordsChange.emit(this.words);
-  }
+  words: string = '';
 
   @Output() wordsChange = new EventEmitter<string>();
 
@@ -27,8 +18,6 @@ export class SearchInputWithSubmitButtonComponent {
   submitButtonOnClick(value: string): void {
     this.words = value;
     this.wordsChange.emit(this.words);
-    console.log('Из импута');
-    console.log(this.words);
   }
 
 }
