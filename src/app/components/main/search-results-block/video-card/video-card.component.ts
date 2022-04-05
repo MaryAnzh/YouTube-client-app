@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { Item } from 'src/app/model/search-item.model';
+import { items } from 'src/app/services/items';
 
 @Component({
   selector: 'app-video-card',
@@ -8,11 +9,6 @@ import { Item } from 'src/app/model/search-item.model';
 })
 
 export class VideoCardComponent {
-  #items: Item[] = [];
-
-  currentItems: Item[] = [];
-
-  #word: string = '';
 
   #sortOn: boolean = false;
 
@@ -53,27 +49,20 @@ export class VideoCardComponent {
 
   @Output() sortIncreasingChange = new EventEmitter<boolean>()
 
-  get items(): Item[] {
-    return this.#items;
+  #words: string = '';
+
+  get words(): string {
+    return this.#words;
   }
 
-  @Input() set items(value: Item[]) {
-    this.#items = value;
-    this.currentItems = [...value];
-    this.itemsChange.emit(this.items);
-  };
-
-  @Output() itemsChange = new EventEmitter<Item[]>()
-
-  get word(): string {
-    return this.#word;
+  @Input() set words(value: string) {
+    this.#words = value;
+    this.wordsChange.emit(this.words);
   }
 
-  @Input() set word(value: string) {
-    this.#word = value;
-    this.wordChange.emit(this.word);
-  }
+  @Output() wordsChange = new EventEmitter<string>();
 
-  @Output() wordChange = new EventEmitter<string>()
+  currentItems: Item[] = items;
+
 
 }

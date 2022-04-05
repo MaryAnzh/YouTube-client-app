@@ -8,18 +8,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export class FilteringCriteriaBlockComponent {
 
-  #word: string = '';
+  #words: string = '';
 
-  get word(): string {
-    return this.#word;
+  get words(): string {
+    return this.#words;
   }
 
-  @Input() set word(value: string) {
-    this.#word = value;
-    this.wordChange.emit(this.word);
+  @Input() set words(value: string) {
+    this.#words = value;
+    this.wordsChange.emit(this.words);
   }
 
-  @Output() wordChange = new EventEmitter<string>()
+  @Output() wordsChange = new EventEmitter<string>();
 
   #sortOn: boolean = false;
 

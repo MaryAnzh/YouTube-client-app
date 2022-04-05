@@ -1,6 +1,6 @@
 <div class="header-search-input">
-  <input type="text">
-  <button class="header-search-button" (click)="submitButtonOnClick()">
+  <input type="text" name="userWords" #userWords>
+  <button class="header-search-button" (click)="submitButtonOnClick(userWords.value)">
     search
   </button>
 </div>

@@ -31,23 +31,23 @@ export class DateColorDirective {
   }
 
   colorOfDay(dayCount: number): string {
-    let color = '';
     const week = 7;
-    const manth = 31;
+    const month = 31;
     const halfAYear = 184;
     const itemAgeInDay = dayCount;
 
     if (itemAgeInDay < week) {
-      color = 'blue';
-    } else if (itemAgeInDay > week && itemAgeInDay <= manth) {
-      color = 'green';
-    } else if (itemAgeInDay > manth && itemAgeInDay <= halfAYear) {
-      color = 'yellow';
-    } else {
-      color = 'red';
+      return 'blue';
+    }
+    if (itemAgeInDay > week && itemAgeInDay <= month) {
+      return 'green';
+    }
+    if (itemAgeInDay > month && itemAgeInDay <= halfAYear) {
+      return 'yellow';
     }
 
-    return color;
+    return 'red';
+
   }
 
 }

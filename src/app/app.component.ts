@@ -11,11 +11,20 @@ import { items } from './services/items';
 export class AppComponent {
   title = 'YouTube-client-app';
 
+  #words: string = '';
+
+  get words(): string {
+    return this.#words;
+  }
+
+  @Input() set words(value: string) {
+    this.#words = value;
+    this.wordsChange.emit(this.words);
+  }
+
+  @Output() wordsChange = new EventEmitter<string>();
+
   #isSettingsBlockOpened: boolean = false;
-
-  #items: Item[] = [];
-
-  #word: string = '';
 
   get isSettingsBlockOpened(): boolean {
     return this.#isSettingsBlockOpened;
@@ -28,22 +37,4 @@ export class AppComponent {
 
   @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
 
-  get items(): Item[] {
-    return this.#items;
-  }
-
-  @Input() set items(value: Item[]) {
-    this.#items = value;
-    this.itemsChange.emit(this.items);
-  };
-
-  @Output() itemsChange = new EventEmitter<Item[]>();
-
-  get word(): string {
-    return this.#word;
-  }
-
-  @Input() set word(value: string) {
-    this.#word = value;
-  }
 }

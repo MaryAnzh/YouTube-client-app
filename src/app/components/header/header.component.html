@@ -3,9 +3,9 @@
   <div class="app-header__wrap">
     <section class="app-header__wrap__center-block">
       <app-logo></app-logo>
-      <app-search-input-with-submit-button [(items)]="items"></app-search-input-with-submit-button>
+      <app-search-input-with-submit-button
+      [(words)]="words"></app-search-input-with-submit-button>
       <app-settings-button [(isSettingsOpened)]="isSettingsBlockOpened"></app-settings-button>
-
     </section>
     <section class="app-header__wrap__logo-info">
       <app-login-information-block></app-login-information-block>

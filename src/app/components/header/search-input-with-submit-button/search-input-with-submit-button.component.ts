@@ -1,24 +1,34 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
-import { Item } from 'src/app/model/search-item.model';
-import { items } from 'src/app/services/items';
+import { Component, EventEmitter, Output, Input, SimpleChange } from '@angular/core';
+import { VideoCardComponent } from '../../main/search-results-block/video-card/video-card.component';
 
 @Component({
   selector: 'app-search-input-with-submit-button',
   templateUrl: './search-input-with-submit-button.component.html',
   styleUrls: ['./search-input-with-submit-button.component.scss']
-
 })
 
 export class SearchInputWithSubmitButtonComponent {
 
-  @Input() items: Item[] = [];
+  #words: string = '';
 
-  @Output() itemsChange = new EventEmitter<Item[]>();
+  get words(): string {
+    return this.#words;
+  }
+
+  @Input() set words(value: string) {
+    this.#words = value;
+    this.wordsChange.emit(this.words);
+  }
+
+  @Output() wordsChange = new EventEmitter<string>();
 
   constructor() { }
 
-  submitButtonOnClick():void {
-    this.items = items;
-    this.itemsChange.emit(this.items);
+  submitButtonOnClick(value: string): void {
+    this.words = value;
+    this.wordsChange.emit(this.words);
+    console.log('Из импута');
+    console.log(this.words);
   }
+
 }

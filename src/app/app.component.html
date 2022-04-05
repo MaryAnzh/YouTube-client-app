@@ -1,5 +1,10 @@
-<app-header [(isSettingsBlockOpened)]="isSettingsBlockOpened" [(items)]="items"></app-header>
+<app-header
+  [(isSettingsBlockOpened)]="isSettingsBlockOpened"
+  [(words)]="words">
+</app-header>
 
-<app-main [(isSettingsBlockOpened)]="isSettingsBlockOpened" [(items)]="items" [(word)]="word"></app-main>
+<app-main
+  [(isSettingsBlockOpened)]="isSettingsBlockOpened"
+  [(words)]="words"></app-main>
 
 <router-outlet></router-outlet>

@@ -10,22 +10,22 @@ export class InputSearchByWordOrSentenceComponent {
 
   userWord: string = '';
 
-  #word: string = '';
+  #words: string = '';
 
-  get word(): string {
-    return this.#word;
+  get words(): string {
+    return this.#words;
   }
 
-  @Input() set word(value: string) {
-    this.#word = value;
-    this.wordChange.emit(this.word);
+  @Input() set words(value: string) {
+    this.#words = value;
+    this.wordsChange.emit(this.words);
   }
 
-  @Output() wordChange = new EventEmitter<string>()
+  @Output() wordsChange = new EventEmitter<string>();
 
   clickme(value: string): void {
     this.userWord = value;
-    this.word = value;
+    this.words = value;
   }
 
 }

@@ -8,31 +8,19 @@ import { Item } from 'src/app/model/search-item.model';
 })
 
 export class SearchResultsBlockComponent {
-  #items: Item[] = [];
 
-  #word: string = '';
+  #words: string = '';
 
-  get items(): Item[] {
-    return this.#items;
+  get words(): string {
+    return this.#words;
   }
 
-  @Input() set items(value: Item[]) {
-    this.#items = value;
-    this.itemsChange.emit(this.items);
-  };
-
-  @Output() itemsChange = new EventEmitter<Item[]>();
-
-  get word(): string {
-    return this.#word;
+  @Input() set words(value: string) {
+    this.#words = value;
+    this.wordsChange.emit(this.words);
   }
 
-  @Input() set word(value: string) {
-    this.#word = value;
-    this.wordChange.emit(this.word);
-  }
-
-  @Output() wordChange = new EventEmitter<string>()
+  @Output() wordsChange = new EventEmitter<string>();
 
   #sortOn: boolean = false;
 
