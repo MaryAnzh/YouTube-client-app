@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Renderer2, Input, Output } from '@angular/core';
-import { appModel } from '../model/appModel';
+import { itemAgeCalculated } from '../utils/appModel';
 
 @Directive({
   selector: '[appDateColor]'
@@ -25,7 +25,7 @@ export class DateColorDirective {
   }
 
   dateColor(dateString: string): string {
-    const itemAge = appModel.itemAgeCalculated(dateString);
+    const itemAge = itemAgeCalculated(dateString);
 
     return this.colorOfDay(itemAge);;
   }

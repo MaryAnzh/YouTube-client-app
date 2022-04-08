@@ -1,6 +1,4 @@
-class AppModel {
-
-  itemAgeCalculated(exitDate: string): number {
+  export function itemAgeCalculated(exitDate: string): number {
 
     const itemDate = Date.parse(exitDate);
     const date = new Date();
@@ -10,9 +8,3 @@ class AppModel {
 
     return itemAgeInDay;
   }
-
-}
-
-const appModel = new AppModel();
-
-export { appModel };
