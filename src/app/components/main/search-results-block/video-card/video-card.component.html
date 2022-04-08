@@ -1,4 +1,4 @@
-<div class="video-cards-wrap">
+<div class="video-cards-wrap" *ngIf="headerWords.serchStart">
   <div class="video-cards-wrap__video-card"
 
   *ngFor="let item of currentItems | filter:words | sort:sortAddFilterConfig.derection:sortAddFilterConfig.increase:sortAddFilterConfig.field"

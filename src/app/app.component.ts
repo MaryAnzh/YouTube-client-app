@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Item } from './model/search-item.model';
-import { items } from './services/items';
+import { IWordsSerch } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +10,13 @@ import { items } from './services/items';
 export class AppComponent {
   title = 'YouTube-client-app';
 
-  @Input() words: string = '';
+  @Input() headerWords: IWordsSerch = {
+    serchStart: false,
+    wordsValue: ''
+  };
 
-  wordsChange(words: string) {
-    this.words = words;
+  headerWordsChange(words: IWordsSerch) {
+    this.headerWords = words;
   }
 
   @Input() isSettingsOpened: boolean = false;

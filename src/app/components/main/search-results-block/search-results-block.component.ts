@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ISortAddFilterConfig, ISortFieldValue } from 'src/app/model/filtering-model';
+import { ISortAddFilterConfig, IWordsSerch } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-search-results-block',
@@ -9,12 +9,6 @@ import { ISortAddFilterConfig, ISortFieldValue } from 'src/app/model/filtering-m
 
 export class SearchResultsBlockComponent {
 
-  @Input() sortOn: boolean = false;
-
-  @Input() sortProps: string = '';
-
-  @Input() sortIncreasing: boolean = true;
-
   @Input() words: string = '';
 
   @Input() isSettingsOpened: boolean = false;
@@ -23,6 +17,11 @@ export class SearchResultsBlockComponent {
     field: '',
     derection: false,
     increase: false
+  };
+
+  @Input() headerWords: IWordsSerch = {
+    serchStart: false,
+    wordsValue: ''
   };
 
  }

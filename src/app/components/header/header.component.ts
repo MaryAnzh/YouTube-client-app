@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Item } from 'src/app/model/search-item.model';
-import { items } from 'src/app/services/items';
+import { IWordsSerch } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +8,12 @@ import { items } from 'src/app/services/items';
 })
 
 export class HeaderComponent {
-  words: string = '';
+  headerWords: IWordsSerch = {
+    serchStart: false,
+    wordsValue: ''
+  };
 
-  @Output() wordsChange = new EventEmitter<string>();
+  @Output() headerWordsChange = new EventEmitter<IWordsSerch>();
 
   isSettingsOpened: boolean = false;
 

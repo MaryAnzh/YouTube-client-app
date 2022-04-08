@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ISortAddFilterConfig, ISortFieldValue } from 'src/app/model/filtering-model';
+import { ISortAddFilterConfig } from 'src/app/model/filtering-model';
+import { IWordsSerch } from 'src/app/model/filtering-model';
+
 
 @Component({
   selector: 'app-main',
@@ -14,10 +16,13 @@ export class MainComponent {
     increase: false
   };
 
+  @Input() headerWords: IWordsSerch = {
+    serchStart: false,
+    wordsValue: ''
+  };
+
   sortAddFilterConfigChange(value: ISortAddFilterConfig) {
     this.sortAddFilterConfig = value;
-    console.log('Изсенения фильтра');
-    console.log(value);
   }
 
   @Input() words: string = '';

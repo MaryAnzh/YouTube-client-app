@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, Input, SimpleChange } from '@angular/core';
-import { VideoCardComponent } from '../../main/search-results-block/video-card/video-card.component';
+import { IWordsSerch } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-search-input-with-submit-button',
@@ -9,15 +9,19 @@ import { VideoCardComponent } from '../../main/search-results-block/video-card/v
 
 export class SearchInputWithSubmitButtonComponent {
 
-  words: string = '';
+  headerWords: IWordsSerch = {
+    serchStart: false,
+    wordsValue: ''
+  };
 
-  @Output() wordsChange = new EventEmitter<string>();
+  @Output() headerWordsChange = new EventEmitter<IWordsSerch>();
 
   constructor() { }
 
   submitButtonOnClick(value: string): void {
-    this.words = value;
-    this.wordsChange.emit(this.words);
+    this.headerWords.serchStart = true;
+    this.headerWords.wordsValue = '';
+    this.headerWordsChange.emit(this.headerWords);
   }
 
 }

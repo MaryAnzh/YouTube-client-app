@@ -1,10 +1,11 @@
 <app-header
-  (isSettingsOpenedChange)="isSettingsOpenedChange($event)">
+  (isSettingsOpenedChange)="isSettingsOpenedChange($event)"
+  (headerWordsChange)="headerWordsChange($event)">
 </app-header>
 
 <app-main
   [isSettingsOpened]="isSettingsOpened"
-  [words]="words"
+  [headerWords]="headerWords"
   ></app-main>
 
 <router-outlet></router-outlet>

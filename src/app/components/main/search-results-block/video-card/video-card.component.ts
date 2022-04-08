@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { Item } from 'src/app/model/search-item.model';
 import { items } from 'src/app/services/items';
-import { ISortAddFilterConfig } from 'src/app/model/filtering-model';
+import { ISortAddFilterConfig, IWordsSerch } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-video-card',
@@ -18,6 +18,11 @@ export class VideoCardComponent {
  };
 
   @Input() words: string = '';
+
+  @Input() headerWords: IWordsSerch = {
+    serchStart: false,
+    wordsValue: ''
+  };
 
   public currentItems: Item[] = items;
 

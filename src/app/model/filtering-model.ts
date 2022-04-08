@@ -4,18 +4,8 @@ export interface ISortAddFilterConfig {
   increase: boolean
 }
 
-export class ISortFieldValue {
-  public field: string;
-
-  constructor(field: string) {
-    this.field = field
-  }
-
-  static DATE(exitDate: string): number {
-    return Date.parse(exitDate);
-  }
-
-  static LIKes(exitLikes: string): number {
-    return +exitLikes;
-  }
+export interface IWordsSerch {
+  serchStart: boolean,
+  wordsValue: string
 }
+
