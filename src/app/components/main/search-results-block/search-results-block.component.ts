@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Item } from 'src/app/model/search-item.model';
+import { ISortAddFilterConfig, ISortFieldValue } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-search-results-block',
@@ -18,5 +18,11 @@ export class SearchResultsBlockComponent {
   @Input() words: string = '';
 
   @Input() isSettingsOpened: boolean = false;
+
+  @Input() sortAddFilterConfig: ISortAddFilterConfig = {
+    field: '',
+    derection: false,
+    increase: false
+  };
 
  }

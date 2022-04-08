@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Item } from 'src/app/model/search-item.model';
+import { ISortAddFilterConfig, ISortFieldValue } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-main',
@@ -8,30 +8,22 @@ import { Item } from 'src/app/model/search-item.model';
 })
 
 export class MainComponent {
-  @Input() sortOn: boolean = false;
+  @Input() sortAddFilterConfig: ISortAddFilterConfig = {
+    field: '',
+    derection: false,
+    increase: false
+  };
 
-  @Input() sortProps: string = '';
-
-  @Input() sortIncreasing: boolean = true;
+  sortAddFilterConfigChange(value: ISortAddFilterConfig) {
+    this.sortAddFilterConfig = value;
+  }
 
   @Input() words: string = '';
-
-  @Input() isSettingsOpened: boolean = false;
-
-  sortOnChange(events: boolean) {
-    this.sortOn = events;
-  }
-
-  sortPropsChange(events: string) {
-    this.sortProps = events;
-  }
-
-  sortIncreasingChange(events: boolean) {
-    this.sortIncreasing = events;
-  }
 
   wordsChange(events: string) {
     this.words = events;
   }
 
- }
+  @Input() isSettingsOpened: boolean = false;
+
+}

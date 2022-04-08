@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { Item } from 'src/app/model/search-item.model';
 import { items } from 'src/app/services/items';
+import { ISortAddFilterConfig } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-video-card',
@@ -9,24 +10,15 @@ import { items } from 'src/app/services/items';
 })
 
 export class VideoCardComponent {
-  @Input() sortOn: boolean = false;
 
-  @Input() sortProps: string = '';
-
-  @Input() sortIncreasing: boolean = true;
+  @Input() sortAddFilterConfig: ISortAddFilterConfig = {
+    field: '',
+    derection: false,
+    increase: false
+ };
 
   @Input() words: string = '';
 
-  currentItems: Item[] = [];
+  public currentItems: Item[] = items;
 
-  ngOnChanges(changes: SimpleChange) {
-    if (this.words !== '') {
-      this.currentItems = items;
-      console.log('Изменение');
-      console.log(this.currentItems);
-    } else {
-      console.log('Не менялось');
-      console.log(this.currentItems);
-    }
-  }
 }

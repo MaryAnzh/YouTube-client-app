@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ISortAddFilterConfig, ISortFieldValue } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-search-by-date',
@@ -7,21 +8,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class SearchByDateComponent {
-
-  public sortOn: boolean = false;
-
-  public sortProps: string = 'date';
+  public sortAddFilterConfig: ISortAddFilterConfig = {
+    field: '',
+    derection: true,
+    increase: false
+  };
 
   public sortIncreasingDate: boolean = true;
 
-  @Output() sortOnChange = new EventEmitter<boolean>();
-  @Output() sortPropsChange = new EventEmitter<string>();
-  @Output() sortIncreasingChange = new EventEmitter<boolean>();
+  @Output() sortAddFilterConfigChange = new EventEmitter<ISortAddFilterConfig>();
 
   sortDateOnClick(): void {
-    this.sortOn = true;
-    this.sortOnChange.emit(this.sortOn);
-    this.sortPropsChange.emit(this.sortProps);
-    this.sortIncreasingChange.emit(this.sortIncreasingDate);
+    this.sortIncreasingDate = !this.sortIncreasingDate;
+
+    this.sortAddFilterConfig = {
+      field: 'date',
+      derection: true,
+      increase: this.sortIncreasingDate,
+    }
   }
 }

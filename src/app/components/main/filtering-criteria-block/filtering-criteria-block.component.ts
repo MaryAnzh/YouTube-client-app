@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ISortAddFilterConfig, ISortFieldValue } from 'src/app/model/filtering-model';
+
 
 @Component({
   selector: 'app-filtering-criteria-block',
@@ -7,17 +9,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class FilteringCriteriaBlockComponent {
-  public sortOn: boolean = false;
+  public sortAddFilterConfig: ISortAddFilterConfig = {
+    field: '',
+    derection: true,
+    increase: false
+  };
 
-  public sortProps: string = '';
-
-  public sortIncreasing: boolean = true;
+  @Output() sortAddFilterConfigChange = new EventEmitter<ISortAddFilterConfig>();
 
   public words: string = '';
 
-  @Output() sortOnChange = new EventEmitter<boolean>();
-  @Output() sortPropsChange = new EventEmitter<string>();
-  @Output() sortIncreasingChange = new EventEmitter<boolean>();
   @Output() wordsChange = new EventEmitter<string>();
-
 }
