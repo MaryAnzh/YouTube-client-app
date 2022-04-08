@@ -12,10 +12,10 @@ export class SearchByViewsCountComponent {
   public sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',
     derection: true,
-    increase: false
+    increase: true
   };
 
-  public sortIncreasingDate: boolean = false;
+  public sortIncreasingDate: boolean = true;
 
   @Output() sortAddFilterConfigChange = new EventEmitter<ISortAddFilterConfig>();
 
