@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Renderer2, Input, Output } from '@angular/core';
-import { itemAgeCalculated } from '../utils/appModel';
+import { itemAgeCalculated } from '../utils/itemAgeCalculated-util';
 
 @Directive({
   selector: '[appDateColor]'
