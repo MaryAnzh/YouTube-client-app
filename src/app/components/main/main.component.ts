@@ -16,6 +16,8 @@ export class MainComponent {
 
   sortAddFilterConfigChange(value: ISortAddFilterConfig) {
     this.sortAddFilterConfig = value;
+    console.log('Изсенения фильтра');
+    console.log(value);
   }
 
   @Input() words: string = '';

@@ -15,7 +15,7 @@ export class SearchByViewsCountComponent {
     increase: false
   };
 
-  public sortIncreasingDate: boolean = true;
+  public sortIncreasingDate: boolean = false;
 
   @Output() sortAddFilterConfigChange = new EventEmitter<ISortAddFilterConfig>();
 
@@ -27,5 +27,7 @@ export class SearchByViewsCountComponent {
       derection: true,
       increase: this.sortIncreasingDate
     }
+
+    this.sortAddFilterConfigChange.emit(this.sortAddFilterConfig);
   }
 }
