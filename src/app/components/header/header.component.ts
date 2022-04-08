@@ -13,18 +13,9 @@ export class HeaderComponent {
 
   @Output() wordsChange = new EventEmitter<string>();
 
-  #isSettingsBlockOpened: boolean = false;
+  isSettingsOpened: boolean = false;
 
-  get isSettingsBlockOpened(): boolean {
-    return this.#isSettingsBlockOpened;
-  }
-
-  @Input() set isSettingsBlockOpened(value: boolean) {
-    this.#isSettingsBlockOpened = value;
-    this.isSettingsBlockOpenedChange.emit(this.isSettingsBlockOpened);
-  }
-
-  @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
+  @Output() isSettingsOpenedChange = new EventEmitter<boolean>();
 
 }
 

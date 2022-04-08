@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class SettingsButtonComponent {
-  @Input() isSettingsOpened: boolean = false;
+  isSettingsOpened: boolean = false;
 
   @Output() isSettingsOpenedChange = new EventEmitter<boolean>();
 

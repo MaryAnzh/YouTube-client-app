@@ -17,17 +17,10 @@ export class AppComponent {
     this.words = words;
   }
 
-  #isSettingsBlockOpened: boolean = false;
+  @Input() isSettingsOpened: boolean = false;
 
-  get isSettingsBlockOpened(): boolean {
-    return this.#isSettingsBlockOpened;
-  }
-
-  @Input() set isSettingsBlockOpened(value: boolean) {
-    this.#isSettingsBlockOpened = value;
-    this.isSettingsBlockOpenedChange.emit(this.isSettingsBlockOpened);
-  }
-
-  @Output() isSettingsBlockOpenedChange = new EventEmitter<boolean>();
+  isSettingsOpenedChange(isSettingsOpened: boolean) {
+  this.isSettingsOpened = isSettingsOpened;
+}
 
 }

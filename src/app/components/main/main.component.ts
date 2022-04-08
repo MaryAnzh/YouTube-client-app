@@ -16,6 +16,8 @@ export class MainComponent {
 
   @Input() words: string = '';
 
+  @Input() isSettingsOpened: boolean = false;
+
   sortOnChange(events: boolean) {
     this.sortOn = events;
   }

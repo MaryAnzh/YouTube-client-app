@@ -17,4 +17,6 @@ export class SearchResultsBlockComponent {
 
   @Input() words: string = '';
 
+  @Input() isSettingsOpened: boolean = false;
+
  }

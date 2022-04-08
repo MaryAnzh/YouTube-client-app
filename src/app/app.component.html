@@ -1,10 +1,9 @@
 <app-header
-  [(isSettingsBlockOpened)]="isSettingsBlockOpened"
-  (wordsChange)="wordsChange($event)">
+  (isSettingsOpenedChange)="isSettingsOpenedChange($event)">
 </app-header>
 
 <app-main
-  [(isSettingsBlockOpened)]="isSettingsBlockOpened"
+  [isSettingsOpened]="isSettingsOpened"
   [words]="words"
   ></app-main>
 
