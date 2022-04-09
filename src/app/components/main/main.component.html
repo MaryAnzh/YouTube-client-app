@@ -2,6 +2,7 @@
 
   <app-filtering-criteria-block *ngIf="isSettingsOpened"
     (sortAddFilterConfigChange)="sortAddFilterConfigChange($event)"
+    (wordsChange)="wordsChange($event)"
 >
   </app-filtering-criteria-block>
   <app-search-results-block
