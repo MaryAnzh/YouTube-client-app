@@ -10,7 +10,7 @@ import { IWordsSerch } from 'src/app/model/filtering-model';
 export class AppComponent {
   title = 'YouTube-client-app';
 
-  @Input() headerWords: IWordsSerch = {
+  headerWords: IWordsSerch = {
     searchStart: false,
     wordsValue: ''
   };
@@ -19,10 +19,10 @@ export class AppComponent {
     this.headerWords = words;
   }
 
-  @Input() isSettingsOpened: boolean = false;
+  isSettingsOpened: boolean = false;
 
   isSettingsOpenedChange(isSettingsOpened: boolean) {
-  this.isSettingsOpened = isSettingsOpened;
-}
+    this.isSettingsOpened = isSettingsOpened;
+  }
 
 }
