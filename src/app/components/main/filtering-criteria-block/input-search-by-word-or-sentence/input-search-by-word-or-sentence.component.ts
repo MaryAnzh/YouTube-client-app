@@ -17,7 +17,9 @@ export class InputSearchByWordOrSentenceComponent {
   clickme(value: string): void {
     this.userWord = value;
     this.words = value;
+
     this.wordsChange.emit(this.words);
+
   }
 
 }

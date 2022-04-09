@@ -20,8 +20,9 @@ export class SearchInputWithSubmitButtonComponent {
 
   submitButtonOnClick(value: string): void {
     this.headerWords.searchStart = true;
-    this.headerWords.wordsValue = '';
-    this.headerWordsChange.emit(this.headerWords);
+    this.headerWords.wordsValue = value;
+    if (value !== '') {
+      this.headerWordsChange.emit(this.headerWords);
+    }
   }
-
 }
