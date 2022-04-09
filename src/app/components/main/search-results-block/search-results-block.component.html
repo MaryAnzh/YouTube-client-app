@@ -1,8 +1,11 @@
   <div class="search-resuilt-block">
-    <app-video-card
+    <div class="video-cards-wrap" *ngIf="headerWords.serchStart">
+          <app-video-card
     [words]="words"
     [sortAddFilterConfig]="sortAddFilterConfig"
     [headerWords]="headerWords"
     ></app-video-card>
+    </div>
+
   </div>
 
