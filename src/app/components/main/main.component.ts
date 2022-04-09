@@ -12,7 +12,7 @@ import { IWordsSerch } from 'src/app/model/filtering-model';
 export class MainComponent {
   @Input() sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',
-    derection: false,
+    isSortOn: false,
     increase: false
   };
 

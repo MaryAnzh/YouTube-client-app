@@ -1,6 +1,6 @@
 export interface ISortAddFilterConfig {
   field: string,
-  derection: boolean,
+  isSortOn: boolean,
   increase: boolean
 }
 

@@ -1,7 +1,7 @@
 
   <div class="video-card"
 
-  *ngFor="let item of currentItems | filter:words | sort:sortAddFilterConfig.derection:sortAddFilterConfig.increase:sortAddFilterConfig.field"
+  *ngFor="let item of currentItems | filter:words | sort:sortAddFilterConfig.isSortOn:sortAddFilterConfig.increase:sortAddFilterConfig.field"
   [appDateColor]="item.snippet.publishedAt">
 
     <div class="video-card__Video-thumbnail">

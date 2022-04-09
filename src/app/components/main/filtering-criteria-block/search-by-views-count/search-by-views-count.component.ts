@@ -11,7 +11,7 @@ import { ISortAddFilterConfig } from 'src/app/model/filtering-model';
 export class SearchByViewsCountComponent {
   public sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',
-    derection: true,
+    isSortOn: true,
     increase: true
   };
 
@@ -24,7 +24,7 @@ export class SearchByViewsCountComponent {
 
     this.sortAddFilterConfig = {
       field: 'likes',
-      derection: true,
+      isSortOn: true,
       increase: this.sortIncreasingDate
     }
 

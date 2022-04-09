@@ -15,7 +15,7 @@ export class SearchResultsBlockComponent {
 
   @Input() sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',
-    derection: false,
+    isSortOn: false,
     increase: false
   };
 

@@ -10,7 +10,7 @@ import { ISortAddFilterConfig } from 'src/app/model/filtering-model';
 export class SearchByDateComponent {
   public sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',
-    derection: true,
+    isSortOn: true,
     increase: true
   };
 
@@ -23,7 +23,7 @@ export class SearchByDateComponent {
 
     this.sortAddFilterConfig = {
       field: 'date',
-      derection: true,
+      isSortOn: true,
       increase: this.sortIncreasingDate,
     }
 

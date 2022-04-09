@@ -8,9 +8,9 @@ import { sortItems } from '../utils/sortItems-util';
 
 export class SortPipe implements PipeTransform {
 
-  transform(items: Item[], derection: boolean, increase: boolean, field: string): Item[] {
+  transform(items: Item[], isSortOn: boolean, increase: boolean, field: string): Item[] {
 
-    if (derection) {
+    if (isSortOn) {
       sortItems(items, field);
     }
 

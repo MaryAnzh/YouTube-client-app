@@ -11,7 +11,7 @@ import { ISortAddFilterConfig } from 'src/app/model/filtering-model';
 export class FilteringCriteriaBlockComponent {
   public sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',
-    derection: true,
+    isSortOn: true,
     increase: false
   };
 

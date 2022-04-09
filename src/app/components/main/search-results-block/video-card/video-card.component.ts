@@ -13,7 +13,7 @@ export class VideoCardComponent {
 
   @Input() sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',
-    derection: false,
+    isSortOn: false,
     increase: false
  };
 
