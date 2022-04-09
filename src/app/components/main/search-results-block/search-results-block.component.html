@@ -1,11 +1,18 @@
-  <div class="search-resuilt-block">
-    <div class="video-cards-wrap" *ngIf="headerWords.searchStart">
-          <app-video-card
-    [words]="words"
-    [sortAddFilterConfig]="sortAddFilterConfig"
-    [headerWords]="headerWords"
-    ></app-video-card>
-    </div>
+ <div class="search-resuilt-block">
 
+  <div class="search-resuilt-block__video-cards-wrap">
+
+    <div class="search-resuilt-block__video-cards-wrap__card"
+      *ngFor="let item of items
+      | filter:words
+      | sort:sortAddFilterConfig.isSortOn:sortAddFilterConfig.increase:sortAddFilterConfig.field">
+
+      <app-video-card
+        *ngIf="headerWords.searchStart"
+        [item]="item"
+        [appDateColor]="item.snippet.publishedAt">
+      </app-video-card>
+    </div>
   </div>
 
+</div>

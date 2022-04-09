@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { Item } from 'src/app/model/search-item.model';
 import { items } from 'src/app/services/items';
-import { ISortAddFilterConfig, IWordsSerch } from 'src/app/model/filtering-model';
 
 @Component({
   selector: 'app-video-card',
@@ -10,20 +9,13 @@ import { ISortAddFilterConfig, IWordsSerch } from 'src/app/model/filtering-model
 })
 
 export class VideoCardComponent {
+  public videoCard: Item = items[0];
+  //public videoCard: Item | undefined;
+  // в таком виде выскакивает ошибка
 
-  @Input() sortAddFilterConfig: ISortAddFilterConfig = {
-    field: '',
-    isSortOn: false,
-    increase: false
- };
-
-  @Input() words: string = '';
-
-  @Input() headerWords: IWordsSerch = {
-    searchStart: false,
-    wordsValue: ''
-  };
-
-  public currentItems: Item[] = items;
+  @Input()
+  public set item(item: Item) {
+    this.videoCard = item;
+  }
 
 }

@@ -1,42 +1,40 @@
+ <div class="video-card"
+  [appDateColor]="videoCard.snippet.publishedAt">
 
-  <div class="video-card"
-
-  *ngFor="let item of currentItems | filter:words | sort:sortAddFilterConfig.isSortOn:sortAddFilterConfig.increase:sortAddFilterConfig.field"
-  [appDateColor]="item.snippet.publishedAt">
-
-    <div class="video-card__Video-thumbnail">
-      <img class="video-card__Video-thumbnail__icon" src="{{item.snippet.thumbnails.medium.url}}">
-    </div>
-
-    <div class="video-card__counts">
-      <li class="video-card__counts__count">
-        <img class="video-card__counts__count__icon"
-          src="../../../../assets/viewed.png" alt="Views count">
-        <p class="video-card__counts__count__text">{{item.statistics.viewCount}}</p>
-      </li>
-      <li class="video-card__counts__count">
-        <img class="video-card__counts__count__icon"
-          src="../../../../assets/liked.png" alt="like count">
-        <p class="video-card__counts__count__text">{{item.statistics.likeCount}}</p>
-      </li>
-      <li class="video-card__counts__count">
-        <img class="video-card__counts__count__icon"
-          src="../../../../assets/desLike.png" alt="dislik count">
-        <p class="video-card__counts__count__text">{{item.statistics.dislikeCount}}</p>
-      </li>
-      <li class="video-card__counts__count">
-        <img class="video-card__counts__count__icon"
-          src="../../../../assets/comments.svg" alt="comments count">
-        <p class="video-card__counts__count__text">{{item.statistics.commentCount}}</p>
-      </li>
-    </div>
-
-    <p class="video-card__Video-title">
-      {{item.snippet.title}}
-    </p>
-
-    <button class="video-card__button-more">
-      more...
-    </button>
-
+  <div class="video-card__Video-thumbnail">
+    <img class="video-card__Video-thumbnail__icon"
+      src="{{videoCard.snippet.thumbnails.medium.url}}">
   </div>
+
+  <div class="video-card__counts">
+    <li class="video-card__counts__count">
+      <img class="video-card__counts__count__icon"
+        src="../../../../assets/viewed.png" alt="Views count">
+      <p class="video-card__counts__count__text">{{videoCard.statistics.viewCount}}</p>
+    </li>
+    <li class="video-card__counts__count">
+      <img class="video-card__counts__count__icon"
+        src="../../../../assets/liked.png" alt="like count">
+      <p class="video-card__counts__count__text">{{videoCard.statistics.likeCount}}</p>
+    </li>
+    <li class="video-card__counts__count">
+      <img class="video-card__counts__count__icon"
+        src="../../../../assets/desLike.png" alt="dislik count">
+      <p class="video-card__counts__count__text">{{videoCard.statistics.dislikeCount}}</p>
+    </li>
+    <li class="video-card__counts__count">
+      <img class="video-card__counts__count__icon"
+        src="../../../../assets/comments.svg" alt="comments count">
+      <p class="video-card__counts__count__text">{{videoCard.statistics.commentCount}}</p>
+    </li>
+  </div>
+
+  <p class="video-card__Video-title">
+    {{videoCard.snippet.title}}
+  </p>
+
+  <button class="video-card__button-more">
+    more...
+  </button>
+
+</div>
