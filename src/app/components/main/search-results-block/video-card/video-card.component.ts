@@ -9,13 +9,15 @@ import { items } from 'src/app/services/items';
 })
 
 export class VideoCardComponent {
-  public videoCard: Item = items[0];
-  //public videoCard: Item | undefined;
-  // в таком виде выскакивает ошибка
+
+  public color: string = '';
+
+  public videoCard: Item | undefined;
 
   @Input()
   public set item(item: Item) {
     this.videoCard = item;
+    this.color = item.snippet.publishedAt;
   }
 
 }
