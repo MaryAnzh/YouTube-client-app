@@ -17,7 +17,7 @@ export class MainComponent {
   };
 
   @Input() headerWords: IWordsSerch = {
-    serchStart: false,
+    searchStart: false,
     wordsValue: ''
   };
 

@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'YouTube-client-app';
 
   @Input() headerWords: IWordsSerch = {
-    serchStart: false,
+    searchStart: false,
     wordsValue: ''
   };
 

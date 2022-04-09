@@ -20,7 +20,7 @@ export class VideoCardComponent {
   @Input() words: string = '';
 
   @Input() headerWords: IWordsSerch = {
-    serchStart: false,
+    searchStart: false,
     wordsValue: ''
   };
 

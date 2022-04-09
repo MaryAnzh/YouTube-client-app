@@ -5,7 +5,7 @@ export interface ISortAddFilterConfig {
 }
 
 export interface IWordsSerch {
-  serchStart: boolean,
+  searchStart: boolean,
   wordsValue: string
 }
 

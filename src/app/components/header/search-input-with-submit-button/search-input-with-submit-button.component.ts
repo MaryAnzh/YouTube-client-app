@@ -10,7 +10,7 @@ import { IWordsSerch } from 'src/app/model/filtering-model';
 export class SearchInputWithSubmitButtonComponent {
 
   headerWords: IWordsSerch = {
-    serchStart: false,
+    searchStart: false,
     wordsValue: ''
   };
 
@@ -19,7 +19,7 @@ export class SearchInputWithSubmitButtonComponent {
   constructor() { }
 
   submitButtonOnClick(value: string): void {
-    this.headerWords.serchStart = true;
+    this.headerWords.searchStart = true;
     this.headerWords.wordsValue = '';
     this.headerWordsChange.emit(this.headerWords);
   }

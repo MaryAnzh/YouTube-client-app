@@ -9,7 +9,7 @@ import { IWordsSerch } from 'src/app/model/filtering-model';
 
 export class HeaderComponent {
   headerWords: IWordsSerch = {
-    serchStart: false,
+    searchStart: false,
     wordsValue: ''
   };
 
