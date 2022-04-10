@@ -1,9 +1,10 @@
 .header-search-input {
-  width: 476px;
+  max-width: 476px;
   height: 24px;
   display: flex;
 
   input {
+
      width: 396px;
      display: flex;
      align-items: center;

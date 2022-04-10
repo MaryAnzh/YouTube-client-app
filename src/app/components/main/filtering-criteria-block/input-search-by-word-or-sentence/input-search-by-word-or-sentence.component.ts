@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-input-search-by-word-or-sentence',
@@ -8,15 +8,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 export class InputSearchByWordOrSentenceComponent {
 
-  userWord: string = '';
-
   words: string = '';
 
   @Output() wordsChange = new EventEmitter<string>();
 
-  clickme(value: string): void {
-    this.userWord = value;
-    this.words = value;
+  clickme(event: Event): void {
+    const elem = <HTMLInputElement>event.target;
+    this.words = elem.value;
 
     this.wordsChange.emit(this.words);
 
