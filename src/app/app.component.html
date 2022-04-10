@@ -1,7 +1,11 @@
-<app-header></app-header>
+<app-header
+  (isSettingsOpenedChange)="isSettingsOpenedChange($event)"
+  (headerWordsChange)="headerWordsChange($event)">
+</app-header>
 
-<app-filtering-criteria-block></app-filtering-criteria-block>
-
-<app-search-results-block></app-search-results-block>
+<app-main
+  [isSettingsOpened]="isSettingsOpened"
+  [headerWords]="headerWords"
+  ></app-main>
 
 <router-outlet></router-outlet>

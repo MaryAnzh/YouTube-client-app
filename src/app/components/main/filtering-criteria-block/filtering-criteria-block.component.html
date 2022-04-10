@@ -1,0 +1,13 @@
+<div class="filtering-criteria-block">
+
+  <p>Sorting by: </p>
+
+  <app-search-by-date
+    (sortAddFilterConfigChange)="sortAddFilterConfigChange.emit($event)"></app-search-by-date>
+  <app-search-by-views-count
+    (sortAddFilterConfigChange)="sortAddFilterConfigChange.emit($event)">
+  </app-search-by-views-count>
+  <app-input-search-by-word-or-sentence
+    (wordsChange)="wordsChange.emit($event)">
+  </app-input-search-by-word-or-sentence>
+</div>
