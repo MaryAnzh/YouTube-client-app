@@ -18,6 +18,7 @@ export class VideoCardComponent {
   public set item(item: Item) {
     this.videoCard = item;
     this.color = item.snippet.publishedAt;
-  }
+    console.log(this.videoCard.snippet.thumbnails.medium.url);
 
+  }
 }
