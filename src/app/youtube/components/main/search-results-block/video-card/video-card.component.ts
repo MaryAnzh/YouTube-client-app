@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
-import { Item } from 'src/app/model/search-item.model';
-import { items } from 'src/app/services/items';
+import { Item } from 'src/app/youtube/model/search-item.model';
+import { items } from 'src/app/data/items';
 
 @Component({
   selector: 'app-video-card',

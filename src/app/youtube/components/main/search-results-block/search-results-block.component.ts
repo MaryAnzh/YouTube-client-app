@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ISortAddFilterConfig, IWordsSerch } from 'src/app/model/filtering-model';
-import { Item } from 'src/app/model/search-item.model';
-import { items } from 'src/app/services/items';
+import { ISortAddFilterConfig, IWordsSerch } from 'src/app/shared/directives/filtering-model';
+import { Item } from 'src/app/youtube/model/search-item.model';
+import { items } from 'src/app/data/items';
 
 @Component({
   selector: 'app-search-results-block',

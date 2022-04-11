@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, Input, SimpleChange } from '@angular/core';
-import { IWordsSerch } from 'src/app/model/filtering-model';
+import { IWordsSerch } from 'src/app/shared/directives/filtering-model';
 
 @Component({
   selector: 'app-search-input-with-submit-button',

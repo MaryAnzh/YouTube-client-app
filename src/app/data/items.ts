@@ -1,4 +1,4 @@
-import { Item } from "../model/search-item.model"
+import { Item } from "../youtube/model/search-item.model"
 
 export const items: Item[] =
   [

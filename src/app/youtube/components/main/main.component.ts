@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ISortAddFilterConfig } from 'src/app/model/filtering-model';
-import { IWordsSerch } from 'src/app/model/filtering-model';
+import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model';
+import { IWordsSerch } from 'src/app/shared/directives/filtering-model';
 
 
 @Component({

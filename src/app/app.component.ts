@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IWordsSerch } from 'src/app/model/filtering-model';
+import { IWordsSerch } from 'src/app/shared/directives/filtering-model';
 
 @Component({
   selector: 'app-root',

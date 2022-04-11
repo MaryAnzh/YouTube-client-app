@@ -1,4 +1,4 @@
-import { ISearchResults } from "../model/search-response.model";
+import { ISearchResults } from "../youtube/model/search-response.model";
 import { items } from './items';
 
 

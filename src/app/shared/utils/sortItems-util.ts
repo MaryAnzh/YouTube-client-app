@@ -1,4 +1,4 @@
-import { Item } from 'src/app/model/search-item.model';
+import { Item } from 'src/app/youtube/model/search-item.model';
 import { SortFieldValue } from './sortFieldValue-util'
 
 export function sortItems(items: Item[], field: string) {
