@@ -4,7 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { LoginPageComponent } from '../auth/pages/login-page/login-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { DetailedInformationPageComponent } from './pages/detailed-information-page/detailed-information-page.component';
+import { DetailedInformationPageComponent } from '../youtube/pages/detailed-information-page/detailed-information-page.component';
 
 
 
