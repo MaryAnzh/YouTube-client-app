@@ -1,21 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { YoutubeComponent } from './youtube.component';
-import { Arrow}
+import { ArrowComponent } from './arrow.component';
 
-describe('YoutubeComponent', () => {
-  let component: YoutubeComponent;
-  let fixture: ComponentFixture<YoutubeComponent>;
+describe('ArrowComponent', () => {
+  let component: ArrowComponent;
+  let fixture: ComponentFixture<ArrowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ YoutubeComponent ]
+      declarations: [ ArrowComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(YoutubeComponent);
+    fixture = TestBed.createComponent(ArrowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

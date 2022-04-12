@@ -15,7 +15,9 @@ import { VideoCardComponent } from './youtube/components/main/search-results-blo
 import { MainComponent } from './youtube/components/main/main.component';
 import { SearchByDateComponent } from './youtube/components/main/filtering-criteria-block/search-by-date/search-by-date.component';
 import { SearchByViewsCountComponent } from './youtube/components/main/filtering-criteria-block/search-by-views-count/search-by-views-count.component';
+
 import { DateColorDirective } from './shared/directives/dateColor.directive';
+
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { FilterPipe } from './shared/pipes/filter.pipe';
 
