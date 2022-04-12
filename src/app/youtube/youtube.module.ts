@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { YoutubeComponent } from './youtube.component';
+import { DetailedInformationPageComponent } from './pages/detailed-information-page/detailed-information-page.component';
 import { ArrowComponent } from './components/arrow/arrow.component';
 
 @NgModule({
   declarations: [
     YoutubeComponent,
+    DetailedInformationPageComponent,
     ArrowComponent,
   ],
   imports: [
