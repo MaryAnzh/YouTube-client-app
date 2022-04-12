@@ -5,11 +5,23 @@ import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-pag
 
 
 const routes: Routes = [
-  { path: '', component: MainPageComponent },
-
-  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: 'youtube', loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule) },
-  { path: '**', component: NotFoundPageComponent },
+  {
+    path: '',
+    redirectTo: 'youtube',
+    pathMatch: 'full',
+  },
+  {
+    path: 'youtube',
+    loadChildren: () => import('./youtube/youtube.module').then(m => m.YoutubeModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: '**',
+    component: NotFoundPageComponent
+  },
 ];
 
 @NgModule({
