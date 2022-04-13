@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { items } from 'src/app/data/items';
 import { ISortAddFilterConfig, IWordsSerch } from 'src/app/shared/directives/filtering-model';
 import { Item } from 'src/app/youtube/model/search-item.model';
 
@@ -9,7 +10,8 @@ import { Item } from 'src/app/youtube/model/search-item.model';
 })
 
 export class SearchResultsBlockComponent {
-  @Input() items: Item[] | undefined;
+
+  @Input() items: Item[] = items;
 
   public words: string = '';
 
