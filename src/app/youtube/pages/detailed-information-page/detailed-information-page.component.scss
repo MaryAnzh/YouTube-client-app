@@ -1,9 +1,129 @@
 .detaile-page {
   width: 100%;
   max-width: 1165px;
+  position: relative;
   height: 400px;
   background: #E5E5E5;
   box-shadow: 5px 5px 20px rgba(51, 51, 51, 0.25);
   border-radius: 0px 5px 5px 0px;
   margin: 0 auto;
+
+  &__arrow {
+    position: absolute;
+    top: 0;
+    left: -32px;
+  }
+
+  &__video-info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__thumbnails {
+      width: 62%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &__description {
+      width: 38%;
+      height: 400px;
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__heading {
+        width: 100%;
+        display: flex;
+
+        h1 {
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 28px;
+
+          color: #000000;
+        }
+
+        h3 {
+          width: 132px;
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 12px;
+
+          text-align: right;
+          align-self: flex-end;
+
+          color: #828282;
+        }
+      }
+
+      &__description {
+        width: 80%;
+        height: 100%;
+        padding: 15px 0;
+
+        h3 {
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 16px;
+
+          color: #000000;
+        }
+
+        p {
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 14px;
+
+          color: #828282;
+        }
+      }
+
+      &__statistics {
+        width: 202px;
+        height: 13px;
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+        align-items: center;
+
+        li {
+          display: flex;
+
+          p {
+            padding-left: 5px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 12px;
+            /* identical to box height */
+
+
+            color: #000000;
+          }
+        }
+
+
+      }
+
+    }
+  }
 }
