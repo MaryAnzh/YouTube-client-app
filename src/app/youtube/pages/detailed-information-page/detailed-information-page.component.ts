@@ -23,7 +23,8 @@ export class DetailedInformationPageComponent {
       year: 'numeric'
     });
 
-  public description: string = (this.item.snippet.description.split('\n'))[0];
+  public firstStringChung: number = 0;
 
+  public description: string = (this.item.snippet.description.split('\n'))[this.firstStringChung];
 
 }
