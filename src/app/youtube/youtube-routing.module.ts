@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MainPageComponent
   },
   {
-    path: 'detaile',
+    path: 'detail',
     component: DetailedInformationPageComponent
   },
 ];

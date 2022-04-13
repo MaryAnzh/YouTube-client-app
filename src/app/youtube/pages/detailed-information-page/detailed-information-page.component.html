@@ -1,29 +1,29 @@
-<div class="detaile-page">
-  <div class="detaile-page__arrow">
+<div class="detail-page">
+  <div class="detail-page__arrow">
     <app-arrow></app-arrow>
   </div>
 
-  <section class="detaile-page__video-info">
-    <section class="detaile-page__video-info__thumbnails">
+  <section class="detail-page__video-info">
+    <section class="detail-page__video-info__thumbnails">
       <img
         src={{item.snippet.thumbnails.medium.url}}
         alt={{item.snippet.title}}>
     </section>
 
-    <section class="detaile-page__video-info__description">
-      <div class="detaile-page__video-info__description__heading">
-        <h2 class="detaile-page__video-info__descriptions__title">
+    <section class="detail-page__video-info__description">
+      <div class="detail-page__video-info__description__heading">
+        <h2 class="detail-page__video-info__descriptions__title">
           {{item.snippet.title}}
         </h2>
         <h3>{{itemDateLocal}}</h3>
       </div>
 
-      <div class="detaile-page__video-info__description__description">
+      <div class="detail-page__video-info__description__description">
         <h3>Description:</h3>
         <p>{{description}}</p>
       </div>
 
-      <div class="detaile-page__video-info__description__statistics">
+      <div class="detail-page__video-info__description__statistics">
         <li>
           <img
             src="../../../../assets/viewed.png" alt="Views count">

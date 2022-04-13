@@ -19,10 +19,9 @@
 
     p {
       cursor: pointer;
-
-      :hover {
-        text-decoration: underline;
-      }
+    }
+    p:hover {
+      text-decoration: underline;
     }
   }
 
