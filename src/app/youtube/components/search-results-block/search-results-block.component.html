@@ -1,6 +1,7 @@
  <div class="search-resuilt-block">
 
-  <div class="search-resuilt-block__video-cards-wrap">
+  <div class="search-resuilt-block__video-cards-wrap"
+  *ngIf="items">
 
     <div class="search-resuilt-block__video-cards-wrap__card"
       *ngFor="let item of items
@@ -8,7 +9,7 @@
       | sort:sortAddFilterConfig.isSortOn:sortAddFilterConfig.increase:sortAddFilterConfig.field">
 
       <app-video-card
-        *ngIf="headerWords.searchStart"
+        *ngIf="item"
         [item]="item">
       </app-video-card>
     </div>

@@ -1,0 +1,17 @@
+<div class="filtering-criteria-block">
+
+  <p>Sorting by: </p>
+  <div class="filtering-criteria-block__sort">
+    <p (click)="sortDateOnClick()">date</p>
+  </div>
+  <div class="filtering-criteria-block__sort">
+    <p (click)="sortByViewsOnClick()">count of views</p>
+  </div>
+
+  <div class="filtering-criteria-block__filter">
+    <p>word or sentence:</p>
+    <input type="text" name="userWord"
+      (input)="clickme($event)">
+  </div>
+
+</div>

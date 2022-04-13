@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../app-routing.module';
 import { AuthRoutingModule } from './auth-routing.module';
 
 import { AuthComponent } from './auth.component';
@@ -15,7 +17,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    AppRoutingModule,
+    BrowserModule,
   ]
 })
 

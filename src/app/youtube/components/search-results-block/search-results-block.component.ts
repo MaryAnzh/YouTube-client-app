@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ISortAddFilterConfig, IWordsSerch } from 'src/app/shared/directives/filtering-model';
 import { Item } from 'src/app/youtube/model/search-item.model';
-import { items } from 'src/app/data/items';
 
 @Component({
   selector: 'app-search-results-block',
@@ -10,21 +9,19 @@ import { items } from 'src/app/data/items';
 })
 
 export class SearchResultsBlockComponent {
-  @Input() items: Item[] = items;
+  @Input() items: Item[] | undefined;
 
-  @Input() words: string = '';
+  public words: string = '';
 
-  @Input() isSettingsOpened: boolean = false;
-
-  @Input() sortAddFilterConfig: ISortAddFilterConfig = {
+ public sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',
     isSortOn: false,
     increase: false
   };
 
-  @Input() headerWords: IWordsSerch = {
-    searchStart: false,
-    wordsValue: ''
-  };
+  // @Input() headerWords: IWordsSerch = {
+  //   searchStart: false,
+  //   wordsValue: ''
+  // };
 
  }

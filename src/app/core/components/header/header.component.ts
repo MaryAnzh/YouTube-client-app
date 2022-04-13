@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { IWordsSerch } from 'src/app/shared/directives/filtering-model';
 
 @Component({
@@ -8,12 +8,20 @@ import { IWordsSerch } from 'src/app/shared/directives/filtering-model';
 })
 
 export class HeaderComponent {
+  public wordsSerch: IWordsSerch = {
+    wordsValue: '',
+    searchStart: false
+  }
 
-  @Output() headerWordsChange = new EventEmitter<IWordsSerch>();
+  public isSettingsOpened: boolean = false;
 
-  isSettingsOpened: boolean = false;
+  submitButtonOnClick(value: string): void {
+    this.wordsSerch.searchStart = true;
+    this.wordsSerch.wordsValue = value;
+  }
 
-  @Output() isSettingsOpenedChange = new EventEmitter<boolean>();
+  settingsOpenedOnClick(): void {
+    this.isSettingsOpened = !this.isSettingsOpened;
+  }
 
 }
-

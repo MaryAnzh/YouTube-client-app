@@ -1,4 +1,4 @@
-.app-header {
+.header {
   width: 100%;
   height: 80px;
   padding: 4px;
@@ -21,13 +21,110 @@
       height: 100%;
       display: flex;
       flex-wrap: wrap;
-     margin: auto;
+      margin: auto;
       justify-content: space-between;
       align-items: center;
+
+      &__search-input {
+
+        max-width: 476px;
+        height: 24px;
+        display: flex;
+
+        input {
+
+          width: 396px;
+          display: flex;
+          align-items: center;
+          padding: 6px;
+          font-size: 12px;
+          font-family: Roboto;
+          color: #333333;
+          border: none;
+        }
+
+        button {
+          width: 80px;
+          height: 24px;
+          border-radius: 0px 4px 4px 0px;
+          color: white;
+          background: #2F80ED;
+          box-shadow: 2px 2px 2px 0px rgba(34, 60, 80, 0.3);
+        }
+      }
+
+      &__settings {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 3px;
+        background: #2F80ED;
+        border-radius: 2px;
+        box-shadow: 2px 2px 2px 0px rgba(34, 60, 80, 0.3);
+        transition: .5s;
+
+        &:hover {
+          background: #4992f1;
+        }
+
+        &:hover &__line__round-right {
+          transform: scale(5, 5) translate(100%, 0%);
+        }
+
+        &:hover &__line__round-left {
+          transform: scale(5, 5) translate(250%, 0%);
+        }
+
+        &__line {
+          width: 100%;
+          height: 1px;
+          background: white;
+          border-radius: 1px;
+
+          &__round-right {
+            width: 1px;
+            height: 1px;
+            transform: scale(5, 5) translate(250%, 0%);
+            border-radius: 50%;
+            background: white;
+            transition: .5s;
+          }
+
+          &__round-left {
+            width: 1px;
+            height: 1px;
+            transform: scale(5, 5) translate(100%, 0%);
+            border-radius: 50%;
+            background: white;
+            transition: .5s;
+          }
+        }
+      }
     }
 
     &__logo-info {
       justify-self: flex-end;
+
+      &__wrap {
+        height: 30px;
+        display: flex;
+        align-items: center;
+
+        p {
+          font-family: Roboto;
+          font-size: 12px;
+          color: #4F4F4F;
+          padding-right: 6px;
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
     }
   }
 }
