@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from '../app-routing.module';
-import { AuthRoutingModule } from './auth-routing.module';
+import { RouterModule } from '@angular/router';
 
 import { AuthComponent } from './auth.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-
 
 @NgModule({
   declarations: [
@@ -17,9 +14,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,
-    AppRoutingModule,
-    BrowserModule,
+    RouterModule,
   ]
 })
 
