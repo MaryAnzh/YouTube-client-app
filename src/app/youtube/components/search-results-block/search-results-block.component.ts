@@ -4,6 +4,7 @@ import { ISortAddFilterConfig, IWordsSerch } from 'src/app/shared/directives/fil
 import { Item } from 'src/app/youtube/model/search-item.model';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
+import { DataService } from 'src/app/core/services/date/data.service';
 
 
 @Component({
@@ -15,13 +16,16 @@ import { SortService } from '../../services/sort/sort.service';
 
 export class SearchResultsBlockComponent {
 
-  @Input() items: Item[] = items;
+  public items: Item[] = [];
 
   public words: string = '';
 
   public sortAddFilterConfig: ISortAddFilterConfig;
 
-  constructor(private filterService: FilterService, private sortService: SortService ) {
+  constructor(
+    private filterService: FilterService,
+    private sortService: SortService,
+    private dataService: DataService) {
 
     this.sortAddFilterConfig = this.sortService.sortAddFilterConfig;
     this.sortService.sortAddFilterConfigChange.subscribe(
@@ -37,5 +41,9 @@ export class SearchResultsBlockComponent {
       () => console.log("Complete")
     )
 
+    this.items = this.dataService.items;
+    this.dataService.itemsChange.subscribe(
+      (value: Item[]) => this.items = value
+    )
   }
 }

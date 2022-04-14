@@ -4,6 +4,7 @@ import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model'
 @Injectable({
   providedIn: 'root'
 })
+
 export class SortService {
   #sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',

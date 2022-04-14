@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IWordsSerch } from 'src/app/shared/directives/filtering-model';
+import { Component } from '@angular/core';;
+import { DataService } from '../../services/date/data.service';
 
 @Component({
   selector: 'app-header',
@@ -8,16 +8,14 @@ import { IWordsSerch } from 'src/app/shared/directives/filtering-model';
 })
 
 export class HeaderComponent {
-  public wordsSerch: IWordsSerch = {
-    wordsValue: '',
-    searchStart: false
-  }
+  wordsValue: string = '';
+
+  constructor(private dataService: DataService) { }
 
   public isSettingsOpened: boolean = false;
 
   submitButtonOnClick(value: string): void {
-    this.wordsSerch.searchStart = true;
-    this.wordsSerch.wordsValue = value;
+    this.dataService.wordsSerch = value;
   }
 
   settingsOpenedOnClick(): void {
