@@ -18,14 +18,23 @@ export class HeaderComponent {
 
   wordsValue: string = '';
 
+  userName: string;
+
   constructor(private dataService: DataService,
     private settingsService: SettingsService,
     private authService: AuthService,
     private loginService: LoginService) {
+
     this.isAuth = this.authService.isAuth;
     this.authService.isAuthChange.subscribe(
       (value: boolean) => this.isAuth = value
     );
+
+    this.userName = this.loginService.userName;
+    this.loginService.userNameChange.subscribe(
+      (value: string) => this.userName = value
+    );
+
   }
 
   submitButtonOnClick(value: string): void {

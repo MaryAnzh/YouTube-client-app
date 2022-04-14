@@ -7,14 +7,17 @@ import { StorageService } from '../storage/storage.service';
 
 export class LoginService {
 
-  dimmyToken: string = '';
+  public dimmyToken: string = '';
 
-  userName: string = '';
+  public userName: string = '';
 
   constructor(private storageService: StorageService) { }
 
+  public userNameChange = new EventEmitter<String>()
+
   public login(name: string) {
     this.userName = name;
+    this.userNameChange.emit(name);
 
     this.dimmyToken = 'adc123';
 
