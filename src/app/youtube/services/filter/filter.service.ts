@@ -1,28 +1,22 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model';
 
-let filterServiceId: number = 0;
-
 @Injectable({
   providedIn: 'root'
 })
 
 export class FilterService {
-  #sortAddFilterConfig: ISortAddFilterConfig = {
-    field: '',
-    isSortOn: false,
-    increase: false
-  };
+  #words: string = '';
 
-  @Output() sortAddFilterConfigChange = new EventEmitter<ISortAddFilterConfig>();
+  @Output() wordsChange = new EventEmitter<string>();
 
-  public get sortAddFilterConfig(): ISortAddFilterConfig {
-    return this.#sortAddFilterConfig;
+  public get words(): string {
+    return this.#words;
   }
 
-  public set sortAddFilterConfig(value: ISortAddFilterConfig) {
-    this.#sortAddFilterConfig = value;
-    this.sortAddFilterConfigChange.emit(value);
+  public set words(value: string) {
+    this.#words = value;
+    this.wordsChange.emit(value);
   }
 
   constructor() { }

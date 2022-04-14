@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FilterService } from '../../services/filter/filter.service';
+import { SortService } from '../../services/sort/sort.service';
 
 @Component({
   selector: 'app-filtering-criteria-block',
@@ -13,12 +14,13 @@ export class FilteringCriteriaBlockComponent {
 
   public words: string = '';
 
-  constructor(private filterService: FilterService) {
+  constructor(private filterService: FilterService, private sortService: SortService) {
    }
 
   userInputWordOnInput(event: Event): void {
     const elem = <HTMLInputElement>event.target;
     this.words = elem.value;
+    this.filterService.words = elem.value;
   }
 
   sortItemsOnClick(e: Event) {
@@ -26,7 +28,7 @@ export class FilteringCriteriaBlockComponent {
     const elemType: string | undefined = (elem.dataset['field']);
 
     if (elemType) {
-      this.filterService.sortAddFilterConfig = {
+      this.sortService.sortAddFilterConfig = {
         field: elemType,
         increase: this.sortIncreasing,
         isSortOn: true,
