@@ -38,7 +38,11 @@
         <p>Необходима регистрация --></p>
       </div>
       <div class="header__wrap__logo-info__wrap" *ngIf="!isAuth">
-        <button>Login</button>
+        <button
+          type="button"
+          routerLink="/auth">
+          Login
+        </button>
       </div>
       <div class="header__wrap__logo-info__wrap" *ngIf="isAuth">
         <p>Your Name</p>
