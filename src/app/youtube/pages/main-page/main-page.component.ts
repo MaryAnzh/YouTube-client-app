@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
 @Component({
   selector: 'app-main-page',
@@ -6,4 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-page.component.scss']
 })
 
-export class MainPageComponent {  }
+export class MainPageComponent {
+
+  public open: boolean;
+
+  constructor(private settingsService: SettingsService) {
+    this.open = this.settingsService.isSettingsOpen;
+    this.settingsService.isSettingsOpenChange.subscribe(
+      (value: boolean) => this.open = value
+    );
+  }
+}

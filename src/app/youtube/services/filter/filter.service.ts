@@ -8,7 +8,7 @@ import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model'
 export class FilterService {
   #words: string = '';
 
-  @Output() wordsChange = new EventEmitter<string>();
+  wordsChange = new EventEmitter<string>();
 
   public get words(): string {
     return this.#words;

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
-import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
 @Component({
   selector: 'app-filtering-criteria-block',
@@ -15,16 +14,9 @@ export class FilteringCriteriaBlockComponent {
 
   public words: string = '';
 
-  public open: boolean;
-
   constructor(
     private filterService: FilterService,
-    private sortService: SortService,
-    private settingsService: SettingsService) {
-    this.open = this.settingsService.isSettingsOpen;
-    this.settingsService.isSettingsOpenChange.subscribe(
-      (value: boolean) => this.open = value
-    );
+    private sortService: SortService) {
    }
 
   userInputWordOnInput(event: Event): void {

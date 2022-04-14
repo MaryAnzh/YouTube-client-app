@@ -32,11 +32,13 @@
     </div>
 
     <section class="header__wrap__logo-info">
-      <div class="header__wrap__logo-info__wrap">
+      <div class="header__wrap__logo-info__wrap" *ngIf="!isAuth">
+        <button>Login</button>
+      </div>
+      <div class="header__wrap__logo-info__wrap" *ngIf="isAuth">
         <p>Your Name</p>
         <img title="login" alt="login" src="../../../assets/Subtract.svg">
       </div>
     </section>
-
   </div>
 </header>

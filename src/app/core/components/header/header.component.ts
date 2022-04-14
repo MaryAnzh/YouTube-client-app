@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';;
 import { DataService } from '../../services/date/data.service';
 import { SettingsService } from '../../services/settings/settings.service';
+import { GuardsService } from '../../guards/guards.service';
 
 @Component({
   selector: 'app-header',
@@ -9,16 +10,28 @@ import { SettingsService } from '../../services/settings/settings.service';
 })
 
 export class HeaderComponent {
+  isAuth: boolean;
+
   wordsValue: string = '';
 
   constructor(private dataService: DataService,
-    private settingsService: SettingsService) {  }
+    private settingsService: SettingsService,
+    private guardsService: GuardsService) {
+    this.isAuth = this.guardsService.isAuth;
+    this.guardsService.isAuthChange.subscribe(
+      (value: boolean) => this.isAuth = value
+    );
+     }
 
   submitButtonOnClick(value: string): void {
-    this.dataService.wordsSerch = value;
+    if (this.isAuth) {
+      this.dataService.wordsSerch = value;
+    }
   }
 
   settingsOpenedOnClick(): void {
-    this.settingsService.isSettingsOpen = !this.settingsService.isSettingsOpen;
+    if (this.isAuth) {
+      this.settingsService.isSettingsOpen = !this.settingsService.isSettingsOpen;
+    }
   }
 }
