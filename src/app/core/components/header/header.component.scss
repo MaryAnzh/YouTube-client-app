@@ -113,14 +113,21 @@
       justify-content: end;
       align-items: center;
 
-          &__alert {
-            padding-right: 10px;
-          }
+      &__alert {
+        padding-right: 10px;
+      }
+
+
 
       &__wrap {
         height: 30px;
         display: flex;
         align-items: center;
+
+        &__logout-button {
+          margin-left: 10px;
+
+        }
 
         p {
           font-family: Roboto;

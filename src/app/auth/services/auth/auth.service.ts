@@ -6,7 +6,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 export class AuthService {
 
-  #isAuth: boolean = false;
+  #isAuth: boolean = true;
 
   constructor() { }
 

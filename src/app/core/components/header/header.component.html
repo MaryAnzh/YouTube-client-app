@@ -37,15 +37,25 @@
       </div>
       <div class="header__wrap__logo-info__wrap" *ngIf="!isAuth">
         <button
+        class=""
           type="button"
           routerLink="/auth">
           Login
         </button>
       </div>
+
       <div class="header__wrap__logo-info__wrap" *ngIf="isAuth">
         <p>Your Name</p>
         <img title="login" alt="login" src="../../../assets/Subtract.svg">
       </div>
+       <button
+       class="header__wrap__logo-info__wrap__logout-button"
+          type="button"
+          *ngIf="isAuth"
+          (click)="logOutOnClick()"
+          routerLink="/youtube">
+          Logout
+        </button>
     </section>
   </div>
 </header>
