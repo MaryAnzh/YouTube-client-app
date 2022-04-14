@@ -9,8 +9,8 @@ export function sortItems(items: Item[], field: string) {
     );
       break;
 
-    case 'likes': items.sort((a, b) =>
-      SortFieldValue.LIKes(a.statistics.likeCount) - SortFieldValue.LIKes(b.statistics.likeCount)
+    case 'views': items.sort((a, b) =>
+      SortFieldValue.LIKes(a.statistics.viewCount) - SortFieldValue.LIKes(b.statistics.viewCount)
 
     );
       break;
