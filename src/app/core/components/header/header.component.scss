@@ -105,8 +105,17 @@
       }
     }
 
+
     &__logo-info {
       justify-self: flex-end;
+      display: flex;
+      width: 290px;
+      justify-content: end;
+      align-items: center;
+
+          &__alert {
+            padding-right: 10px;
+          }
 
       &__wrap {
         height: 30px;

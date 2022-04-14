@@ -6,7 +6,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 export class GuardsService {
 
-  #isAuth: boolean = true;
+  #isAuth: boolean = false;
 
   isAuthChange = new EventEmitter<boolean>();
 

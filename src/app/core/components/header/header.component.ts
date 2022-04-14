@@ -12,6 +12,8 @@ import { GuardsService } from '../../guards/guards.service';
 export class HeaderComponent {
   isAuth: boolean;
 
+  isAlert: boolean = false;
+
   wordsValue: string = '';
 
   constructor(private dataService: DataService,
@@ -26,12 +28,16 @@ export class HeaderComponent {
   submitButtonOnClick(value: string): void {
     if (this.isAuth) {
       this.dataService.wordsSerch = value;
+    } else {
+      this.isAlert = true;
     }
   }
 
   settingsOpenedOnClick(): void {
     if (this.isAuth) {
       this.settingsService.isSettingsOpen = !this.settingsService.isSettingsOpen;
+    } else {
+      this.isAlert = true;
     }
   }
 }
