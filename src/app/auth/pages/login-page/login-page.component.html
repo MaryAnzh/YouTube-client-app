@@ -1,5 +1,14 @@
 <div class="login-form-wrap">
   <h1 class="login-form-wrap__title">Login</h1>
-  <app-login-form></app-login-form>
-  <button class="login-form-wrap__submit-button">Login</button>
+  <form class="login-form-wrap__login-form">
+  <label name="user-name" >login</label>
+  <input type="text" name="user-name" #userName>
+  <label name="password" >password</label>
+  <input type="password" name="password" #password>
+</form>
+  <button
+  type="button"
+  class="login-form-wrap__submit-button"
+  (click)="submitUserDataOnClick(userName.value)"
+  >Login</button>
 </div>

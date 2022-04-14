@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { StorageService } from 'src/app/auth/services/storage/storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,18 +7,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 export class GuardsService {
 
-  #isAuth: boolean = false;
+  constructor(private storageService: StorageService) { }
 
-  isAuthChange = new EventEmitter<boolean>();
 
-  public get isAuth(): boolean {
-    return this.#isAuth;
-  }
-
-  public set isAuth(value: boolean) {
-    this.#isAuth = value;
-    this.isAuthChange.emit(value);
-  }
-
-  constructor() { }
 }

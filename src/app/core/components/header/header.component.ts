@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';;
 import { DataService } from '../../services/date/data.service';
 import { SettingsService } from '../../services/settings/settings.service';
-import { GuardsService } from '../../guards/guards.service';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +10,7 @@ import { GuardsService } from '../../guards/guards.service';
 })
 
 export class HeaderComponent {
+
   isAuth: boolean;
 
   isAlert: boolean = false;
@@ -18,12 +19,12 @@ export class HeaderComponent {
 
   constructor(private dataService: DataService,
     private settingsService: SettingsService,
-    private guardsService: GuardsService) {
-    this.isAuth = this.guardsService.isAuth;
-    this.guardsService.isAuthChange.subscribe(
+    private authService: AuthService) {
+    this.isAuth = this.authService.isAuth;
+    this.authService.isAuthChange.subscribe(
       (value: boolean) => this.isAuth = value
     );
-     }
+  }
 
   submitButtonOnClick(value: string): void {
     if (this.isAuth) {
