@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';;
 import { DataService } from '../../services/date/data.service';
+import { SettingsService } from '../../services/settings/settings.service';
 
 @Component({
   selector: 'app-header',
@@ -10,16 +11,14 @@ import { DataService } from '../../services/date/data.service';
 export class HeaderComponent {
   wordsValue: string = '';
 
-  constructor(private dataService: DataService) { }
-
-  public isSettingsOpened: boolean = false;
+  constructor(private dataService: DataService,
+    private settingsService: SettingsService) {  }
 
   submitButtonOnClick(value: string): void {
     this.dataService.wordsSerch = value;
   }
 
   settingsOpenedOnClick(): void {
-    this.isSettingsOpened = !this.isSettingsOpened;
+    this.settingsService.isSettingsOpen = !this.settingsService.isSettingsOpen;
   }
-
 }
