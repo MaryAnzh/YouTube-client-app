@@ -39,7 +39,7 @@ export class HeaderComponent {
 
   submitButtonOnClick(value: string): void {
     if (this.isAuth) {
-      this.dataService.wordsSerch = value;
+      this.dataService.IWordsSearch = value;
     } else {
       this.isAlert = true;
 

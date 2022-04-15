@@ -8,7 +8,7 @@ import { items } from 'src/app/data/items';
 
 export class DataService {
   #items: Item[] = [];
-  #wordsSerch: string = '';
+  #IWordsSearch: string = '';
 
   @Output() itemsChange = new EventEmitter<Item[]>();
 
@@ -23,12 +23,12 @@ export class DataService {
     this.itemsChange.emit(value);
   }
 
-  get wordsSerch(): string {
-    return this.#wordsSerch;
+  get IWordsSearch(): string {
+    return this.#IWordsSearch;
   }
 
-  set wordsSerch(value: string) {
-    this.#wordsSerch = value;
+  set IWordsSearch(value: string) {
+    this.#IWordsSearch = value;
     this.wordsSerchChange.emit(value);
     this.items = items;
   }
