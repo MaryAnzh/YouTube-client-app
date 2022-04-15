@@ -4,7 +4,7 @@ export interface ISortAddFilterConfig {
   increase: boolean
 }
 
-export type IWordsSerch = {
+export type IWordsSearch= {
   searchStart: boolean,
   wordsValue: string
 }

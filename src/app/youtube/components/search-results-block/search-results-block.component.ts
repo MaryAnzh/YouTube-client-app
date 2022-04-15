@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { items } from 'src/app/data/items';
-import { ISortAddFilterConfig, IWordsSerch } from 'src/app/shared/directives/filtering-model';
+import { ISortAddFilterConfig, IWordsSearch} from 'src/app/shared/directives/filtering-model';
 import { Item } from 'src/app/youtube/model/search-item.model';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
