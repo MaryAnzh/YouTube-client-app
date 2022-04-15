@@ -32,13 +32,13 @@
     </div>
 
     <section class="header__wrap__logo-info">
-      <div class="header__wrap__logo-info__alert" *ngIf="isAlert">
+      <div class="header__wrap__logo-info__alert" *ngIf="isAlert && !isAuth">
         <p>Необходима регистрация --></p>
       </div>
       <div class="header__wrap__logo-info__wrap" *ngIf="!isAuth">
         <button
-        class=""
           type="button"
+          (click)="loginOnClick()"
           routerLink="/auth">
           Login
         </button>

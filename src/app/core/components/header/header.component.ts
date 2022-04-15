@@ -42,6 +42,7 @@ export class HeaderComponent {
       this.dataService.wordsSerch = value;
     } else {
       this.isAlert = true;
+
     }
   }
 
@@ -53,8 +54,13 @@ export class HeaderComponent {
     }
   }
 
+  loginOnClick() {
+    this.isAlert = false;
+  }
+
   logOutOnClick() {
     this.loginService.logOut();
     this.dataService.items = [];
+
   }
 }
