@@ -13,7 +13,7 @@ import { items } from 'src/app/data/items';
 
 export class DetailedInformationPageComponent {
 
-  public item: Item = items[1];
+  public item: Item | undefined;
 
   public smallDescription: string = '';
 
@@ -25,8 +25,9 @@ export class DetailedInformationPageComponent {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    console.log('id');
     console.log(id);
-    if (id && this.item) {
+    if (id) {
       this.item = this.videoItemService.getVideo(items, id);
       this.smallDescription = this.videoItemService.getItemSmallDescription(this.item.snippet.description);
       this.itemDateLocal = this.videoItemService.getitemDateLocal(this.item.snippet.publishedAt);
