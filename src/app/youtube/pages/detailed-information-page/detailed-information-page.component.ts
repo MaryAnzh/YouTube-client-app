@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { items } from 'src/app/data/items';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { VideoItemService } from '../../services/video-item/video-item.service';
 import { Item } from '../../model/search-item.model';
+import { items } from 'src/app/data/items';
 
 @Component({
   selector: 'app-detailed-information-page',
@@ -10,21 +13,24 @@ import { Item } from '../../model/search-item.model';
 
 export class DetailedInformationPageComponent {
 
-  public item: Item = items[0];
+  public item: Item = items[1];
 
-  public itemDate: Date = new Date(Date.parse(this.item.snippet.publishedAt));
+  public smallDescription: string = '';
 
-  public itemDateLocal: string = this.itemDate.toLocaleDateString(
-    'en-US',
-    {
-      weekday: 'long',
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric'
-    });
+  public itemDateLocal: string = '';
 
-  public firstStringChung: number = 0;
+  constructor(private videoItemService: VideoItemService,
+    private route: ActivatedRoute,
+    private location: Location) {  }
 
-  public description: string = (this.item.snippet.description.split('\n'))[this.firstStringChung];
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+    if (id && this.item) {
+      this.item = this.videoItemService.getVideo(items, id);
+      this.smallDescription = this.videoItemService.getItemSmallDescription(this.item.snippet.description);
+      this.itemDateLocal = this.videoItemService.getitemDateLocal(this.item.snippet.publishedAt);
+    }
+  }
 
 }

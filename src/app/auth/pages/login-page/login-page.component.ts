@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,  } from '@angular/core';
 import { LoginService } from '../../services/login/login.service';
 
 @Component({
@@ -13,8 +13,6 @@ export class LoginPageComponent {
 
   submitUserDataOnClick(name: string) {
     this.loginService.login(name);
-
-
   }
 
 }

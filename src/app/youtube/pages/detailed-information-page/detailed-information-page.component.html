@@ -1,6 +1,9 @@
-<div class="detail-page">
+<div class="detail-page"
+*ngIf="item">
   <div class="detail-page__arrow">
-    <app-arrow></app-arrow>
+    <app-arrow
+    routerLink="/">
+  </app-arrow>
   </div>
 
   <section class="detail-page__video-info">
@@ -20,7 +23,7 @@
 
       <div class="detail-page__video-info__description__description">
         <h3>Description:</h3>
-        <p>{{description}}</p>
+        <p>{{smallDescription}}</p>
       </div>
 
       <div class="detail-page__video-info__description__statistics">

@@ -14,6 +14,8 @@ export class VideoCardComponent {
 
   public videoCard: Item | undefined;
 
+  public itemId: string = '';
+
   @Input()
   public set item(item: Item) {
     this.videoCard = item;
