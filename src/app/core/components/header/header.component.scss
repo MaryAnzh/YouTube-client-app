@@ -113,21 +113,14 @@
       justify-content: end;
       align-items: center;
 
-      &__alert {
-        padding-right: 10px;
-      }
-
-
-
-      &__wrap {
+      &_login,
+      &__logout {
+        width: 100%;
+        max-width: 320px;
         height: 30px;
         display: flex;
         align-items: center;
-
-        &__logout-button {
-          margin-left: 10px;
-
-        }
+        justify-content: end;
 
         p {
           font-family: Roboto;
@@ -139,6 +132,7 @@
         img {
           width: 24px;
           height: 24px;
+          margin-right: 10px
         }
       }
     }
