@@ -1,4 +1,4 @@
-export interface IUsreStorageData {
+export interface IResAuthLogin {
+  login: string,
   token: string,
-  userName: string,
 }

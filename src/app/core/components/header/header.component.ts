@@ -2,7 +2,8 @@ import { Component } from '@angular/core';;
 import { DataService } from '../../services/date/data.service';
 import { SettingsService } from '../../services/settings/settings.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
-import { LoginService } from 'src/app/auth/services/login/login.service';
+import { IResAuthLogin } from 'src/app/auth/model/user-storage-data.model';
+import { SubscriptionLike } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -12,37 +13,36 @@ import { LoginService } from 'src/app/auth/services/login/login.service';
 
 export class HeaderComponent {
 
-  isAuth: boolean;
+  public subscriptionisauth: SubscriptionLike;
 
-  isAlert: boolean = false;
+  public subscriptionUserName: SubscriptionLike;
 
-  wordsValue: string = '';
+  public isAuth: boolean;
 
-  userName: string;
+  public wordsValue: string = '';
+
+  public userName: string | null;
 
   constructor(private dataService: DataService,
     private settingsService: SettingsService,
-    private authService: AuthService,
-    private loginService: LoginService) {
+    private authService: AuthService) {
 
-    this.isAuth = this.authService.isAuth;
-    this.authService.isAuthChange.subscribe(
+    this.isAuth = false;
+    this.subscriptionisauth = this.authService.isLoggedIn$.subscribe(
       (value: boolean) => this.isAuth = value
-    );
+    )
 
-    this.userName = this.loginService.userName;
-    this.loginService.userNameChange.subscribe(
-      (value: string) => this.userName = value
-    );
-
+    this.userName = '';
+    this.subscriptionUserName = this.authService.user$.subscribe(
+      (value: IResAuthLogin | null) => this.userName = value?.login ?? null
+    )
   }
 
   submitButtonOnClick(value: string): void {
     if (this.isAuth) {
       this.dataService.IWordsSearch = value;
     } else {
-      this.isAlert = true;
-
+      alert('необходима регистрация');
     }
   }
 
@@ -50,17 +50,22 @@ export class HeaderComponent {
     if (this.isAuth) {
       this.settingsService.isSettingsOpen = !this.settingsService.isSettingsOpen;
     } else {
-      this.isAlert = true;
+      alert('необходима регистрация');
     }
   }
 
-  loginOnClick() {
-    this.isAlert = false;
+  logOutOnClick() {
+    this.authService.logOut();
+    this.dataService.items = [];
   }
 
-  logOutOnClick() {
-    this.loginService.logOut();
-    this.dataService.items = [];
+  ngOnDestroy() {
+    if (this.subscriptionisauth) {
+      this.subscriptionisauth.unsubscribe();
+    }
 
+    if(this.subscriptionUserName) {
+      this.subscriptionUserName.unsubscribe();
+    }
   }
 }

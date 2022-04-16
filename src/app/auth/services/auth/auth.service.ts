@@ -1,4 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { StorageService } from '../storage/storage.service';
+import { BehaviorSubject, map } from 'rxjs';
+import { IResAuthLogin } from '../../model/user-storage-data.model';
 
 @Injectable({
   providedIn: 'root'
@@ -6,18 +9,32 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 export class AuthService {
 
-  #isAuth: boolean = true;
+  private _user$$ = new BehaviorSubject<IResAuthLogin | null>(null);
 
-  constructor() { }
+  public isLoggedIn$ = this._user$$.asObservable().pipe(map(user => user !== null));
 
-  isAuthChange = new EventEmitter<boolean>();
+  public user$ = this._user$$.asObservable();
 
-  get isAuth(): boolean {
-    return this.#isAuth;
+  constructor(private s: StorageService) {
+    const user: IResAuthLogin | null = this.s.getData('user');
+    if (user) {
+      this._user$$.next(user);
+    }
   }
 
-  set isAuth(value: boolean) {
-    this.#isAuth = value;
-    this.isAuthChange.emit(value);
+  logIn(name: string) {
+    const token = '123456';
+    const userData: IResAuthLogin = {
+      login: name,
+      token: token,
+    }
+    this._user$$.next(userData);
+    this.s.setData('user', userData);
   }
+
+  logOut() {
+    this.s.setData('user', null)
+    this._user$$.next(null);
+  }
+
 }

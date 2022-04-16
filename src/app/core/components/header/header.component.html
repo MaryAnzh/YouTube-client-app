@@ -32,30 +32,26 @@
     </div>
 
     <section class="header__wrap__logo-info">
-      <div class="header__wrap__logo-info__alert" *ngIf="isAlert && !isAuth">
-        <p>Необходима регистрация --></p>
-      </div>
-      <div class="header__wrap__logo-info__wrap" *ngIf="!isAuth">
-        <button
+      <div class="header__wrap__logo-info__login" *ngIf="!isAuth">
+        <button class="header__wrap__logo-info__login__button"
           type="button"
-          (click)="loginOnClick()"
           routerLink="/auth">
           Login
         </button>
       </div>
 
-      <div class="header__wrap__logo-info__wrap" *ngIf="isAuth">
+      <div class="header__wrap__logo-info__logout" *ngIf="isAuth">
         <p>{{userName}}</p>
-        <img title="login" alt="login" src="../../../assets/Subtract.svg">
-      </div>
-       <button
-       class="header__wrap__logo-info__wrap__logout-button"
+        <img alt="login" src="../../../assets/Subtract.svg">
+        <button class="header__wrap__logo-info__logout__button"
           type="button"
-          *ngIf="isAuth"
           (click)="logOutOnClick()"
           routerLink="/youtube">
           Logout
         </button>
+      </div>
+
     </section>
+
   </div>
 </header>

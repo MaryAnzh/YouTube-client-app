@@ -7,6 +7,8 @@ import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
 
+import { AuthGuard } from './core/guards/services/auth.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,7 @@ import { AppComponent } from './app.component';
     CoreModule
   ],
 
-  providers: [],
+  providers: [AuthGuard],
 
   bootstrap: [AppComponent]
 })
