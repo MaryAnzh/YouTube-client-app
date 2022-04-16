@@ -21,10 +21,10 @@ export class FilteringCriteriaBlockComponent {
     private filterService: FilterService,
     private sortService: SortService,
     private authService: AuthService) {
-    this.isAuth = this.authService.isAuth;
-    this.authService.isAuthChange.subscribe(
-      (value: boolean) => this.isAuth = value
-    );
+    this.isAuth = false;
+    this.authService.isLoggedIn$.subscribe(
+      (value: boolean) => this.isAuth = value ? true : false
+    )
    }
 
   userInputWordOnInput(event: Event): void {

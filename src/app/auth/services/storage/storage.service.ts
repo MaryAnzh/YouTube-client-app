@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUsreStorageData } from '../../model/user-storage-data.model';
-import { AuthService } from '../auth/auth.service';
+import { IResAuthLogin } from '../../model/user-storage-data.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,51 +7,22 @@ import { AuthService } from '../auth/auth.service';
 
 export class StorageService {
 
-  storage = window.localStorage;
+  constructor() { }
 
-  #usreStorageData: IUsreStorageData;
-
-  constructor(private authService: AuthService) {
-    this.#usreStorageData = {
-      token: '',
-      userName: '',
-    }
+  setData({ login, token }: IResAuthLogin): void {
+    localStorage.setItem(
+      'user', JSON.stringify({ login, token })
+    )
   }
 
-  public get usreStorageData(): IUsreStorageData {
-    return this.#usreStorageData;
+  getData(field: string): string {
+    const data = localStorage.getItem('user');
+    return data
+      ? JSON.parse(data)[field] :
+      null;
   }
 
-  public set usreStorageData(value: IUsreStorageData) {
-    this.#usreStorageData = value;
+  public clear() {
+    localStorage.removeItem('user');
   }
-
-  public authUserCheck() {
-    const auth: string | null = this.storage.getItem('userAuth');
-
-    if (auth) {
-      this.authService.isAuth = true;
-      this.usreStorageData = JSON.parse(auth);
-    }
-  }
-
-  public setAuthToLocalStorage(name: string, token: string) {
-    const usreStorageData: IUsreStorageData = {
-      token: token,
-      userName: name,
-    }
-    this.authService.isAuth = true;
-    this.storage.setItem('userAuth', JSON.stringify(usreStorageData));
-  }
-
-  public clearAuth() {
-    this.storage.removeItem('userAuth');
-    this.authService.isAuth = false;
-    this.usreStorageData = {
-      token: '',
-      userName: '',
-    }
-
-  }
-
 }
