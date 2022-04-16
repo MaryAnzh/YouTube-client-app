@@ -28,11 +28,10 @@ export class HeaderComponent {
     )
 
     this.userName = '';
-    if (this.authService.user$) {
-      this.authService.user$.subscribe(
-        (value: IResAuthLogin | null) => this.userName = value?.login ?? null
-      )
-    }
+    this.authService.user$.subscribe(
+      (value: IResAuthLogin | null) => this.userName = value?.login ?? null
+    )
+
   }
 
   submitButtonOnClick(value: string): void {

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { IResAuthLogin } from '../../model/user-storage-data.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +8,22 @@ export class StorageService {
 
   constructor() { }
 
-  setData({ login, token }: IResAuthLogin): void {
-    localStorage.setItem(
-      'user', JSON.stringify({ login, token })
-    )
+  setData<T>(key: string, value: T | null): void {
+    if (value) {
+      localStorage.setItem(
+        key, JSON.stringify(value)
+      );
+    } else {
+      localStorage.removeItem(key);
+    }
   }
 
-  getData(field: string): string {
-    const data = localStorage.getItem('user');
-    console.log(`${data} json`);
+  getData<T>(key: string): T | null {
+    const data = localStorage.getItem(key);
+
     return data
-      ? JSON.parse(data)[field] :
+      ? JSON.parse(data) :
       null;
   }
 
-  public clear() {
-    localStorage.removeItem('user');
-  }
 }

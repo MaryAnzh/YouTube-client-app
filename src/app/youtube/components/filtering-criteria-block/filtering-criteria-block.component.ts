@@ -23,7 +23,7 @@ export class FilteringCriteriaBlockComponent {
     private authService: AuthService) {
     this.isAuth = false;
     this.authService.isLoggedIn$.subscribe(
-      (value: boolean) => this.isAuth = value ? true : false
+      (value: boolean) => this.isAuth = value
     )
    }
 
