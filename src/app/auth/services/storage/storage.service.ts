@@ -17,6 +17,7 @@ export class StorageService {
 
   getData(field: string): string {
     const data = localStorage.getItem('user');
+    console.log(`${data} json`);
     return data
       ? JSON.parse(data)[field] :
       null;

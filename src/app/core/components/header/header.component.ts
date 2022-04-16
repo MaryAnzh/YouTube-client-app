@@ -24,7 +24,7 @@ export class HeaderComponent {
 
     this.isAuth = false;
     this.authService.isLoggedIn$.subscribe(
-      (value: boolean) => this.isAuth = value ? true : false
+      (value: boolean) => this.isAuth = value
     )
 
     this.userName = '';

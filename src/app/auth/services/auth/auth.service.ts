@@ -16,9 +16,9 @@ export class AuthService {
   public user$ = this._user$$.asObservable();
 
   constructor(private s: StorageService) {
-    const uwer: IResAuthLogin | null = JSON.parse(this.s.getData('key'));
-    if (uwer) {
-      this._user$$.next(uwer);
+    const user: IResAuthLogin | null = JSON.parse(this.s.getData('user'));
+    if (user) {
+      this._user$$.next(user);
     }
   }
 
@@ -28,10 +28,13 @@ export class AuthService {
       login: name,
       token: token,
     }
+    this._user$$.next(userData);
     this.s.setData(userData);
   }
 
   logOut() {
     this.s.clear();
+    const userData = null;
+    this._user$$.next(userData);
   }
 }
