@@ -3,6 +3,7 @@ import { DataService } from '../../services/date/data.service';
 import { SettingsService } from '../../services/settings/settings.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { IResAuthLogin } from 'src/app/auth/model/user-storage-data.model';
+import { SubscriptionLike } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -11,19 +12,20 @@ import { IResAuthLogin } from 'src/app/auth/model/user-storage-data.model';
 })
 
 export class HeaderComponent {
+  public subscription: SubscriptionLike;
 
-  isAuth: boolean;
+  public isAuth: boolean;
 
-  wordsValue: string = '';
+  public wordsValue: string = '';
 
-  userName: string | null;
+  public userName: string | null;
 
   constructor(private dataService: DataService,
     private settingsService: SettingsService,
     private authService: AuthService) {
 
     this.isAuth = false;
-    this.authService.isLoggedIn$.subscribe(
+    this.subscription = this.authService.isLoggedIn$.subscribe(
       (value: boolean) => this.isAuth = value
     )
 
@@ -57,5 +59,11 @@ export class HeaderComponent {
   logOutOnClick() {
     this.authService.logOut();
     this.dataService.items = [];
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
