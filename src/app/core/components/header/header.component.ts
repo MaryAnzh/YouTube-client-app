@@ -12,7 +12,10 @@ import { SubscriptionLike } from 'rxjs';
 })
 
 export class HeaderComponent {
-  public subscription: SubscriptionLike;
+
+  public subscriptionisauth: SubscriptionLike;
+
+  public subscriptionUserName: SubscriptionLike;
 
   public isAuth: boolean;
 
@@ -25,15 +28,14 @@ export class HeaderComponent {
     private authService: AuthService) {
 
     this.isAuth = false;
-    this.subscription = this.authService.isLoggedIn$.subscribe(
+    this.subscriptionisauth = this.authService.isLoggedIn$.subscribe(
       (value: boolean) => this.isAuth = value
     )
 
     this.userName = '';
-    this.authService.user$.subscribe(
+    this.subscriptionUserName = this.authService.user$.subscribe(
       (value: IResAuthLogin | null) => this.userName = value?.login ?? null
     )
-
   }
 
   submitButtonOnClick(value: string): void {
@@ -52,18 +54,18 @@ export class HeaderComponent {
     }
   }
 
-  loginOnClick() {
-
-  }
-
   logOutOnClick() {
     this.authService.logOut();
     this.dataService.items = [];
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.subscriptionisauth) {
+      this.subscriptionisauth.unsubscribe();
+    }
+
+    if(this.subscriptionUserName) {
+      this.subscriptionUserName.unsubscribe();
     }
   }
 }
