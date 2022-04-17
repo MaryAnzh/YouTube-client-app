@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { items } from 'src/app/data/items';
-import { ISortAddFilterConfig, IWordsSearch} from 'src/app/shared/directives/filtering-model';
-import { Item } from 'src/app/youtube/model/search-item.model';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { ISortAddFilterConfig, IWordsSearch } from 'src/app/shared/directives/filtering-model';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
 import { DataService } from 'src/app/core/services/date/data.service';
+import { SubscriptionLike } from 'rxjs';
+import { IVideoItem } from '../../model/search-item.model';
 
 
 @Component({
@@ -15,8 +15,9 @@ import { DataService } from 'src/app/core/services/date/data.service';
 })
 
 export class SearchResultsBlockComponent {
+  public subscriptionisItems: SubscriptionLike;
 
-  public items: Item[] = [];
+  @Output() public videoItems: IVideoItem[];
 
   public words: string = '';
 
@@ -41,9 +42,9 @@ export class SearchResultsBlockComponent {
       () => console.log("Complete")
     )
 
-    this.items = this.dataService.items;
-    this.dataService.itemsChange.subscribe(
-      (value: Item[]) => this.items = value
+    this.videoItems = [];
+    this.subscriptionisItems = this.dataService.items$.subscribe(
+      (value: IVideoItem[] | null) => this.videoItems = value ? value : []
     )
   }
 }

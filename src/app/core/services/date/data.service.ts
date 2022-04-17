@@ -1,37 +1,66 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
-import { Item } from 'src/app/youtube/model/search-item.model';
-import { items } from 'src/app/data/items';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { SearchService } from 'src/app/youtube/services/search/search.service';
+import { IYouTubeSearchResults } from 'src/app/youtube/model/search-response.model';
+import { IVideoItem } from 'src/app/youtube/model/search-item.model';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DataService {
-  #items: Item[] = [];
-  #IWordsSearch: string = '';
 
-  @Output() itemsChange = new EventEmitter<Item[]>();
+  private _youTubeSearchResults$$ = new BehaviorSubject<IYouTubeSearchResults | null>(null);
 
-  @Output() wordsSerchChange = new EventEmitter<string>();
+  public youTubeSearchResuSearchResults$ = this._youTubeSearchResults$$.asObservable();
 
-  get items(): Item[] {
-    return this.#items;
+  public youTubeSearchResuSearchResultsData: IYouTubeSearchResults | null;
+
+  private itemsId = '';
+
+  private _items$$ = new BehaviorSubject<IVideoItem[] | null>(null);
+
+  public items$ = this._items$$.asObservable();
+
+  public items: IVideoItem[] = [];
+
+  constructor(private searchService: SearchService) {
+    this.youTubeSearchResuSearchResultsData = null;
+    this._youTubeSearchResults$$.subscribe(
+      (value: IYouTubeSearchResults | null) => this.youTubeSearchResuSearchResultsData = value? value : null
+    );
+
+    this._items$$.subscribe(
+      (value: IVideoItem[] | null) => this.items = value ? value : []
+    )
+   }
+
+  async getYouTubeSearchResults(value: string) {
+
+    try {
+      const youTubeSearchResults = await this.searchService.getYouTubeSearchResults(value);
+      this._youTubeSearchResults$$.next(youTubeSearchResults);
+      this._items$$.next(youTubeSearchResults.items);
+      if (this.youTubeSearchResuSearchResultsData) {
+        this.itemsId = this.getItemsId(this.items);
+        console.log('this.itemsId');
+        console.log(this.itemsId);
+        const statistics = await this.searchService.getYouTubeVideo(this.itemsId);
+        console.log(statistics);
+      }
+
+
+
+    } catch (error) {
+      console.log(error);;
+    }
   }
 
-  set items(value: Item[]) {
-    this.#items = value;
-    this.itemsChange.emit(value);
+  getItemsId(items: IVideoItem[]): string {
+    return items.map(elem => elem.id.videoId).join(',');
   }
 
-  get IWordsSearch(): string {
-    return this.#IWordsSearch;
+  removeItem() {
+    this._youTubeSearchResults$$.next(null);
   }
-
-  set IWordsSearch(value: string) {
-    this.#IWordsSearch = value;
-    this.wordsSerchChange.emit(value);
-    this.items = items;
-  }
-
-  constructor() { }
 }

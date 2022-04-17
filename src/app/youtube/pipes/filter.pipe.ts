@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Item } from '../../youtube/model/search-item.model';
+import { IVideoItem } from '../../youtube/model/search-item.model';
 
 @Pipe({
   name: 'filter'
@@ -7,7 +7,7 @@ import { Item } from '../../youtube/model/search-item.model';
 
 export class FilterPipe implements PipeTransform {
 
-  transform(items: Item[], word: string): Item[] {
+  transform(items: IVideoItem[], word: string): IVideoItem[] {
 
     const filterItems = items.filter(item => item.snippet.title.indexOf(word) > -1);
 

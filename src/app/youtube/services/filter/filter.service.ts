@@ -1,5 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model';
+
 
 @Injectable({
   providedIn: 'root'

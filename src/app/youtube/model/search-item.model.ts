@@ -1,54 +1,30 @@
-export interface Item {
-  kind: string;
-  etag: string;
-  id: string;
-  snippet: Snippet;
-  statistics: Statistics;
+export interface Default {
+  height: number;
+  url: string;
+  width: number;
 }
 
-export interface Snippet {
-  publishedAt: string;
-  channelId: string;
-  title: string;
-  description: string;
-  thumbnails: Thumbnails;
-  channelTitle: string;
-  tags: string[];
-  categoryId: string;
-  liveBroadcastContent: string;
-  localized: Localized;
-  defaultAudioLanguage: string;
-  defaultLanguage?: string;
+export interface IVideoItem {
+  etag: string,
+  id: {
+    kind: string,
+    videoId: string,
+  },
+  kind: string,
+  snippet: {
+    channelId: string,
+    channelTitle: string,
+    description: string,
+    liveBroadcastContent: string,
+    publishTime: Date,
+    publishedAt: Date,
+    thumbnails: VideoThumbnails,
+    title: string,
+  },
 }
 
-export interface Localized {
-  title: string;
-  description: string;
-}
-
-export interface Thumbnails {
+export interface VideoThumbnails {
   default: Default;
   medium: Default;
   high: Default;
-  standard: Default;
-  maxres: Default;
-}
-
-export interface Default {
-  url: string;
-  width: number;
-  height: number;
-}
-
-export interface Statistics {
-  viewCount: string;
-  likeCount: string;
-  dislikeCount: string;
-  favoriteCount: string;
-  commentCount: string;
-}
-
-export interface PageInfo {
-  totalResults: number;
-  resultsPerPage: number;
 }
