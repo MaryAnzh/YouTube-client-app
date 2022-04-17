@@ -43,17 +43,20 @@ export class DataService {
       this._items$$.next(youTubeSearchResults.items);
       if (this.youTubeSearchResuSearchResultsData) {
         this.itemsId = this.getItemsId(this.items);
-        console.log('this.itemsId');
-        console.log(this.itemsId);
-        const statistics = await this.searchService.getYouTubeVideo(this.itemsId);
-        console.log(statistics);
       }
-
-
-
     } catch (error) {
       console.log(error);;
     }
+
+    console.log('this.itemsId');
+    console.log(this.itemsId);
+    try {
+      const statistics = await this.searchService.getYouTubeVideo(this.itemsId);
+    console.log(statistics);
+    } catch (error) {
+      console.log(error);;
+    }
+
   }
 
   getItemsId(items: IVideoItem[]): string {

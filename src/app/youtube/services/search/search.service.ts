@@ -45,7 +45,7 @@ export class SearchService {
   }
 
   async getYouTubeVideo(id: String) {
-    const response = await fetch((this.baseURL + this.videos + this.APIkey2 + this.videoIdHeader + id + this.videoHeaderPart), {
+    const response = await fetch((this.baseURL + this.videos + this.APIkey1 + this.videoIdHeader + id + this.videoHeaderPart), {
       method: 'GET',
     });
     const status = response.status;
