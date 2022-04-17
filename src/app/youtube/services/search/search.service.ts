@@ -37,7 +37,7 @@ export class SearchService {
       throw new Error(status.toString());
     } else {
 
-      const responseJSON = <IYouTubeSearchResults>(await response.json());
+      const responseJSON = <any>(await response.json());
       console.log('Ответ от сервера');
       console.log(responseJSON);
       return responseJSON;
@@ -45,7 +45,8 @@ export class SearchService {
   }
 
   async getYouTubeVideo(id: String) {
-    const response = await fetch((this.baseURL + this.videos + this.APIkey1 + this.videoIdHeader + id + this.videoHeaderPart), {
+
+    const response = await fetch((`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=AIzaSyCRGoNO1ZiwsjOE73FB4vF1owzaSUgcILs&part=snippet,statistics`), {
       method: 'GET',
     });
     const status = response.status;
@@ -54,7 +55,7 @@ export class SearchService {
     } else {
 
       const responseJSON = <any>(await response.json());
-      console.log('второй ответ');
+      console.log('Ответ от сервера');
       console.log(responseJSON);
       return responseJSON;
     }
