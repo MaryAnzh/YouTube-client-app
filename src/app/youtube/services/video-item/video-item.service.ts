@@ -31,4 +31,10 @@ export class VideoItemService {
         year: 'numeric'
       });
   }
+
+  truncateTitle(title: string): string {
+    const str = title.substring(0, 60);
+    return str;
+  }
+
 }
