@@ -1,4 +1,4 @@
-
+import { IVideoItem } from "./video-item.model"
 
 export interface IVideoYouTubeResults {
   etag: string,

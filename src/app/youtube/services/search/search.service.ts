@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IVideoItem } from '../../model/search-item.model';
+import { ISearchVideoItem } from '../../model/search-item.model';
 import { IYouTubeSearchResults } from '../../model/search-response.model';
 
 @Injectable({

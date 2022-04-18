@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
-import { IVideoItem } from 'src/app/youtube/model/search-item.model';
+import { ISearchVideoItem } from 'src/app/youtube/model/search-item.model';
 
 @Component({
   selector: 'app-video-card',
@@ -11,5 +11,5 @@ export class VideoCardComponent {
 
   public color: string = '';
 
-  @Input() public videoCard: IVideoItem | undefined;
+  @Input() public videoCard: ISearchVideoItem | undefined;
 }

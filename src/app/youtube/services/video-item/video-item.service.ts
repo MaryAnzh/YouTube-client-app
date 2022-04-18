@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IVideoItem } from '../../model/search-item.model';
+import { ISearchVideoItem } from '../../model/search-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class VideoItemService {
 
   constructor() { }
 
-  getVideo(items: IVideoItem[], id: string) {
+  getVideo(items: ISearchVideoItem[], id: string) {
 
     return items.filter(item => item.id.videoId === id)[0]
   }

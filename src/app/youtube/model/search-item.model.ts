@@ -4,7 +4,7 @@ export interface Default {
   width: number;
 }
 
-export interface IVideoItem {
+export interface ISearchVideoItem {
   etag: string,
   id: {
     kind: string,

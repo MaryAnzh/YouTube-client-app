@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SearchService } from 'src/app/youtube/services/search/search.service';
 import { IYouTubeSearchResults } from 'src/app/youtube/model/search-response.model';
-import { IVideoItem } from 'src/app/youtube/model/search-item.model';
+import { ISearchVideoItem } from 'src/app/youtube/model/search-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +18,11 @@ export class DataService {
 
   private itemsId = '';
 
-  private _items$$ = new BehaviorSubject<IVideoItem[] | null>(null);
+  private _items$$ = new BehaviorSubject<ISearchVideoItem[] | null>(null);
 
   public items$ = this._items$$.asObservable();
 
-  public items: IVideoItem[] = [];
+  public items: ISearchVideoItem[] = [];
 
   constructor(private searchService: SearchService) {
     this.youTubeSearchResuSearchResultsData = null;
@@ -31,7 +31,7 @@ export class DataService {
     );
 
     this._items$$.subscribe(
-      (value: IVideoItem[] | null) => this.items = value ? value : []
+      (value: ISearchVideoItem[] | null) => this.items = value ? value : []
     )
    }
 
@@ -59,7 +59,7 @@ export class DataService {
 
   }
 
-  getItemsId(items: IVideoItem[]): string {
+  getItemsId(items: ISearchVideoItem[]): string {
     return items.map(elem => elem.id.videoId).join(',');
   }
 
