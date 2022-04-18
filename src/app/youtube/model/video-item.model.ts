@@ -39,6 +39,7 @@ interface IThumbnailsSettings {
 }
 
 interface IStatistics {
+  commentCount: number,
   favoriteCount: number,
   likeCount: number,
   viewCount: number,

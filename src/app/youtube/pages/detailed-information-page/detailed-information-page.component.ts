@@ -32,6 +32,7 @@ export class DetailedInformationPageComponent {
       if (this.item) {
         this.smallDescription = this.videoItemService.getItemSmallDescription(this.item.snippet.description);
         this.itemDateLocal = this.videoItemService.getitemDateLocal(this.item.snippet.publishedAt);
+        console.log(this.item);
       }
     }
   }

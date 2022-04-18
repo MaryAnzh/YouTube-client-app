@@ -21,8 +21,8 @@ export class VideoItemService {
   }
 
   getitemDateLocal(dateStr: Date): string {
-
-    return dateStr.toLocaleDateString(
+    const date = new Date(dateStr);
+    return date.toLocaleDateString(
       'en-US',
       {
         weekday: 'long',
