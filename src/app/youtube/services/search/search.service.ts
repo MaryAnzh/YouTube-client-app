@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ISearchVideoItem } from '../../model/search-item.model';
+import { IVideoYouTubeResults } from '../../model/video-response.model';
 import { IYouTubeSearchResults } from '../../model/search-response.model';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class SearchService {
       throw new Error(status.toString());
     } else {
 
-      const responseJSON = <any>(await response.json());
+      const responseJSON = <IYouTubeSearchResults>(await response.json());
       console.log('Ответ от сервера');
       console.log(responseJSON);
       return responseJSON;
@@ -40,7 +40,7 @@ export class SearchService {
       throw new Error(status.toString());
     } else {
 
-      const responseJSON = <any>(await response.json());
+      const responseJSON = <IVideoYouTubeResults>(await response.json());
       console.log('Ответ от сервера');
       console.log(responseJSON);
       return responseJSON;

@@ -1,8 +1,3 @@
-export interface Default {
-  height: number;
-  url: string;
-  width: number;
-}
 
 export interface ISearchVideoItem {
   etag: string,
@@ -23,8 +18,14 @@ export interface ISearchVideoItem {
   },
 }
 
-export interface VideoThumbnails {
+interface VideoThumbnails {
   default: Default;
   medium: Default;
   high: Default;
+}
+
+interface Default {
+  height: number;
+  url: string;
+  width: number;
 }

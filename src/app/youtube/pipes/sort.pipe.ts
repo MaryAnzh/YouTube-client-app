@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ISearchVideoItem } from '../../youtube/model/search-item.model';
+import { IVideoItem } from '../model/video-item.model';
 import { sortItems } from 'src/app/shared/utils/sortItems-util';
 
 @Pipe({
@@ -8,7 +8,7 @@ import { sortItems } from 'src/app/shared/utils/sortItems-util';
 
 export class SortPipe implements PipeTransform {
 
-  transform(items: ISearchVideoItem[], isSortOn: boolean, increase: boolean, field: string): ISearchVideoItem[] {
+  transform(items: IVideoItem[], isSortOn: boolean, increase: boolean, field: string): IVideoItem[] {
 
     if (isSortOn) {
       sortItems(items, field);

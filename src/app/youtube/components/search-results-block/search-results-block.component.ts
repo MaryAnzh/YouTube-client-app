@@ -4,7 +4,7 @@ import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
 import { DataService } from 'src/app/core/services/date/data.service';
 import { SubscriptionLike } from 'rxjs';
-import { ISearchVideoItem } from '../../model/search-item.model';
+import { IVideoItem } from '../../model/video-item.model';
 
 
 @Component({
@@ -17,7 +17,7 @@ import { ISearchVideoItem } from '../../model/search-item.model';
 export class SearchResultsBlockComponent {
   public subscriptionisItems: SubscriptionLike;
 
-  @Output() public videoItems: ISearchVideoItem[];
+  @Output() public videoItems: IVideoItem[];
 
   public words: string = '';
 
@@ -44,7 +44,7 @@ export class SearchResultsBlockComponent {
 
     this.videoItems = [];
     this.subscriptionisItems = this.dataService.items$.subscribe(
-      (value: ISearchVideoItem[] | null) => this.videoItems = value ? value : []
+      (value: IVideoItem[] | null) => this.videoItems = value ? value : []
     )
   }
 }

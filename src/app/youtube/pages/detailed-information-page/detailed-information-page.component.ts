@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { VideoItemService } from '../../services/video-item/video-item.service';
-import { ISearchVideoItem } from '../../model/search-item.model';
+import { IVideoItem } from '../../model/video-item.model';
 import { DataService } from 'src/app/core/services/date/data.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { DataService } from 'src/app/core/services/date/data.service';
 })
 
 export class DetailedInformationPageComponent {
-  public item: ISearchVideoItem | undefined;
+  public item: IVideoItem | undefined;
 
   public smallDescription: string = '';
 
@@ -31,7 +31,7 @@ export class DetailedInformationPageComponent {
       this.item = this.videoItemService.getVideo(this.dataService.items, id);
       if (this.item) {
         this.smallDescription = this.videoItemService.getItemSmallDescription(this.item.snippet.description);
-        this.itemDateLocal = this.videoItemService.getitemDateLocal(this.item.snippet.publishTime);
+        this.itemDateLocal = this.videoItemService.getitemDateLocal(this.item.snippet.publishedAt);
       }
     }
   }

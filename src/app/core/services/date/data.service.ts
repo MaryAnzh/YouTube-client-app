@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { SearchService } from 'src/app/youtube/services/search/search.service';
-import { IYouTubeSearchResults } from 'src/app/youtube/model/search-response.model';
 import { ISearchVideoItem } from 'src/app/youtube/model/search-item.model';
+import { IVideoYouTubeResults } from 'src/app/youtube/model/video-response.model';
+import { IVideoItem } from 'src/app/youtube/model/video-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,49 +11,44 @@ import { ISearchVideoItem } from 'src/app/youtube/model/search-item.model';
 
 export class DataService {
 
-  private _youTubeSearchResults$$ = new BehaviorSubject<IYouTubeSearchResults | null>(null);
+  private _youTubeSearchResults$$ = new BehaviorSubject<IVideoYouTubeResults | null>(null);
 
   public youTubeSearchResuSearchResults$ = this._youTubeSearchResults$$.asObservable();
 
-  public youTubeSearchResuSearchResultsData: IYouTubeSearchResults | null;
+  public youTubeSearchResuSearchResultsData: IVideoYouTubeResults | null;
 
   private itemsId = '';
 
-  private _items$$ = new BehaviorSubject<ISearchVideoItem[] | null>(null);
+  private _items$$ = new BehaviorSubject<IVideoItem[] | null>(null);
 
   public items$ = this._items$$.asObservable();
 
-  public items: ISearchVideoItem[] = [];
+  public items: IVideoItem[] = [];
 
   constructor(private searchService: SearchService) {
     this.youTubeSearchResuSearchResultsData = null;
     this._youTubeSearchResults$$.subscribe(
-      (value: IYouTubeSearchResults | null) => this.youTubeSearchResuSearchResultsData = value? value : null
+      (value: IVideoYouTubeResults | null) => this.youTubeSearchResuSearchResultsData = value ? value : null
     );
 
     this._items$$.subscribe(
-      (value: ISearchVideoItem[] | null) => this.items = value ? value : []
+      (value: IVideoItem[] | null) => this.items = value ? value : []
     )
-   }
+  }
 
   async getYouTubeSearchResults(value: string) {
 
     try {
       const youTubeSearchResults = await this.searchService.getYouTubeSearchResults(value);
-      this._youTubeSearchResults$$.next(youTubeSearchResults);
-      this._items$$.next(youTubeSearchResults.items);
-      if (this.youTubeSearchResuSearchResultsData) {
-        this.itemsId = this.getItemsId(this.items);
-      }
+      this.itemsId = this.getItemsId(youTubeSearchResults.items);
     } catch (error) {
       console.log(error);;
     }
 
-    console.log('this.itemsId');
-    console.log(this.itemsId);
     try {
-      const statistics = await this.searchService.getYouTubeVideo(this.itemsId);
-    console.log(statistics);
+      const videoesults = await this.searchService.getYouTubeVideo(this.itemsId);
+      this._youTubeSearchResults$$.next(videoesults);
+      this._items$$.next(videoesults.items);
     } catch (error) {
       console.log(error);;
     }
