@@ -10,12 +10,13 @@
 
       <section class="header__wrap__center-block__search-input">
         <input type="text" name="headerUserWords"
-          #headerUserWords>
-        <button class="header__wrap__center-block__search-input__button"
+        (keyup)="searchWordsInput(headerUserWords.value)"
+        #headerUserWords>
+        <!-- <button class="header__wrap__center-block__search-input__button"
           routerLink="/"
           (click)="submitButtonOnClick(headerUserWords.value)">
           search
-        </button>
+        </button> -->
       </section>
 
       <section class="header__wrap__center-block__settings"

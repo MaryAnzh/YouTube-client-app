@@ -10,6 +10,11 @@ import { IVideoItem } from 'src/app/youtube/model/video-item.model';
 })
 
 export class DataService {
+  private _userWords$$ = new BehaviorSubject<string>('');
+
+  public userWords$ = this._userWords$$.asObservable();
+
+  public userWords = '';
 
   private _youTubeSearchResults$$ = new BehaviorSubject<IVideoYouTubeResults | null>(null);
 
@@ -46,9 +51,9 @@ export class DataService {
     }
 
     try {
-      const videoesults = await this.searchService.getYouTubeVideo(this.itemsId);
-      this._youTubeSearchResults$$.next(videoesults);
-      this._items$$.next(videoesults.items);
+      const videoResults = await this.searchService.getYouTubeVideo(this.itemsId);
+      this._youTubeSearchResults$$.next(videoResults);
+      this._items$$.next(videoResults.items);
     } catch (error) {
       console.log(error);;
     }
