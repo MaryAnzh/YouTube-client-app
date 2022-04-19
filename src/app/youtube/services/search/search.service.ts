@@ -24,8 +24,7 @@ export class SearchService {
     } else {
 
       const responseJSON = <IYouTubeSearchResults>(await response.json());
-      console.log('Ответ от сервера');
-      console.log(responseJSON);
+
       return responseJSON;
     }
   }
