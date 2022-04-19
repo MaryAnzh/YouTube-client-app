@@ -17,22 +17,25 @@ import { IVideoItem } from '../../model/video-item.model';
 export class SearchResultsBlockComponent {
   public subscriptionisItems: SubscriptionLike;
 
+  public subscriptionSort: SubscriptionLike;
+
   @Output() public videoItems: IVideoItem[];
 
   public words: string = '';
 
-  public sortAddFilterConfig: ISortAddFilterConfig;
+  public sortAddFilterConfig: ISortAddFilterConfig = {
+    field: '',
+    increase: true,
+    isSortOn: false,
+  };
 
   constructor(
     private filterService: FilterService,
     private sortService: SortService,
     private dataService: DataService) {
 
-    this.sortAddFilterConfig = this.sortService.sortAddFilterConfig;
-    this.sortService.sortAddFilterConfigChange.subscribe(
-      (value: ISortAddFilterConfig) => this.sortAddFilterConfig = value,
-      (error) => console.log(`Error: ${error}`),
-      () => console.log("Complete")
+    this.subscriptionSort = this.sortService.sortAddFilterConfig$.subscribe(
+      (value: ISortAddFilterConfig) => this.sortAddFilterConfig = value
     )
 
     this.words = this.filterService.words;

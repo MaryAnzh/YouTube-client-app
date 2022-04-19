@@ -4,6 +4,7 @@ import { SortService } from '../../services/sort/sort.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { SubscriptionLike } from 'rxjs';
+import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model';
 
 @Component({
   selector: 'app-filtering-criteria-block',
@@ -45,14 +46,15 @@ export class FilteringCriteriaBlockComponent {
     const elemType: string | undefined = (elem.dataset['field']);
 
     if (elemType) {
-      this.sortService.sortAddFilterConfig = {
+      const sortAddFilterConfig: ISortAddFilterConfig = {
         field: elemType,
         increase: this.sortIncreasing,
         isSortOn: true,
       }
-
-      this.sortIncreasing = !this.sortIncreasing;
+      this.sortService.changeSortAddFilterConfig(sortAddFilterConfig);
     }
+
+    this.sortIncreasing = !this.sortIncreasing;
   }
 
   ngOnDestroy() {
