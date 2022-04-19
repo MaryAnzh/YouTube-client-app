@@ -1,0 +1,43 @@
+ <div class="video-card"
+  *ngIf="videoCard"
+  [appDateColor]="color">
+
+  <div class="video-card__Video-thumbnail">
+    <img class="video-card__video-thumbnail__icon"
+      src={{videoCard.snippet.thumbnails.medium.url}}>
+  </div>
+
+  <div class="video-card__counts">
+    <li class="video-card__counts__count">
+      <img class="video-card__counts__count__icon"
+        src="../../../../assets/viewed.png" alt="Views count">
+      <p class="video-card__counts__count__text">{{videoCard.statistics.viewCount}}</p>
+    </li>
+    <li class="video-card__counts__count">
+      <img class="video-card__counts__count__icon"
+        src="../../../../assets/liked.png" alt="like count">
+      <p class="video-card__counts__count__text">{{videoCard.statistics.likeCount}}</p>
+    </li>
+    <li class="video-card__counts__count">
+      <img class="video-card__counts__count__icon"
+        src="../../../../assets/desLike.png" alt="dislik count">
+      <p class="video-card__counts__count__text"></p>
+    </li>
+    <li class="video-card__counts__count">
+      <img class="video-card__counts__count__icon"
+        src="../../../../assets/comments.svg" alt="comments count">
+      <p class="video-card__counts__count__text">{{videoCard.statistics.commentCount}}</p>
+    </li>
+  </div>
+
+  <p class="video-card__Video-title">
+    {{truncateTitle(videoCard.snippet.title)}}
+  </p>
+
+  <button
+  routerLink="detail/{{videoCard.id}}"
+  class="video-card__button-more">
+    more...
+  </button>
+
+</div>

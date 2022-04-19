@@ -1,0 +1,18 @@
+<div class="filtering-criteria-block" *ngIf="isAuth">
+
+
+  <p>Sorting by: </p>
+  <div class="filtering-criteria-block__sort">
+    <p data-field="date" (click)="sortItemsOnClick($event)">date</p>
+  </div>
+  <div class="filtering-criteria-block__sort">
+    <p data-field="views" (click)="sortItemsOnClick($event)">count of views</p>
+  </div>
+
+  <div class="filtering-criteria-block__filter">
+    <p>word or sentence:</p>
+    <input type="text" name="userWord"
+      (input)="userInputWordOnInput($event)">
+  </div>
+
+</div>

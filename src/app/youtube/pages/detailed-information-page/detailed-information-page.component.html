@@ -1,0 +1,56 @@
+<div class="detail-page"
+*ngIf="item">
+  <div class="detail-page__arrow">
+    <app-arrow
+    routerLink="/">
+  </app-arrow>
+  </div>
+
+  <section class="detail-page__video-info">
+    <section class="detail-page__video-info__thumbnails">
+      <img
+        src={{item.snippet.thumbnails.medium.url}}
+        alt={{item.snippet.title}}>
+    </section>
+
+    <section class="detail-page__video-info__description">
+      <div class="detail-page__video-info__description__heading">
+        <h2 class="detail-page__video-info__descriptions__title">
+          {{item.snippet.title}}
+        </h2>
+        <h3>{{itemDateLocal}}</h3>
+      </div>
+
+      <div class="detail-page__video-info__description__description">
+        <h3>Description:</h3>
+        <p>{{smallDescription}}</p>
+      </div>
+
+      <div class="detail-page__video-info__description__statistics">
+        <li>
+          <img
+            src="../../../../assets/viewed.png" alt="Views count">
+          <p>{{item.statistics.viewCount}}</p>
+        </li>
+        <li>
+          <img
+            src="../../../../assets/liked.png" alt="like count">
+          <p>{{item.statistics.likeCount}}</p>
+        </li>
+        <li>
+          <img
+            src="../../../../assets/desLike.png" alt="dislik count">
+          <p></p>
+        </li>
+        <li>
+          <img
+            src="../../../../assets/comments.svg" alt="comments count">
+          <p>{{item.statistics.commentCount}}</p>
+        </li>
+      </div>
+
+    </section>
+
+  </section>
+
+</div>

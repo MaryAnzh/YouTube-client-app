@@ -1,0 +1,58 @@
+<header class="header">
+
+  <div class="header__wrap">
+    <div class="header__wrap__center-block">
+      <section class="header__wrap__center-block__logo">
+        <div class="">
+          <img alt="logo" src="../../../assets/logo.png">
+        </div>
+      </section>
+
+      <section class="header__wrap__center-block__search-input">
+        <input type="text" name="headerUserWords"
+          #headerUserWords>
+        <button class="header__wrap__center-block__search-input__button"
+          routerLink="/"
+          (click)="submitButtonOnClick(headerUserWords.value)">
+          search
+        </button>
+      </section>
+
+      <section class="header__wrap__center-block__settings"
+        (click)="settingsOpenedOnClick()">
+        <div class="header__wrap__center-block__settings__line">
+          <div class="header__wrap__center-block__settings__line__round-right"></div>
+        </div>
+        <div class="header__wrap__center-block__settings__line">
+          <div class="header__wrap__center-block__settings__line__round-left"></div>
+        </div>
+        <div class="header__wrap__center-block__settings__line">
+          <div class="header__wrap__center-block__settings__line__round-right"></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="header__wrap__logo-info">
+      <div class="header__wrap__logo-info__login" *ngIf="!isAuth">
+        <button class="header__wrap__logo-info__login__button"
+          type="button"
+          routerLink="/auth">
+          Login
+        </button>
+      </div>
+
+      <div class="header__wrap__logo-info__logout" *ngIf="isAuth">
+        <p>{{userName}}</p>
+        <img alt="login" src="../../../assets/Subtract.svg">
+        <button class="header__wrap__logo-info__logout__button"
+          type="button"
+          (click)="logOutOnClick()"
+          routerLink="/youtube">
+          Logout
+        </button>
+      </div>
+
+    </section>
+
+  </div>
+</header>

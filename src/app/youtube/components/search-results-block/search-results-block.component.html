@@ -1,0 +1,18 @@
+ <div class="search-resuilt-block">
+
+  <div class="search-resuilt-block__video-cards-wrap"
+  *ngIf="videoItems">
+
+    <div class="search-resuilt-block__video-cards-wrap__card"
+      *ngFor="let videoItem of videoItems
+      | filter:words
+      | sort:sortAddFilterConfig.isSortOn:sortAddFilterConfig.increase:sortAddFilterConfig.field">
+
+      <app-video-card
+        *ngIf="videoItems"
+        [videoCard]="videoItem">
+      </app-video-card>
+    </div>
+  </div>
+
+</div>
