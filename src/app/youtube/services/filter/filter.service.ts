@@ -1,4 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -6,19 +7,17 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 })
 
 export class FilterService {
-  #words: string = '';
 
-  wordsChange = new EventEmitter<string>();
+  public words: string = '';
 
-  public get words(): string {
-    return this.#words;
-  }
+  private _words$$ = new BehaviorSubject<string>('');
 
-  public set words(value: string) {
-    this.#words = value;
-    this.wordsChange.emit(value);
-  }
+  public words$ = this._words$$.asObservable();
 
   constructor() { }
+
+  userWords(value: string) {
+    this._words$$.next(value);
+  }
 
 }

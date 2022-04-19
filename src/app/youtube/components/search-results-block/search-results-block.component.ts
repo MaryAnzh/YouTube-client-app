@@ -19,6 +19,8 @@ export class SearchResultsBlockComponent {
 
   public subscriptionSort: SubscriptionLike;
 
+  public subscriptionFilter: SubscriptionLike;
+
   @Output() public videoItems: IVideoItem[];
 
   public words: string = '';
@@ -38,16 +40,22 @@ export class SearchResultsBlockComponent {
       (value: ISortAddFilterConfig) => this.sortAddFilterConfig = value
     )
 
-    this.words = this.filterService.words;
-    this.filterService.wordsChange.subscribe(
+    this.subscriptionFilter = this.filterService.words$.subscribe(
       (value: string) => this.words = value,
-      (error) => console.log(`Error: ${error}`),
-      () => console.log("Complete")
     )
 
     this.videoItems = [];
     this.subscriptionisItems = this.dataService.items$.subscribe(
       (value: IVideoItem[] | null) => this.videoItems = value ? value : []
     )
+  }
+
+  ngOnDestroy() {
+    if (this.subscriptionSort) {
+      this.subscriptionSort.unsubscribe();
+    }
+    if (this.subscriptionFilter) {
+      this.subscriptionFilter.unsubscribe();
+    }
   }
 }

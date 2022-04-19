@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
-import { AuthService } from 'src/app/auth/services/auth/auth.service';
-import { SettingsService } from 'src/app/core/services/settings/settings.service';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';;
 import { SubscriptionLike } from 'rxjs';
 import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model';
 
@@ -38,7 +37,7 @@ export class FilteringCriteriaBlockComponent {
   userInputWordOnInput(event: Event): void {
     const elem = <HTMLInputElement>event.target;
     this.words = elem.value;
-    this.filterService.words = elem.value;
+    this.filterService.userWords(elem.value);
   }
 
   sortItemsOnClick(e: Event) {
