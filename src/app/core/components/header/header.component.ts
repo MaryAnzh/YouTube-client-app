@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';;
+import { Component, OnInit, OnDestroy } from '@angular/core';;
 import { DataService } from '../../HttpClient/date/data.service';
 import { SettingsService } from '../../services/settings/settings.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
@@ -13,7 +13,7 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnDestroy {
   private _userWords$$ = new BehaviorSubject<string>('');
 
   public userWords$ = this._userWords$$.asObservable().pipe(
@@ -66,12 +66,7 @@ export class HeaderComponent implements OnInit {
     )
   }
 
-  ngOnInit(): void {
-
-
-  }
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.subscriptionIsAuth) {
       this.subscriptionIsAuth.unsubscribe();
     }
@@ -85,15 +80,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  async searchWordsInput(value: string) {
+  async searchWordsInput(value: string): Promise<void> {
     if (this.isAuth) {
 
       this._userWords$$.next(value);
     }
-
-
   }
-
 
   settingsOpenedOnClick(): void {
     if (this.isAuth) {
@@ -108,7 +100,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  logOutOnClick() {
+  logOutOnClick(): void {
     this.authService.logOut();
     this.dataService.removeItem();
   }

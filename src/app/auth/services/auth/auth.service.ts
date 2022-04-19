@@ -22,7 +22,7 @@ export class AuthService {
     }
   }
 
-  logIn(name: string) {
+  logIn(name: string): void {
     const token = '123456';
     const userData: IResAuthLogin = {
       login: name,
@@ -32,7 +32,7 @@ export class AuthService {
     this.s.setData('user', userData);
   }
 
-  logOut() {
+  logOut(): void {
     this.s.setData('user', null)
     this._user$$.next(null);
   }

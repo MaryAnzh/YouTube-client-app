@@ -1,7 +1,6 @@
 import { IVideoItem } from 'src/app/youtube/model/video-item.model';
-import { SortFieldValue } from './sortFieldValue-util'
 
-export function sortItems(items: IVideoItem[], field: string) {
+export function sortItems(items: IVideoItem[], field: string): void {
 
   switch (field) {
     case 'date': items.sort((a, b) => +a.snippet.publishedAt - +b.snippet.publishedAt)

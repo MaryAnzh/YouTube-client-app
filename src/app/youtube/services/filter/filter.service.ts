@@ -16,7 +16,7 @@ export class FilterService {
 
   constructor() { }
 
-  userWords(value: string) {
+  userWords(value: string): void {
     this._words$$.next(value);
   }
 

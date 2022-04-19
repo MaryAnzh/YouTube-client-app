@@ -13,7 +13,7 @@ export class LoginPageComponent {
     private authService: AuthService
   ) { }
 
-  submitUserDataOnClick(name: string) {
+  submitUserDataOnClick(name: string): void {
     this.authService.logIn(name);
   }
 

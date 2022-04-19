@@ -23,7 +23,7 @@ export class RequestService {
     )
   }
 
-  getVideoItemw(id: string) {
+  getVideoItemw(id: string): Observable<IVideoYouTubeResults> {
     const requestParam = `videos?id=${id}&part=snippet,statistics`;
     return this.http.get<IVideoYouTubeResults>(requestParam);
   }

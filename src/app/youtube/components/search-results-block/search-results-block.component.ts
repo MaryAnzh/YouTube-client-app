@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, Output, OnDestroy } from '@angular/core';
 import { ISortAddFilterConfig, IWordsSearch } from 'src/app/shared/directives/filtering-model';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
@@ -14,7 +14,7 @@ import { IVideoItem } from '../../model/video-item.model';
 
 })
 
-export class SearchResultsBlockComponent {
+export class SearchResultsBlockComponent implements OnDestroy {
   public subscriptionisItems: SubscriptionLike;
 
   public subscriptionSort: SubscriptionLike;
@@ -50,7 +50,7 @@ export class SearchResultsBlockComponent {
     )
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.subscriptionSort) {
       this.subscriptionSort.unsubscribe();
     }

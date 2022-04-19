@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { VideoItemService } from '../../services/video-item/video-item.service';
@@ -11,7 +11,7 @@ import { DataService } from 'src/app/core/HttpClient/date/data.service';
   styleUrls: ['./detailed-information-page.component.scss']
 })
 
-export class DetailedInformationPageComponent {
+export class DetailedInformationPageComponent implements OnInit {
   public item: IVideoItem | undefined;
 
   public smallDescription: string = '';

@@ -1,11 +1,11 @@
-import { Directive, ElementRef, Renderer2, Input, Output } from '@angular/core';
+import { Directive, ElementRef, Renderer2, Input, OnInit } from '@angular/core';
 import { itemAgeCalculated } from '../utils/itemAgeCalculated-util';
 
 @Directive({
   selector: '[appDateColor]'
 })
 
-export class DateColorDirective {
+export class DateColorDirective implements OnInit {
 
   @Input('appDateColor') public date: string = '';
 

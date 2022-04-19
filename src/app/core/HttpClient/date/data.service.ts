@@ -16,6 +16,7 @@ export class DataService {
   public userWords = '';
 
   private _videosId$$ = new BehaviorSubject<string>('');
+
   public videosId$ = this._videosId$$.asObservable();
 
   private _youTubeSearchResults$$ = new BehaviorSubject<IVideoYouTubeResults | null>(null);
@@ -45,7 +46,7 @@ export class DataService {
     )
   }
 
-  async getYouTubeSearchResults(value: string) {
+  async getYouTubeSearchResults(value: string): Promise<void> {
     this.videosId$ = this.requestService.getVideoId(value);
     this.videosId$.subscribe(
       (value: string) => {
@@ -55,7 +56,7 @@ export class DataService {
     )
   }
 
-  getVideosByID(ods: string) {
+  getVideosByID(ods: string): void  {
     this.youTubeSearchResuSearchResults$ = this.requestService.getVideoItemw(ods);
     this.youTubeSearchResuSearchResults$.subscribe(
       (value: IVideoYouTubeResults | null) => {
@@ -68,7 +69,7 @@ export class DataService {
 
 }
 
-  removeItem() {
+  removeItem(): void {
     this._youTubeSearchResults$$.next(null);
   }
 }

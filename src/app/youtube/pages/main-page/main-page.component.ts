@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { SubscriptionLike } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { SubscriptionLike } from 'rxjs';
   styleUrls: ['./main-page.component.scss']
 })
 
-export class MainPageComponent {
+export class MainPageComponent implements OnDestroy {
 
   public subscriptionIsSettingOoen: SubscriptionLike;
 
@@ -21,7 +21,7 @@ export class MainPageComponent {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.subscriptionIsSettingOoen) {
       this.subscriptionIsSettingOoen.unsubscribe();
     }

@@ -14,7 +14,7 @@ export class SearchService {
 
   constructor() { }
 
-  async getYouTubeSearchResults(value: string) {
+  async getYouTubeSearchResults(value: string): Promise<IYouTubeSearchResults | Error> {
     const response = await fetch((`${this.baseURL}search?key=${this.APIkey}&type=video&part=snippet&maxResults=15&q=${value}`), {
       method: 'GET',
     });
@@ -29,7 +29,7 @@ export class SearchService {
     }
   }
 
-  async getYouTubeVideo(id: String) {
+  async getYouTubeVideo(id: String): Promise<IVideoYouTubeResults | Error> {
 
     const response = await fetch((`${this.baseURL}videos?id=${id}&key=${this.APIkey}&part=snippet,statistics`), {
       method: 'GET',

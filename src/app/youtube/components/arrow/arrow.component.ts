@@ -5,11 +5,4 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './arrow.component.html',
   styleUrls: ['./arrow.component.scss']
 })
-export class ArrowComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class ArrowComponent { }

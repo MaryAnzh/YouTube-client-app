@@ -9,7 +9,7 @@ export class VideoItemService {
 
   constructor() { }
 
-  getVideo(items: IVideoItem[], id: string) {
+  getVideo(items: IVideoItem[], id: string): IVideoItem {
 
     return items.filter(item => item.id === id)[0]
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';;
@@ -11,7 +11,7 @@ import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model'
   styleUrls: ['./filtering-criteria-block.component.scss'],
 })
 
-export class FilteringCriteriaBlockComponent {
+export class FilteringCriteriaBlockComponent implements OnDestroy {
 
   public subscription: SubscriptionLike;
 
@@ -40,7 +40,7 @@ export class FilteringCriteriaBlockComponent {
     this.filterService.userWords(elem.value);
   }
 
-  sortItemsOnClick(e: Event) {
+  sortItemsOnClick(e: Event): void {
     const elem = <HTMLParagraphElement>e.target;
     const elemType: string | undefined = (elem.dataset['field']);
 
@@ -56,7 +56,7 @@ export class FilteringCriteriaBlockComponent {
     this.sortIncreasing = !this.sortIncreasing;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }

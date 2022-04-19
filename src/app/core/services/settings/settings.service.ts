@@ -17,11 +17,11 @@ export class SettingsService {
 
   }
 
-  open() {
+  open(): void {
     this._isSettingsOpen$$.next(true);
   }
 
-  close() {
+  close(): void {
     this._isSettingsOpen$$.next(false);
   }
 
