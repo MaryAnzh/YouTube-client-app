@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Item } from '../../model/search-item.model';
+import { IVideoItem } from '../../model/video-item.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class VideoItemService {
 
   constructor() { }
 
-  getVideo(items: Item[], id: string) {
+  getVideo(items: IVideoItem[], id: string) {
 
     return items.filter(item => item.id === id)[0]
   }
@@ -20,9 +20,9 @@ export class VideoItemService {
     return description.split('\n')[firstStringChung];
   }
 
-  getitemDateLocal(dateStr: string): string {
-
-    return new Date(Date.parse(dateStr)).toLocaleDateString(
+  getitemDateLocal(dateStr: Date): string {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString(
       'en-US',
       {
         weekday: 'long',
@@ -31,4 +31,10 @@ export class VideoItemService {
         year: 'numeric'
       });
   }
+
+  truncateTitle(title: string): string {
+    const str = title.substring(0, 60);
+    return str;
+  }
+
 }

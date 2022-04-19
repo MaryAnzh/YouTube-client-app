@@ -21,7 +21,7 @@
     <li class="video-card__counts__count">
       <img class="video-card__counts__count__icon"
         src="../../../../assets/desLike.png" alt="dislik count">
-      <p class="video-card__counts__count__text">{{videoCard.statistics.dislikeCount}}</p>
+      <p class="video-card__counts__count__text"></p>
     </li>
     <li class="video-card__counts__count">
       <img class="video-card__counts__count__icon"
@@ -31,7 +31,7 @@
   </div>
 
   <p class="video-card__Video-title">
-    {{videoCard.snippet.title}}
+    {{truncateTitle(videoCard.snippet.title)}}
   </p>
 
   <button

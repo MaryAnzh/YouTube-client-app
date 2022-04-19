@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
-import { AuthService } from 'src/app/auth/services/auth/auth.service';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';;
 import { SubscriptionLike } from 'rxjs';
+import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model';
 
 @Component({
   selector: 'app-filtering-criteria-block',
@@ -11,6 +12,7 @@ import { SubscriptionLike } from 'rxjs';
 })
 
 export class FilteringCriteriaBlockComponent {
+
   public subscription: SubscriptionLike;
 
   public sortIncreasing: boolean = false;
@@ -22,18 +24,20 @@ export class FilteringCriteriaBlockComponent {
   constructor(
     private filterService: FilterService,
     private sortService: SortService,
-    private authService: AuthService) {
+    private authService: AuthService
+  ) {
 
     this.isAuth = false;
     this.subscription = this.authService.isLoggedIn$.subscribe(
       (value: boolean) => this.isAuth = value
     )
+
   }
 
   userInputWordOnInput(event: Event): void {
     const elem = <HTMLInputElement>event.target;
     this.words = elem.value;
-    this.filterService.words = elem.value;
+    this.filterService.userWords(elem.value);
   }
 
   sortItemsOnClick(e: Event) {
@@ -41,14 +45,15 @@ export class FilteringCriteriaBlockComponent {
     const elemType: string | undefined = (elem.dataset['field']);
 
     if (elemType) {
-      this.sortService.sortAddFilterConfig = {
+      const sortAddFilterConfig: ISortAddFilterConfig = {
         field: elemType,
         increase: this.sortIncreasing,
         isSortOn: true,
       }
-
-      this.sortIncreasing = !this.sortIncreasing;
+      this.sortService.changeSortAddFilterConfig(sortAddFilterConfig);
     }
+
+    this.sortIncreasing = !this.sortIncreasing;
   }
 
   ngOnDestroy() {

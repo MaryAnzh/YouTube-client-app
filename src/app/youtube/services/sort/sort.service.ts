@@ -1,28 +1,26 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class SortService {
-  #sortAddFilterConfig: ISortAddFilterConfig = {
+  _sortAddFilterConfig: ISortAddFilterConfig = {
     field: '',
     isSortOn: false,
     increase: false
   };
 
-  @Output() sortAddFilterConfigChange = new EventEmitter<ISortAddFilterConfig>();
+  private _sortAddFilterConfig$$ = new BehaviorSubject<ISortAddFilterConfig>(this._sortAddFilterConfig);
 
-  public get sortAddFilterConfig(): ISortAddFilterConfig {
-    return this.#sortAddFilterConfig;
-  }
-
-  public set sortAddFilterConfig(value: ISortAddFilterConfig) {
-    this.#sortAddFilterConfig = value;
-    this.sortAddFilterConfigChange.emit(value);
-  }
+  public sortAddFilterConfig$ = this._sortAddFilterConfig$$.asObservable();
 
   constructor() { }
+
+  changeSortAddFilterConfig(sortAddFilterConfig: ISortAddFilterConfig) {
+    this._sortAddFilterConfig$$.next(sortAddFilterConfig);
+  }
 
 }

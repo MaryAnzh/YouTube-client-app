@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { items } from 'src/app/data/items';
-import { ISortAddFilterConfig, IWordsSearch} from 'src/app/shared/directives/filtering-model';
-import { Item } from 'src/app/youtube/model/search-item.model';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { ISortAddFilterConfig, IWordsSearch } from 'src/app/shared/directives/filtering-model';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
 import { DataService } from 'src/app/core/services/date/data.service';
+import { SubscriptionLike } from 'rxjs';
+import { IVideoItem } from '../../model/video-item.model';
 
 
 @Component({
@@ -15,35 +15,47 @@ import { DataService } from 'src/app/core/services/date/data.service';
 })
 
 export class SearchResultsBlockComponent {
+  public subscriptionisItems: SubscriptionLike;
 
-  public items: Item[] = [];
+  public subscriptionSort: SubscriptionLike;
+
+  public subscriptionFilter: SubscriptionLike;
+
+  @Output() public videoItems: IVideoItem[];
 
   public words: string = '';
 
-  public sortAddFilterConfig: ISortAddFilterConfig;
+  public sortAddFilterConfig: ISortAddFilterConfig = {
+    field: '',
+    increase: true,
+    isSortOn: false,
+  };
 
   constructor(
     private filterService: FilterService,
     private sortService: SortService,
     private dataService: DataService) {
 
-    this.sortAddFilterConfig = this.sortService.sortAddFilterConfig;
-    this.sortService.sortAddFilterConfigChange.subscribe(
-      (value: ISortAddFilterConfig) => this.sortAddFilterConfig = value,
-      (error) => console.log(`Error: ${error}`),
-      () => console.log("Complete")
+    this.subscriptionSort = this.sortService.sortAddFilterConfig$.subscribe(
+      (value: ISortAddFilterConfig) => this.sortAddFilterConfig = value
     )
 
-    this.words = this.filterService.words;
-    this.filterService.wordsChange.subscribe(
+    this.subscriptionFilter = this.filterService.words$.subscribe(
       (value: string) => this.words = value,
-      (error) => console.log(`Error: ${error}`),
-      () => console.log("Complete")
     )
 
-    this.items = this.dataService.items;
-    this.dataService.itemsChange.subscribe(
-      (value: Item[]) => this.items = value
+    this.videoItems = [];
+    this.subscriptionisItems = this.dataService.items$.subscribe(
+      (value: IVideoItem[] | null) => this.videoItems = value ? value : []
     )
+  }
+
+  ngOnDestroy() {
+    if (this.subscriptionSort) {
+      this.subscriptionSort.unsubscribe();
+    }
+    if (this.subscriptionFilter) {
+      this.subscriptionFilter.unsubscribe();
+    }
   }
 }

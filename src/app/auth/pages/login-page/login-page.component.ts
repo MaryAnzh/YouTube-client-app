@@ -1,6 +1,5 @@
 import { Component,  } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
-import { IResAuthLogin } from '../../model/user-storage-data.model';
 
 @Component({
   selector: 'app-login-page',
@@ -11,7 +10,8 @@ import { IResAuthLogin } from '../../model/user-storage-data.model';
 export class LoginPageComponent {
 
   constructor(
-    private authService: AuthService) { }
+    private authService: AuthService
+  ) { }
 
   submitUserDataOnClick(name: string) {
     this.authService.logIn(name);
