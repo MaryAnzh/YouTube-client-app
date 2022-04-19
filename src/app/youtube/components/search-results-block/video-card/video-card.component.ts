@@ -19,8 +19,11 @@ export class VideoCardComponent {
   }
 
   truncateTitle(title: string): string {
-    const a = this.videoItemService.truncateTitle(title).split(' ');
-    a.slice(a.length - 1);
-    return a.join(' ') + ' . . .';
+    if (title.length > 60) {
+      const a = this.videoItemService.truncateTitle(title).split(' ');
+      a.slice(a.length - 1);
+      return a.join(' ') + ' . . .';
+    }
+    return title;
   }
 }
