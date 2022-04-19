@@ -73,10 +73,12 @@ export class DataService {
     }
 
     this._test$ = this.requestService.getVideoId('Masha');
-    console.log('this.test');
-    console.log(this.test);
-
-
+    this._test$.subscribe(
+      (value: string) => {
+        this.test = value;
+        console.log(`Из Дата ${value}`);
+      }
+    )
   }
 
   getItemsId(items: ISearchVideoItem[]): string {
