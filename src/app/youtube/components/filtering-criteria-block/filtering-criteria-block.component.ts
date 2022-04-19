@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
+import { SettingsService } from 'src/app/core/services/settings/settings.service';
 import { SubscriptionLike } from 'rxjs';
 
 @Component({
@@ -11,6 +12,7 @@ import { SubscriptionLike } from 'rxjs';
 })
 
 export class FilteringCriteriaBlockComponent {
+
   public subscription: SubscriptionLike;
 
   public sortIncreasing: boolean = false;
@@ -22,12 +24,14 @@ export class FilteringCriteriaBlockComponent {
   constructor(
     private filterService: FilterService,
     private sortService: SortService,
-    private authService: AuthService) {
+    private authService: AuthService
+  ) {
 
     this.isAuth = false;
     this.subscription = this.authService.isLoggedIn$.subscribe(
       (value: boolean) => this.isAuth = value
     )
+
   }
 
   userInputWordOnInput(event: Event): void {

@@ -1,4 +1,5 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -6,19 +7,22 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 
 export class SettingsService {
 
-  #isSettingsOpen: boolean = false;
+  private _isSettingsOpen$$ = new BehaviorSubject<boolean>(false);
 
-  isSettingsOpenChange = new EventEmitter<boolean>()
+  public isSettingsOpen$ = this._isSettingsOpen$$.asObservable();
 
+  public isSettingsOpen = false;
 
-  get isSettingsOpen(): boolean {
-    return this.#isSettingsOpen;
+  constructor() {
+
   }
 
-  set isSettingsOpen(value: boolean) {
-    this.#isSettingsOpen = value;
-    this.isSettingsOpenChange.emit(value);
+  open() {
+    this._isSettingsOpen$$.next(true);
   }
 
-  constructor() { }
+  close() {
+    this._isSettingsOpen$$.next(false);
+  }
+
 }
