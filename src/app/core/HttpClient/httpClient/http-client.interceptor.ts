@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class HttpClientInterceptor implements HttpInterceptor {
-  private _APIkey = 'AIzaSyAPL2IqZBsGRYbZwj-jGWNZIhekt29YdUk';
+  private _APIkey = 'AIzaSyAPWskf1Z4RQ0j2CAVEVKTigC_siyCcSNg';
 
   private _baseURL = 'https://www.googleapis.com/youtube/v3/';
 
