@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { VideoItemService } from '../../services/video-item/video-item.service';
 import { IVideoItem } from '../../model/video-item.model';
-import { DataService } from 'src/app/core/services/date/data.service';
+import { DataService } from 'src/app/core/HttpClient/date/data.service';
 
 @Component({
   selector: 'app-detailed-information-page',

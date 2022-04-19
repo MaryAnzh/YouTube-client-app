@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 
 import { AuthGuard } from './core/guards/services/auth.guard';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,8 @@ import { AuthGuard } from './core/guards/services/auth.guard';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule,
   ],
 
   providers: [AuthGuard],
