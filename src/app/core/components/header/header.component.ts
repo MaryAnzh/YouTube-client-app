@@ -12,9 +12,9 @@ import { SubscriptionLike, BehaviorSubject, debounceTime, filter } from 'rxjs';
 })
 
 export class HeaderComponent implements OnDestroy {
-  private _userWords$$ = new BehaviorSubject<string>('');
+  private _searchString$$ = new BehaviorSubject<string>('');
 
-  public userWords$ = this._userWords$$.asObservable().pipe(
+  public searchString$ = this._searchString$$.asObservable().pipe(
     debounceTime(1000),
     filter((value) => value.length > 2),
   );
@@ -33,7 +33,7 @@ export class HeaderComponent implements OnDestroy {
 
   public isSettingOpen = false;
 
-  public userWords = '';
+  public searchString = '';
 
   constructor(private dataService: DataService,
     private settingsService: SettingsService,
@@ -53,10 +53,10 @@ export class HeaderComponent implements OnDestroy {
       }
     );
 
-    this.subscriptionUserWords = this.userWords$.subscribe(
+    this.subscriptionUserWords = this.searchString$.subscribe(
       (value: string) => {
-        this.userWords = value;
-        this.dataService.getYouTubeSearchResults(this.userWords).then();
+        this.searchString = value;
+        this.dataService.getYouTubeSearchResults(this.searchString).then();
       }
     )
   }
@@ -77,7 +77,7 @@ export class HeaderComponent implements OnDestroy {
 
   async searchWordsInput(value: string): Promise<void> {
     if (this.isAuth) {
-      this._userWords$$.next(value);
+      this._searchString$$.next(value);
     }
   }
 
