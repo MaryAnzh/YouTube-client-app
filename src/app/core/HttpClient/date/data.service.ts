@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { IVideoYouTubeResults } from 'src/app/youtube/model/video-response.model';
 import { IVideoItem } from 'src/app/youtube/model/video-item.model';
 import { RequestService } from '../request/request.service';
+import { itemPlug } from '../item-plug';
 
 @Injectable({
   providedIn: 'root'

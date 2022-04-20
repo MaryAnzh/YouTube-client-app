@@ -45,15 +45,19 @@ export class FilteringCriteriaBlockComponent implements OnDestroy {
     const elemType: string | undefined = (elem.dataset['field']);
 
     if (elemType) {
+      this.sortIncreasing = !this.sortIncreasing;
+
       const sortAddFilterConfig: ISortAddFilterConfig = {
         field: elemType,
         increase: this.sortIncreasing,
         isSortOn: true,
       }
+
       this.sortService.changeSortAddFilterConfig(sortAddFilterConfig);
+
     }
 
-    this.sortIncreasing = !this.sortIncreasing;
+
   }
 
   ngOnDestroy(): void {

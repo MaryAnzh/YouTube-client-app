@@ -20,7 +20,7 @@ export class VideoItemService {
     return description.split('\n')[firstStringChung];
   }
 
-  getitemDateLocal(dateStr: Date): string {
+  getitemDateLocal(dateStr: string): string {
     const date = new Date(dateStr);
     return date.toLocaleDateString(
       'en-US',

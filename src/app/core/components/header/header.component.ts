@@ -4,8 +4,6 @@ import { SettingsService } from '../../services/settings/settings.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { IResAuthLogin } from 'src/app/auth/model/user-storage-data.model';
 import { SubscriptionLike, BehaviorSubject, debounceTime, filter } from 'rxjs';
-import { SearchService } from 'src/app/youtube/services/search/search.service';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-header',
@@ -39,8 +37,7 @@ export class HeaderComponent implements OnDestroy {
 
   constructor(private dataService: DataService,
     private settingsService: SettingsService,
-    private authService: AuthService,
-    private searchService: SearchService
+    private authService: AuthService
   ) {
     this.subscriptionIsAuth = this.authService.isLoggedIn$.subscribe(
       (value: boolean) => this.isAuth = value
@@ -61,8 +58,6 @@ export class HeaderComponent implements OnDestroy {
         this.userWords = value;
         this.dataService.getYouTubeSearchResults(this.userWords).then();
       }
-
-
     )
   }
 
@@ -82,19 +77,19 @@ export class HeaderComponent implements OnDestroy {
 
   async searchWordsInput(value: string): Promise<void> {
     if (this.isAuth) {
-
       this._userWords$$.next(value);
     }
   }
 
   settingsOpenedOnClick(): void {
+    this.isSettingOpen = !this.isSettingOpen;
     if (this.isAuth) {
-      this.isSettingOpen = !this.isSettingOpen;
       if (this.isSettingOpen) {
         this.settingsService.open();
       } else {
         this.settingsService.close();
       }
+
     } else {
       alert('необходима регистрация');
     }

@@ -10,12 +10,14 @@ import { VideoItemService } from 'src/app/youtube/services/video-item/video-item
 
 export class VideoCardComponent {
 
-  public color: string = '';
-
   @Input() public videoCard: IVideoItem | undefined;
 
-  constructor(private videoItemService: VideoItemService) {
+  public color = '';
 
+  constructor(private videoItemService: VideoItemService) {
+    if (this.videoCard) {
+      this.color = this.videoCard.snippet.publishedAt;
+    }
   }
 
   truncateTitle(title: string): string {

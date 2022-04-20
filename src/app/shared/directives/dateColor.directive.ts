@@ -46,7 +46,7 @@ export class DateColorDirective implements OnInit {
       return 'yellow';
     }
 
-    return 'red';
+    return 'pink';
 
   }
 
