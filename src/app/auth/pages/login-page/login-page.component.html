@@ -19,13 +19,16 @@
     <div class="login-form-wrap__login-form__field-error">
       <p
         *ngIf="loginForm.controls['userName'].invalid &&
-        loginForm.controls['userName'].touched && loginForm.controls['userName'].errors['required']
-        ">
+        loginForm.controls['userName'].touched &&
+        loginForm.controls['userName'].errors?.['required']">
         Please enter a login email
       </p>
-      <!-- <p>
+      <p
+        *ngIf="loginForm.controls['userName'].invalid &&
+        loginForm.controls['userName'].touched &&
+        loginForm.controls['userName'].errors?.['email']">
         The login email is invalid
-      </p> -->
+      </p>
     </div>
 
     <div class="login-form-wrap__login-form__field">
