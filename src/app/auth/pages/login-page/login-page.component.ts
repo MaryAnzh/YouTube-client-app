@@ -13,7 +13,10 @@ export class LoginPageComponent {
     "userName": new FormControl('', [
       Validators.required,
       Validators.email]),
-    "pass": new FormControl('', [Validators.required]),
+    "pass": new FormControl('', [
+      Validators.required,
+
+    ]),
   });
 
 constructor(

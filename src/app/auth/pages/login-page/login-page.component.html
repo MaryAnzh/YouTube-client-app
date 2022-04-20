@@ -1,7 +1,7 @@
  <form class="login-form-wrap"
-     [formGroup]="loginForm"
-    novalidate
-    (ngSubmit)="submit()">
+  [formGroup]="loginForm"
+  novalidate
+  (ngSubmit)="submit()">
 
   <h1 class="login-form-wrap__title">Login</h1>
 
@@ -18,8 +18,14 @@
 
     <div class="login-form-wrap__login-form__field-error">
       <p
-       *ngIf="loginForm.controls['userName'].invalid &&
-      loginForm.controls['userName'].touched">Please enter a login email</p>
+        *ngIf="loginForm.controls['userName'].invalid &&
+        loginForm.controls['userName'].touched && loginForm.controls['userName'].errors['required']
+        ">
+        Please enter a login email
+      </p>
+      <!-- <p>
+        The login email is invalid
+      </p> -->
     </div>
 
     <div class="login-form-wrap__login-form__field">
@@ -32,16 +38,17 @@
 
     <div class="login-form-wrap__login-form__field-error">
       <p
-      *ngIf="loginForm.controls['pass'].invalid &&
-      loginForm.controls['pass'].touched">
-        Please enter a password</p>
+        *ngIf="loginForm.controls['pass'].invalid &&
+        loginForm.controls['pass'].touched">
+        Please enter a password
+      </p>
+      <!-- <p>Your password isn't strong enough</p> -->
     </div>
 
   </div>
 
   <button class="login-form-wrap__submit-button"
-    type="submit"
-    >
+    type="submit">
     Login
   </button>
 </form>
