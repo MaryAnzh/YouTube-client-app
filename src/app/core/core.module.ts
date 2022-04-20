@@ -5,6 +5,8 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,10 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
   imports: [
     CommonModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+
   ],
   exports: [
     HeaderComponent
