@@ -37,7 +37,7 @@ export class FilteringCriteriaBlockComponent implements OnDestroy {
   userInputWordOnInput(event: Event): void {
     const elem = <HTMLInputElement>event.target;
     this.words = elem.value;
-    this.filterService.userWords(elem.value);
+    this.filterService.searchString(elem.value);
   }
 
   sortItemsOnClick(e: Event): void {

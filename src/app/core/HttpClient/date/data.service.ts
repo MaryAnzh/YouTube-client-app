@@ -10,11 +10,11 @@ import { itemPlug } from '../item-plug';
 })
 
 export class DataService {
-  private _userWords$$ = new BehaviorSubject<string>('');
+  private _searchString$$ = new BehaviorSubject<string>('');
 
-  public userWords$ = this._userWords$$.asObservable();
+  public searchString$ = this._searchString$$.asObservable();
 
-  public userWords = '';
+  public searchString = '';
 
   private _videosId$$ = new BehaviorSubject<string>('');
 
@@ -22,9 +22,9 @@ export class DataService {
 
   private _youTubeSearchResults$$ = new BehaviorSubject<IVideoYouTubeResults | null>(null);
 
-  public youTubeSearchResuSearchResults$ = this._youTubeSearchResults$$.asObservable();
+  public youTubeSearchResults$ = this._youTubeSearchResults$$.asObservable();
 
-  public youTubeSearchResuSearchResultsData: IVideoYouTubeResults | null;
+  public youTubeSearchResultsData$: IVideoYouTubeResults | null;
 
   private _items$$ = new BehaviorSubject<IVideoItem[] | null>(null);
 
@@ -37,9 +37,9 @@ export class DataService {
 
   ) {
 
-    this.youTubeSearchResuSearchResultsData = null;
+    this.youTubeSearchResultsData$ = null;
     this._youTubeSearchResults$$.subscribe(
-      (value: IVideoYouTubeResults | null) => this.youTubeSearchResuSearchResultsData = value ? value : null
+      (value: IVideoYouTubeResults | null) => this.youTubeSearchResultsData$ = value ? value : null
     );
 
     this._items$$.subscribe(
@@ -58,8 +58,8 @@ export class DataService {
   }
 
   getVideosByID(ods: string): void  {
-    this.youTubeSearchResuSearchResults$ = this.requestService.getVideoItemw(ods);
-    this.youTubeSearchResuSearchResults$.subscribe(
+    this.youTubeSearchResults$ = this.requestService.getVideoItemw(ods);
+    this.youTubeSearchResults$.subscribe(
       (value: IVideoYouTubeResults | null) => {
         if (value) {
           this._items$$.next(value.items)
