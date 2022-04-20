@@ -1,10 +1,8 @@
 :host {
-  width: 350px;
-  height: 250px;
 
   .login-form-wrap {
     width: 350px;
-    height: 250px;
+    height: 340px;
     margin: 45px auto;
     padding: 28px 20px;
     display: flex;
@@ -25,38 +23,51 @@
     }
 
     &__login-form {
-      height: 104px;
+      height: 180px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
 
-      label {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 12px;
+      &__field {
+        height: 25%;
 
-        color: #828282;
+        label {
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: bold;
+          font-size: 14px;
+          line-height: 12px;
+          padding: 4px;
+
+          color: #828282;
+        }
+
+        input {
+          width: 100%;
+          height: 37px;
+          padding: 0 8px;
+          display: flex;
+          align-items: center;
+          background: #E0E0E0;
+          border: none;
+
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 12px;
+
+          color: #000000;
+        }
       }
 
-      input {
-        width: 100%;
-        height: 37px;
-        padding: 0 8px;
-        display: flex;
-        align-items: center;
-        background: #E0E0E0;
-        border: none;
-
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 12px;
-
-        color: #000000;
+      &__field-error {
+        height: 25%;
       }
+
+
+
+
     }
 
     &__submit-button {
