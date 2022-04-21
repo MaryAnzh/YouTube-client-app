@@ -16,7 +16,7 @@
         formControlName="userName">
     </div>
 
-    <div class="login-form-wrap__login-form__field-error">
+    <div class="login-form-wrap__login-form__field-error-name">
       <p
         *ngIf="loginForm.controls['userName'].invalid &&
         loginForm.controls['userName'].touched &&
@@ -39,19 +39,35 @@
         formControlName="pass">
     </div>
 
-    <div class="login-form-wrap__login-form__field-error">
+    <div class="login-form-wrap__login-form__field-error-pass">
       <p
         *ngIf="loginForm.controls['pass'].invalid &&
-        loginForm.controls['pass'].touched">
+        loginForm.controls['pass'].touched &&
+        loginForm.controls['pass'].errors?.['required']">
         Please enter a password
+
       </p>
-      <!-- <p>Your password isn't strong enough</p> -->
+      <p
+        *ngIf="loginForm.controls['pass'].invalid &&
+        loginForm.controls['pass'].touched &&
+        loginForm.controls['pass'].errors?.['minlength']">
+        Your password isn't strong enough:
+        <li>
+        at least 8 characters</li>
+        <li>a mixture of both uppercase and lowercase letters</li>
+        <li>a mixture of letters and numbers</li>
+        <li>inclusion of at least one special character, e.g., ! @ # ? ]</li>
+      </p>
+
+
     </div>
 
   </div>
 
   <button class="login-form-wrap__submit-button"
-    type="submit">
+  (click)="submitUserDataOnClick(userName.value)"
+    type="submit"
+    >
     Login
   </button>
 </form>

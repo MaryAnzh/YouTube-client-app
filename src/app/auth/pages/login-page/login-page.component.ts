@@ -15,9 +15,9 @@ export class LoginPageComponent {
       Validators.email]),
     "pass": new FormControl('', [
       Validators.required,
-
+      Validators.minLength(8),
     ]),
-  });
+});
 
 constructor(
   private authService: AuthService
@@ -26,8 +26,8 @@ constructor(
 submitUserDataOnClick(name: string): void {
   this.authService.logIn(name);
 }
-  submit() {
-    console.log(this.loginForm);
-  }
+submit() {
+  console.log(this.loginForm);
+}
 
 }

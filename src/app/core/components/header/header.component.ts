@@ -33,8 +33,6 @@ export class HeaderComponent implements OnDestroy {
 
   public isSettingOpen = false;
 
-  public searchString = '';
-
   constructor(private dataService: DataService,
     private settingsService: SettingsService,
     private authService: AuthService
@@ -55,8 +53,7 @@ export class HeaderComponent implements OnDestroy {
 
     this.subscriptionUserWords = this.searchString$.subscribe(
       (value: string) => {
-        this.searchString = value;
-        this.dataService.getYouTubeSearchResults(this.searchString).then();
+        this.dataService.getYouTubeSearchResults(value).then();
       }
     )
   }
