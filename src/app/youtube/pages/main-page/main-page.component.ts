@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
-import { SubscriptionLike } from 'rxjs';
+import { SubscriptionLike, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-page',
@@ -8,22 +8,11 @@ import { SubscriptionLike } from 'rxjs';
   styleUrls: ['./main-page.component.scss']
 })
 
-export class MainPageComponent implements OnDestroy {
+export class MainPageComponent {
 
-  public subscriptionIsSettingOoen: SubscriptionLike;
-
-  public open: boolean;
+  public isSettingOpen: Observable<boolean>;
 
   constructor(private settingsService: SettingsService) {
-    this.open = false;
-    this.subscriptionIsSettingOoen = this.settingsService.isSettingsOpen$.subscribe(
-      (value: boolean) => this.open = value
-    );
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscriptionIsSettingOoen) {
-      this.subscriptionIsSettingOoen.unsubscribe();
-    }
+    this.isSettingOpen = this.settingsService.isSettingsOpen$$;
   }
 }

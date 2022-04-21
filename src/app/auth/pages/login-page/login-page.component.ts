@@ -26,6 +26,7 @@ constructor(
 submitUserDataOnClick(name: string): void {
   this.authService.logIn(name);
 }
+
 submit() {
   console.log(this.loginForm);
 }

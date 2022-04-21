@@ -24,6 +24,7 @@
         <div class="header__wrap__center-block__settings__line">
           <div class="header__wrap__center-block__settings__line__round-right"></div>
         </div>
+
         <div class="header__wrap__center-block__settings__line">
           <div class="header__wrap__center-block__settings__line__round-left"></div>
         </div>
@@ -34,7 +35,8 @@
     </div>
 
     <section class="header__wrap__logo-info">
-      <div class="header__wrap__logo-info__login" *ngIf="!isAuth">
+      <div class="header__wrap__logo-info__login"
+      *ngIf="isAuth | async">
         <button class="header__wrap__logo-info__login__button"
           type="button"
           routerLink="/auth">
@@ -42,8 +44,9 @@
         </button>
       </div>
 
-      <div class="header__wrap__logo-info__logout" *ngIf="isAuth">
-        <p>{{userName}}</p>
+      <div class="header__wrap__logo-info__logout"
+      *ngIf="!(isAuth | async)">
+        <p>{{userName | async}}</p>
         <img alt="login" src="../../../assets/Subtract.svg">
         <button class="header__wrap__logo-info__logout__button"
           type="button"

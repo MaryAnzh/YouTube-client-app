@@ -2,7 +2,6 @@ import { Component, OnDestroy } from '@angular/core';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';;
-import { SubscriptionLike } from 'rxjs';
 import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model';
 
 @Component({
@@ -11,28 +10,17 @@ import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model'
   styleUrls: ['./filtering-criteria-block.component.scss'],
 })
 
-export class FilteringCriteriaBlockComponent implements OnDestroy {
-
-  public subscription: SubscriptionLike;
+export class FilteringCriteriaBlockComponent {
 
   public sortIncreasing: boolean = false;
 
   public words: string = '';
 
-  public isAuth: boolean;
-
   constructor(
     private filterService: FilterService,
     private sortService: SortService,
     private authService: AuthService
-  ) {
-
-    this.isAuth = false;
-    this.subscription = this.authService.isLoggedIn$.subscribe(
-      (value: boolean) => this.isAuth = value
-    )
-
-  }
+  ) {  }
 
   userInputWordOnInput(event: Event): void {
     const elem = <HTMLInputElement>event.target;
@@ -55,14 +43,6 @@ export class FilteringCriteriaBlockComponent implements OnDestroy {
 
       this.sortService.changeSortAddFilterConfig(sortAddFilterConfig);
 
-    }
-
-
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
     }
   }
 }
