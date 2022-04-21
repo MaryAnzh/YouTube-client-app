@@ -3,13 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInterceptor } from './core/HttpClient/httpClient/http-client.interceptor';
-
 import { CoreModule } from './core/core.module';
-
 import { AppComponent } from './app.component';
-
 import { AuthGuard } from './core/guards/services/auth.guard';
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
@@ -22,6 +18,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     BrowserAnimationsModule,
     CoreModule,
     HttpClientModule,
+
   ],
 
   providers: [

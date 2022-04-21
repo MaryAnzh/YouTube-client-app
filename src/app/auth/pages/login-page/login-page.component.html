@@ -1,30 +1,57 @@
-<div class="login-form-wrap">
+ <form class="login-form-wrap"
+  [formGroup]="loginForm"
+  novalidate
+  (ngSubmit)="submit()">
+
   <h1 class="login-form-wrap__title">Login</h1>
-  <form class="login-form-wrap__login-form">
+
+  <div class="login-form-wrap__login-form">
 
     <div class="login-form-wrap__login-form__field">
       <label for="#userName">login</label>
-      <input type="text" name="user-name" #userName>
+      <input
+        type="text"
+        name="user-name"
+        #userName
+        formControlName="userName">
     </div>
 
-     <div class="login-form-wrap__login-form__field-error">
-      <p></p>
+    <div class="login-form-wrap__login-form__field-error">
+      <p
+        *ngIf="loginForm.controls['userName'].invalid &&
+        loginForm.controls['userName'].touched &&
+        loginForm.controls['userName'].errors?.['required']">
+        Please enter a login email
+      </p>
+      <p
+        *ngIf="loginForm.controls['userName'].invalid &&
+        loginForm.controls['userName'].touched &&
+        loginForm.controls['userName'].errors?.['email']">
+        The login email is invalid
+      </p>
     </div>
 
     <div class="login-form-wrap__login-form__field">
       <label for="#password">password</label>
-      <input type="password" name="password" #password>
+      <input type="password"
+        name="password"
+        #password
+        formControlName="pass">
     </div>
 
-        <div class="login-form-wrap__login-form__field-error">
-      <p></p>
+    <div class="login-form-wrap__login-form__field-error">
+      <p
+        *ngIf="loginForm.controls['pass'].invalid &&
+        loginForm.controls['pass'].touched">
+        Please enter a password
+      </p>
+      <!-- <p>Your password isn't strong enough</p> -->
     </div>
 
-  </form>
+  </div>
 
-  <button
-    type="button"
-    class="login-form-wrap__submit-button"
-    routerLink="/youtube"
-    (click)="submitUserDataOnClick(userName.value)">Login</button>
-</div>
+  <button class="login-form-wrap__submit-button"
+    type="submit">
+    Login
+  </button>
+</form>
