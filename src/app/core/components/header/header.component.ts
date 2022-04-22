@@ -21,9 +21,9 @@ export class HeaderComponent implements OnDestroy {
       filter((value) => value.length > 2),
     );
 
-  public isAuth: Observable<boolean>;
+  public isAuth$: Observable<boolean>;
 
-  public userName: Observable<string>;
+  public userName$: Observable<string>;
 
   public isSettingOpen = false;
 
@@ -32,11 +32,11 @@ export class HeaderComponent implements OnDestroy {
     private settingsService: SettingsService,
     private authService: AuthService
   ) {
-    this.isAuth = this.authService.isLoggedIn$.pipe(map((value: boolean) => !value));
-    this.userName = this.authService.user$.pipe(map((value: IResAuthLogin | null) => value?.login ?? ''));
+    this.isAuth$ = this.authService.isLoggedIn$.pipe(map((value: boolean) => value));
+    this.userName$ = this.authService.user$.pipe(map((value: IResAuthLogin | null) => value?.login ?? ''));
 
     this.searchString$.subscribe(
-      (value: string) => this.dataService.updateSearchSTring(value)
+      (value: string) => this.dataService.updateSearchString(value)
     )
   }
 
@@ -45,16 +45,14 @@ export class HeaderComponent implements OnDestroy {
   }
 
   searchWordsInput(value: string): void {
-    if (this.isAuth) {
-      if (value !== '') {
-        this._searchString$$.next(value);
-      }
+    if (this.isAuth$) {
+      this._searchString$$.next(value);
     }
   }
 
-  settingsOpenedOnClick(): void {
-    this.isSettingOpen = !this.isSettingOpen;
-    if (this.isAuth) {
+    settingsOpenedOnClick(): void {
+      this.isSettingOpen = !this.isSettingOpen;
+      if(this.isAuth$) {
 
       this.settingsService.isSettingsOpen$$.next(this.isSettingOpen);
     } else {
