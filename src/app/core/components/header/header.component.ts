@@ -3,7 +3,7 @@ import { DataService } from '../../HttpClient/data/data.service';
 import { SettingsService } from '../../services/settings/settings.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { IResAuthLogin } from 'src/app/auth/model/user-storage-data.model';
-import { BehaviorSubject, debounceTime, filter, Observable , map} from 'rxjs';
+import { BehaviorSubject, debounceTime, filter, Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +15,11 @@ export class HeaderComponent implements OnDestroy {
   //задание на применение debounceTime
   private _searchString$$ = new BehaviorSubject<string>('');
 
-  public searchString$ = this._searchString$$.asObservable().pipe(
-    debounceTime(1000),
-    filter((value) => value.length > 2),
-  );
+  public searchString$ = this._searchString$$.asObservable()
+    .pipe(
+      debounceTime(1000),
+      filter((value) => value.length > 2),
+    );
 
   public isAuth: Observable<boolean>;
 
@@ -34,7 +35,7 @@ export class HeaderComponent implements OnDestroy {
     this.isAuth = this.authService.isLoggedIn$.pipe(map((value: boolean) => !value));
     this.userName = this.authService.user$.pipe(map((value: IResAuthLogin | null) => value?.login ?? ''));
 
-    this._searchString$$.subscribe(
+    this.searchString$.subscribe(
       (value: string) => this.dataService.updateSearchSTring(value)
     )
   }
@@ -45,13 +46,16 @@ export class HeaderComponent implements OnDestroy {
 
   searchWordsInput(value: string): void {
     if (this.isAuth) {
-      this._searchString$$.next(value);
+      if (value !== '') {
+        this._searchString$$.next(value);
+      }
     }
   }
 
   settingsOpenedOnClick(): void {
     this.isSettingOpen = !this.isSettingOpen;
     if (this.isAuth) {
+
       this.settingsService.isSettingsOpen$$.next(this.isSettingOpen);
     } else {
       alert('необходима регистрация');

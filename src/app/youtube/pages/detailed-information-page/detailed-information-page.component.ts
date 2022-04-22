@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { VideoItemService } from '../../services/video-item/video-item.service';
 import { IVideoItem } from '../../model/video-item.model';
 import { DataService } from 'src/app/core/HttpClient/data/data.service';
+import { Observable, SubscriptionLike } from 'rxjs';
 
 @Component({
   selector: 'app-detailed-information-page',
@@ -11,8 +12,12 @@ import { DataService } from 'src/app/core/HttpClient/data/data.service';
   styleUrls: ['./detailed-information-page.component.scss']
 })
 
-export class DetailedInformationPageComponent implements OnInit {
-  public item: IVideoItem | undefined;
+export class DetailedInformationPageComponent {
+  public itemxSub: Observable<IVideoItem[]>;
+
+  public items: IVideoItem[] | null = null;
+
+  public item: IVideoItem | null = null;
 
   public smallDescription: string = '';
 
@@ -23,16 +28,28 @@ export class DetailedInformationPageComponent implements OnInit {
     private route: ActivatedRoute,
     private dataService: DataService,
     private location: Location) {
+
+    this.itemxSub = this.dataService.items$;
+
+    this.itemxSub.subscribe(
+      (value: IVideoItem[]) => this.items = value
+    )
   }
 
-  ngOnInit(): void {
+  ngOninit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.item = this.videoItemService.getVideo(this.dataService.items$, id);
-      if (this.item) {
-        this.smallDescription = this.videoItemService.getItemSmallDescription(this.item.snippet.description);
-        this.itemDateLocal = this.videoItemService.getitemDateLocal(this.item.snippet.publishedAt);
-      }
+    if (id && this.items) {
+
+      this.item = this.videoItemService.getVideo(this.items, id);
+
+      this.smallDescription = this.videoItemService.getItemSmallDescription(this.item.snippet.description);
+      this.itemDateLocal = this.videoItemService.getitemDateLocal(this.item.snippet.publishedAt);
+    }
+  }
+
+  ngDistroy() {
+    if (this.itemxSub) {
+      this.itemxSub.subscribe().unsubscribe();
     }
   }
 
