@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
-import { SubscriptionLike, Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-page',
@@ -12,7 +13,11 @@ export class MainPageComponent {
 
   public isSettingOpen: Observable<boolean>;
 
-  constructor(private settingsService: SettingsService) {
+  public isAuth: Observable<boolean>;
+
+  constructor(private settingsService: SettingsService,
+    private authService: AuthService) {
     this.isSettingOpen = this.settingsService.isSettingsOpen$$;
+    this.isAuth = this.authService.isLoggedIn$;
   }
 }
