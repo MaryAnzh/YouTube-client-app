@@ -15,7 +15,7 @@ export class HeaderComponent implements OnDestroy {
   //задание на применение debounceTime
   private _searchString$$ = new BehaviorSubject<string>('');
 
-  public searchString$ = this._searchString$$.asObservable()
+  public searchString$ = this._searchString$$
     .pipe(
       debounceTime(1000),
       filter((value) => value.length > 2),
