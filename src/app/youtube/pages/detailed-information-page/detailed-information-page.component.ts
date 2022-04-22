@@ -28,7 +28,7 @@ export class DetailedInformationPageComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.item = this.videoItemService.getVideo(this.dataService.items, id);
+      this.item = this.videoItemService.getVideo(this.dataService.items$, id);
       if (this.item) {
         this.smallDescription = this.videoItemService.getItemSmallDescription(this.item.snippet.description);
         this.itemDateLocal = this.videoItemService.getitemDateLocal(this.item.snippet.publishedAt);
