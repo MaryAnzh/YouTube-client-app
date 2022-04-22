@@ -3,7 +3,7 @@ import { DataService } from '../../HttpClient/data/data.service';
 import { SettingsService } from '../../services/settings/settings.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { IResAuthLogin } from 'src/app/auth/model/user-storage-data.model';
-import { SubscriptionLike, BehaviorSubject, debounceTime, filter, Observable , map} from 'rxjs';
+import { BehaviorSubject, debounceTime, filter, Observable , map} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -26,16 +26,17 @@ export class HeaderComponent implements OnDestroy {
 
   public isSettingOpen = false;
 
-  constructor(private dataService: DataService,
+  constructor(
+    private dataService: DataService,
     private settingsService: SettingsService,
     private authService: AuthService
   ) {
     this.isAuth = this.authService.isLoggedIn$.pipe(map((value: boolean) => !value));
     this.userName = this.authService.user$.pipe(map((value: IResAuthLogin | null) => value?.login ?? ''));
 
-    this._searchString$$.subscribe{
-      (value: string) => this.dataService.updateSearchSTring(value);
-    }
+    this._searchString$$.subscribe(
+      (value: string) => this.dataService.updateSearchSTring(value)
+    )
   }
 
   ngOnDestroy(): void {
