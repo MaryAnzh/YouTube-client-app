@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { SettingsService } from 'src/app/core/services/settings/settings.service';
-import { SubscriptionLike } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-page',
@@ -8,22 +9,15 @@ import { SubscriptionLike } from 'rxjs';
   styleUrls: ['./main-page.component.scss']
 })
 
-export class MainPageComponent implements OnDestroy {
+export class MainPageComponent {
 
-  public subscriptionIsSettingOoen: SubscriptionLike;
+  public isSettingOpen: Observable<boolean>;
 
-  public open: boolean;
+  public isAuth: Observable<boolean>;
 
-  constructor(private settingsService: SettingsService) {
-    this.open = false;
-    this.subscriptionIsSettingOoen = this.settingsService.isSettingsOpen$.subscribe(
-      (value: boolean) => this.open = value
-    );
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscriptionIsSettingOoen) {
-      this.subscriptionIsSettingOoen.unsubscribe();
-    }
+  constructor(private settingsService: SettingsService,
+    private authService: AuthService) {
+    this.isSettingOpen = this.settingsService.isSettingsOpen$$;
+    this.isAuth = this.authService.isLoggedIn$;
   }
 }

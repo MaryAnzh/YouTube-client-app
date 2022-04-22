@@ -20,10 +20,10 @@ export class RequestService {
           return res.items.map(item => item.id.videoId)
             .join(',');
         })
-    )
+      )
   }
 
-  getVideoItemw(id: string): Observable<IVideoYouTubeResults> {
+  getVideoById(id: string): Observable<IVideoYouTubeResults> {
     const requestParam = `videos?id=${id}&part=snippet,statistics`;
     return this.http.get<IVideoYouTubeResults>(requestParam);
   }
