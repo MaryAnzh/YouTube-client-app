@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, switchMap, SubjectLike, Subscription, mergeMap } from 'rxjs';import { IVideoItem } from 'src/app/youtube/model/video-item.model';
+import { BehaviorSubject, Observable, map, mergeMap, switchMap, filter } from 'rxjs';import { IVideoItem } from 'src/app/youtube/model/video-item.model';
 import { RequestService } from '../request/request.service';
 
 @Injectable({
@@ -11,8 +11,9 @@ export class DataService {
   private search$$ = new BehaviorSubject<string | null>(null);
 
   public items$: Observable<IVideoItem[]> = this.search$$
-    .pipe(mergeMap(((param: string | null) => this.requestService.getVideoId(param ?? '123'))))
-    .pipe(mergeMap(value => this.requestService.getVideoById(value)))
+    .pipe(filter(p => p !== null))
+    .pipe(switchMap((param => this.requestService.getVideoId(param ?? ""))))
+    .pipe(switchMap(value => this.requestService.getVideoById(value)))
     .pipe(map(element => element.items));
 
   constructor(
@@ -21,8 +22,6 @@ export class DataService {
 
   updateSearchSTring(search: string): void {
       this.search$$.next(search);
-      console.log('Словили в dataservice');
-      console.log(search);
   }
 
 }
