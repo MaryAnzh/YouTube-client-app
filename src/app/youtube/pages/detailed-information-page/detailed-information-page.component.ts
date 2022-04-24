@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';import { VideoItemService } from '../../services/video-item/video-item.service';
 import { IVideoItem } from '../../model/video-item.model';
 import { DataService } from 'src/app/core/HttpClient/data/data.service';
-import { Observable, SubscriptionLike } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detailed-information-page',
@@ -15,10 +15,9 @@ export class DetailedInformationPageComponent {
 
   public item: IVideoItem | null = null;
 
-  public itemDateLocal: string = '';
+  public itemDateLocal: Date = new Date();
 
   constructor(
-    private videoItemService: VideoItemService,
     private route: ActivatedRoute,
     private dataService: DataService) {
 
@@ -28,7 +27,7 @@ export class DetailedInformationPageComponent {
       this.item$.subscribe(
         (value: IVideoItem) => {
           this.item = value;
-          this.itemDateLocal = this.videoItemService.getitemDateLocal(value.snippet.publishedAt)
+          this.itemDateLocal = new Date(this.item.snippet.publishedAt);
         }
       );
     }
