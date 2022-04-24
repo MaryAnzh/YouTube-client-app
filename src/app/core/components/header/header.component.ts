@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';;
-import { DataService } from '../../HttpClient/data/data.service';
+import { DataService } from '../../services/data/data.service';
 import { SettingsService } from '../../services/settings/settings.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { IResAuthLogin } from 'src/app/auth/model/user-storage-data.model';

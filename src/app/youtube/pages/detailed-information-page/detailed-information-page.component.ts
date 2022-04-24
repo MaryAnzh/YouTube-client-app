@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';import { VideoItemService } from '../../services/video-item/video-item.service';
 import { IVideoItem } from '../../model/video-item.model';
-import { DataService } from 'src/app/core/HttpClient/data/data.service';
+import { DataService } from 'src/app/core/services/data/data.service';
 import { Observable } from 'rxjs';
 
 @Component({
