@@ -2,7 +2,7 @@ import { Component, Output, OnDestroy } from '@angular/core';
 import { ISortAddFilterConfig, IWordsSearch } from 'src/app/shared/directives/filtering-model';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
-import { DataService } from 'src/app/core/HttpClient/data/data.service';
+import { DataService } from 'src/app/core/services/data/data.service';
 import { SubscriptionLike } from 'rxjs';
 import { IVideoItem } from '../../model/video-item.model';
 

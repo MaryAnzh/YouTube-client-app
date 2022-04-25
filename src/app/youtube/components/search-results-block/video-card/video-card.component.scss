@@ -1,82 +1,84 @@
 :host {
 
   .video-card {
-  width: 263px;
-  height: 327px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 29px;
-  padding: 20px 20px 10px 20px;
-  border-radius: 5px;
-  background: #E5E5E5;
-
-  &__video-thumbnail {
-    width: 223px;
-    height: 123px;
+    width: 263px;
+    height: 327px;
+    position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background: #c4b4b4;
+    margin-bottom: 29px;
+    padding: 20px 20px 10px 20px;
+    border-radius: 5px;
+    background: #E5E5E5;
 
-    &__icon {
-      width: 100%;
-
-    }
-
-  }
-
-  &__counts {
-    width: 202px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__count {
+    &__video-thumbnail {
+      width: 223px;
+      height: 123px;
       display: flex;
+      justify-content: center;
       align-items: center;
-      padding-top: 22px;
+      background: #c4b4b4;
 
       &__icon {
-        height: 13px;
-        padding-right: 4px;
-      }
+        width: 100%;
 
-      &__text {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 300;
-        font-size: 10px;
-        line-height: 12px;
-        color: #000000;
       }
 
     }
-  }
 
-  &__Video-title {
-    padding-top: 22px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 23px;
-    text-align: right;
-    color: #4F4F4F;
-  }
+    &__counts {
+      width: 202px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-  &__button-more {
-    width: 120px;
-    height: 32px;
-    background: #2F80ED;
-    border-radius: 5px;
-    color: #FFFFFF;
-    position: absolute;
-    bottom: 10px;
-  }
+      &__count {
+        display: flex;
+        align-items: center;
+        padding-top: 22px;
 
+        &__icon {
+          height: 13px;
+          padding-right: 4px;
+        }
+
+        &__text {
+          font-family: 'Roboto';
+          font-style: normal;
+          font-weight: 300;
+          font-size: 10px;
+          line-height: 12px;
+          color: #000000;
+        }
+
+      }
+    }
+
+    &__Video-title {
+
+
+      height: 80px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 10px 0;
+      font-family: 'Roboto';
+      font-style: normal;
+      font-size: 17px;
+      line-height: 23px;
+      text-align: right;
+      color: #4F4F4F;
+    }
+
+    &__button-more {
+      width: 120px;
+      height: 32px;
+      background: #2F80ED;
+      border-radius: 5px;
+      color: #FFFFFF;
+      position: absolute;
+      bottom: 10px;
+    }
+
+  }
 }
-}
-
-

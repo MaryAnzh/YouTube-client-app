@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { VideoItemService } from '../../services/video-item/video-item.service';
 import { IVideoItem } from '../../model/video-item.model';
-import { DataService } from 'src/app/core/HttpClient/data/data.service';
-import { Observable, SubscriptionLike } from 'rxjs';
+import { DataService } from 'src/app/core/services/data/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-detailed-information-page',
@@ -13,44 +11,25 @@ import { Observable, SubscriptionLike } from 'rxjs';
 })
 
 export class DetailedInformationPageComponent {
-  public itemxSub: Observable<IVideoItem[]>;
-
-  public items: IVideoItem[] | null = null;
+  public item$: Observable<IVideoItem> | null = null;
 
   public item: IVideoItem | null = null;
 
-  public smallDescription: string = '';
-
-  public itemDateLocal: string = '';
+  public itemDateLocal: Date = new Date();
 
   constructor(
-    private videoItemService: VideoItemService,
     private route: ActivatedRoute,
-    private dataService: DataService,
-    private location: Location) {
+    private dataService: DataService) {
 
-    this.itemxSub = this.dataService.items$;
-
-    this.itemxSub.subscribe(
-      (value: IVideoItem[]) => this.items = value
-    )
-  }
-
-  ngOninit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id && this.items) {
-
-      this.item = this.videoItemService.getVideo(this.items, id);
-
-      this.smallDescription = this.videoItemService.getItemSmallDescription(this.item.snippet.description);
-      this.itemDateLocal = this.videoItemService.getitemDateLocal(this.item.snippet.publishedAt);
+    if (id) {
+      this.item$ = this.dataService.getItemById(id);
+      this.item$.subscribe(
+        (value: IVideoItem) => {
+          this.item = value;
+          this.itemDateLocal = new Date(this.item.snippet.publishedAt);
+        }
+      );
     }
   }
-
-  ngDistroy() {
-    if (this.itemxSub) {
-      this.itemxSub.subscribe().unsubscribe();
-    }
-  }
-
 }
