@@ -1,9 +1,9 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 
-export class CustomValidators {
+class CustomValidators {
 
-  passwordsValidator(): ValidatorFn {
+  passwordValidator(): ValidatorFn {
 
     return (control: AbstractControl): ValidationErrors | null => {
 
@@ -29,3 +29,6 @@ export class CustomValidators {
 
 }
 
+const customValidators = new CustomValidators();
+
+export { customValidators };

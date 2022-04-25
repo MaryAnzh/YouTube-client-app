@@ -2,6 +2,7 @@ import { Component, } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { customValidators } from 'src/app/shared/utils/CustomValidators';
 
 @Component({
   selector: 'app-login-page',
@@ -17,9 +18,9 @@ export class LoginPageComponent {
     "pass": new FormControl('', [
       Validators.required,
       Validators.minLength(8),
+      customValidators.passwordValidator(),
     ]),
   });
-  route = '/auth';
 
   constructor(
     private authService: AuthService,
