@@ -1,6 +1,6 @@
  <form class="login-form-wrap"
   [formGroup]="loginForm"
-  novalidate
+
   (ngSubmit)="submit()">
 
   <h1 class="login-form-wrap__title">Login</h1>
@@ -65,9 +65,7 @@
   </div>
 
   <button class="login-form-wrap__submit-button"
-  (click)="submitUserDataOnClick(userName.value)"
-    type="submit"
-    >
+  type="submit">
     Login
   </button>
 </form>
