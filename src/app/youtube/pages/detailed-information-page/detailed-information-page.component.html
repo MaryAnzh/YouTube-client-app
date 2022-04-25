@@ -18,12 +18,12 @@
         <h2 class="detail-page__video-info__descriptions__title">
           {{item.snippet.title}}
         </h2>
-        <h3>{{itemDateLocal}}</h3>
+        <h3>{{itemDateLocal | date: 'EEEE, MMMM d, y'}}</h3>
       </div>
 
-      <div class="detail-page__video-info__description__description">
+      <div class="detail-page__video-info__description__description-text">
         <h3>Description:</h3>
-        <p>{{smallDescription}}</p>
+        <p>{{item.snippet.description}}</p>
       </div>
 
       <div class="detail-page__video-info__description__statistics">

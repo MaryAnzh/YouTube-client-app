@@ -1,15 +1,73 @@
-<div class="login-form-wrap">
+ <form class="login-form-wrap"
+  [formGroup]="loginForm"
+  novalidate
+  (ngSubmit)="submit()">
+
   <h1 class="login-form-wrap__title">Login</h1>
-  <form class="login-form-wrap__login-form">
-  <label for="#userName" >login</label>
-  <input type="text" name="user-name" #userName>
-  <label for="#password" >password</label>
-  <input type="password" name="password" #password>
-</form>
-  <button
-  type="button"
-  class="login-form-wrap__submit-button"
-  routerLink="/youtube"
+
+  <div class="login-form-wrap__login-form">
+
+    <div class="login-form-wrap__login-form__field">
+      <label for="#userName">login</label>
+      <input
+        type="text"
+        name="user-name"
+        #userName
+        formControlName="userName">
+    </div>
+
+    <div class="login-form-wrap__login-form__field-error-name">
+      <p
+        *ngIf="loginForm.controls['userName'].invalid &&
+        loginForm.controls['userName'].touched &&
+        loginForm.controls['userName'].errors?.['required']">
+        Please enter a login email
+      </p>
+      <p
+        *ngIf="loginForm.controls['userName'].invalid &&
+        loginForm.controls['userName'].touched &&
+        loginForm.controls['userName'].errors?.['email']">
+        The login email is invalid
+      </p>
+    </div>
+
+    <div class="login-form-wrap__login-form__field">
+      <label for="#password">password</label>
+      <input type="password"
+        name="password"
+        #password
+        formControlName="pass">
+    </div>
+
+    <div class="login-form-wrap__login-form__field-error-pass">
+      <p
+        *ngIf="loginForm.controls['pass'].invalid &&
+        loginForm.controls['pass'].touched &&
+        loginForm.controls['pass'].errors?.['required']">
+        Please enter a password
+
+      </p>
+      <p
+        *ngIf="loginForm.controls['pass'].invalid &&
+        loginForm.controls['pass'].touched &&
+        loginForm.controls['pass'].errors?.['minlength']">
+        Your password isn't strong enough:
+        <li>
+        at least 8 characters</li>
+        <li>a mixture of both uppercase and lowercase letters</li>
+        <li>a mixture of letters and numbers</li>
+        <li>inclusion of at least one special character, e.g., ! @ # ? ]</li>
+      </p>
+
+
+    </div>
+
+  </div>
+
+  <button class="login-form-wrap__submit-button"
   (click)="submitUserDataOnClick(userName.value)"
-  >Login</button>
-</div>
+    type="submit"
+    >
+    Login
+  </button>
+</form>

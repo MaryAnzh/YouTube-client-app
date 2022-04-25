@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';;
-import { DataService } from '../../services/date/data.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';;
+import { DataService } from '../../services/data/data.service';
 import { SettingsService } from '../../services/settings/settings.service';
 import { AuthService } from 'src/app/auth/services/auth/auth.service';
 import { IResAuthLogin } from 'src/app/auth/model/user-storage-data.model';
-import { SubscriptionLike } from 'rxjs';
-import { SearchService } from 'src/app/youtube/services/search/search.service';
+import { BehaviorSubject, debounceTime, filter, Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -12,83 +11,56 @@ import { SearchService } from 'src/app/youtube/services/search/search.service';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy {
+  //задание на применение debounceTime
+  private _searchString$$ = new BehaviorSubject<string>('');
 
-  public subscriptionisauth: SubscriptionLike;
+  public searchString$ = this._searchString$$
+    .pipe(
+      debounceTime(1000),
+      filter((value) => value.length > 2),
+    );
 
-  public subscriptionUserName: SubscriptionLike;
+  public isAuth$: Observable<boolean>;
 
-  public subscriptionisSettingOpen: SubscriptionLike;
+  public userName$: Observable<string>;
 
-  public isAuth: boolean;
+  public isSettingOpen = false;
 
-  public wordsValue: string = '';
-
-  public userName: string | null;
-
-  public isSettingOpen: boolean;
-
-  constructor(private dataService: DataService,
+  constructor(
+    private dataService: DataService,
     private settingsService: SettingsService,
-    private authService: AuthService,
-    private searchService: SearchService
+    private authService: AuthService
   ) {
+    this.isAuth$ = this.authService.isLoggedIn$.pipe(map((value: boolean) => value));
+    this.userName$ = this.authService.user$.pipe(map((value: IResAuthLogin | null) => value?.login ?? ''));
 
-    this.isAuth = false;
-    this.subscriptionisauth = this.authService.isLoggedIn$.subscribe(
-      (value: boolean) => this.isAuth = value
-    )
-
-    this.userName = '';
-    this.subscriptionUserName = this.authService.user$.subscribe(
-      (value: IResAuthLogin | null) => this.userName = value?.login ?? null
-    )
-
-    this.isSettingOpen = false;
-    this.subscriptionisSettingOpen = this.settingsService.isSettingsOpen$.subscribe(
-      (value: boolean) => {
-        this.isSettingOpen = value;
-      }
+    this.searchString$.subscribe(
+      (value: string) => this.dataService.updateSearchString(value)
     )
   }
 
-  async submitButtonOnClick(value: string): Promise<void> {
-    if (this.isAuth) {
-      await this.dataService.getYouTubeSearchResults(value);
-    } else {
-      alert('необходима регистрация');
+  ngOnDestroy(): void {
+    this._searchString$$.unsubscribe();
+  }
+
+  searchWordsInput(value: string): void {
+    if (this.isAuth$) {
+      this._searchString$$.next(value);
     }
   }
 
-  settingsOpenedOnClick(): void {
-    if (this.isAuth) {
+    settingsOpenedOnClick(): void {
       this.isSettingOpen = !this.isSettingOpen;
-      if (this.isSettingOpen) {
-        this.settingsService.open();
-      } else {
-        this.settingsService.close();
-      }
+      if(this.isAuth$) {
+
+      this.settingsService.isSettingsOpen$$.next(this.isSettingOpen);
     } else {
       alert('необходима регистрация');
     }
   }
 
-  logOutOnClick() {
+  logOutOnClick(): void {
     this.authService.logOut();
-    this.dataService.removeItem();
-  }
-
-  ngOnDestroy() {
-    if (this.subscriptionisauth) {
-      this.subscriptionisauth.unsubscribe();
-    }
-
-    if (this.subscriptionUserName) {
-      this.subscriptionUserName.unsubscribe();
-    }
-
-    if (this.subscriptionisSettingOpen) {
-      this.subscriptionisSettingOpen.unsubscribe();
-    }
   }
 }

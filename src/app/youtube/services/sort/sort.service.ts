@@ -19,7 +19,7 @@ export class SortService {
 
   constructor() { }
 
-  changeSortAddFilterConfig(sortAddFilterConfig: ISortAddFilterConfig) {
+  changeSortAddFilterConfig(sortAddFilterConfig: ISortAddFilterConfig): void {
     this._sortAddFilterConfig$$.next(sortAddFilterConfig);
   }
 

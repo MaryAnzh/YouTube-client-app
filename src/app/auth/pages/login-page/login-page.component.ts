@@ -1,5 +1,6 @@
-import { Component,  } from '@angular/core';
+import { Component, } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -8,13 +9,26 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 
 export class LoginPageComponent {
+  loginForm: FormGroup = new FormGroup({
+    "userName": new FormControl('', [
+      Validators.required,
+      Validators.email]),
+    "pass": new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
+});
 
-  constructor(
-    private authService: AuthService
-  ) { }
+constructor(
+  private authService: AuthService
+) { }
 
-  submitUserDataOnClick(name: string) {
-    this.authService.logIn(name);
-  }
+submitUserDataOnClick(name: string): void {
+  this.authService.logIn(name);
+}
+
+submit() {
+  console.log(this.loginForm);
+}
 
 }

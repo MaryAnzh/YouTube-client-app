@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
+import { AdminPageComponent } from './core/pages/admin-page/admin-page.component';
 import { AuthGuard } from './core/guards/services/auth.guard';
 
 const routes: Routes = [
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'admin',
+    component: AdminPageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'youtube',

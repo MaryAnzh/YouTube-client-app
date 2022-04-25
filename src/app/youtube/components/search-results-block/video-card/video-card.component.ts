@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { IVideoItem } from 'src/app/youtube/model/video-item.model';
-import { VideoItemService } from 'src/app/youtube/services/video-item/video-item.service';
 
 @Component({
   selector: 'app-video-card',
@@ -10,20 +9,13 @@ import { VideoItemService } from 'src/app/youtube/services/video-item/video-item
 
 export class VideoCardComponent {
 
-  public color: string = '';
-
   @Input() public videoCard: IVideoItem | undefined;
 
-  constructor(private videoItemService: VideoItemService) {
+  public color = '';
 
-  }
-
-  truncateTitle(title: string): string {
-    if (title.length > 60) {
-      const a = this.videoItemService.truncateTitle(title).split(' ');
-      a.slice(a.length - 1);
-      return a.join(' ') + ' . . .';
+  constructor() {
+    if (this.videoCard) {
+      this.color = this.videoCard.snippet.publishedAt;
     }
-    return title;
   }
 }

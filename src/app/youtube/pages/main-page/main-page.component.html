@@ -1,2 +1,4 @@
-<app-filtering-criteria-block *ngIf="open"></app-filtering-criteria-block>
+<app-filtering-criteria-block
+  *ngIf="isSettingOpen | async">
+</app-filtering-criteria-block>
 <app-search-results-block></app-search-results-block>

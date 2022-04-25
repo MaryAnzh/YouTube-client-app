@@ -16,7 +16,7 @@ export class FilterService {
 
   constructor() { }
 
-  userWords(value: string) {
+  searchString(value: string): void {
     this._words$$.next(value);
   }
 
