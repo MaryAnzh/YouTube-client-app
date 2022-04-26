@@ -1,6 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-
 class CustomValidators {
 
   passwordValidator(): ValidatorFn {
@@ -18,13 +17,28 @@ class CustomValidators {
       }
 
       const isValid = !result.numberTest
-        && ! result.letterTest
-        && ! result.upperCaseTest
-        && ! result.lowerCaseTest
-        && ! result.specSymbolTest
+        && !result.letterTest
+        && !result.upperCaseTest
+        && !result.lowerCaseTest
+        && !result.specSymbolTest
 
-      return isValid ? null: result;
+      return isValid ? null : result;
     };
+  }
+
+  dateValidators(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const controlValue = control.value;
+
+      const result = {
+        date: (value: string): boolean => Date.parse(value) > Date.now(),
+      }
+
+      const isValid = result.date(controlValue);
+
+      return isValid ? {date: true} : null
+
+    }
   }
 
 }
