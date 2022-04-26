@@ -1,26 +1,121 @@
 <div class="form-wrap">
-  <form class="form-wrap__create-card-form">
+  <form class="form-wrap__create-card-form"
+    [formGroup]="cardCreateForm"
+    (submit)="submit()">
 
     <h2>Create new card</h2>
 
     <div class="form-wrap__create-card-form__field">
       <label for="create-card-form-title">Title</label>
-      <input id="create-card-form-title" type="text">
+      <input
+        id="create-card-form-title"
+        type="text"
+        formControlName="title">
+    </div>
+    <div class="form-wrap__create-card-form__error">
+      <ng-container
+        *ngIf="cardCreateForm.controls['title'].invalid
+        && (cardCreateForm.controls['title'].touched ||
+        cardCreateForm.controls['title'].dirty)">
+        <p
+          *ngIf="cardCreateForm.controls['title'].errors?.['required']">
+          Please enter a title
+        </p>
+        <p
+          *ngIf="cardCreateForm.controls['title'].errors?.['minlength']">
+          The title is too short
+        </p>
+        <p
+          *ngIf="cardCreateForm.controls['title'].errors?.['maxlength']">
+          The title is too long
+        </p>
+      </ng-container>
     </div>
 
     <div class="form-wrap__create-card-form__field">
-      <label for="create-card-form-discription">Discription</label>
-      <input id="create-card-form-discription" type="text">
+      <label for="create-card-form-description">description</label>
+      <input
+        id="create-card-form-description"
+        type="text"
+        formControlName="description">
+    </div>
+    <div class="form-wrap__create-card-form__error">
+      <ng-container
+        *ngIf="cardCreateForm.controls['description'].invalid">
+        <p
+          *ngIf="cardCreateForm.controls['description'].errors?.['maxlength']">
+          The title is too long
+        </p>
+      </ng-container>
     </div>
 
     <div class="form-wrap__create-card-form__field">
-      <label for="create-card-form-img">Img</label>
-      <input id="create-card-form-img" type="text">
+      <label for="create-card-form-img">Img Link</label>
+      <input
+        id="create-card-form-img"
+        type="text"
+        formControlName="imageLink">
+    </div>
+    <div class="form-wrap__create-card-form__error">
+      <ng-container
+        *ngIf="cardCreateForm.controls['imageLink'].invalid
+        && (cardCreateForm.controls['imageLink'].touched ||
+        cardCreateForm.controls['imageLink'].dirty)">
+        <p
+          *ngIf="cardCreateForm.controls['imageLink'].errors?.['required']">
+          Please enter a link to the image
+        </p>
+        <p
+          *ngIf="cardCreateForm.controls['imageLink'].errors?.['pattern']">
+          The image link is invalid
+        </p>
+      </ng-container>
     </div>
 
     <div class="form-wrap__create-card-form__field">
-      <label for="create-card-form-link-video">Link video</label>
-      <input id="create-card-form-link-video" type="text">
+      <label for="create-card-form-link-video">Video Link</label>
+      <input
+      id="create-card-form-link-video"
+      type="text"
+      formControlName="videoLink">
+    </div>
+    <div class="form-wrap__create-card-form__error">
+      <ng-container
+        *ngIf="cardCreateForm.controls['videoLink'].invalid
+        && (cardCreateForm.controls['videoLink'].touched ||
+        cardCreateForm.controls['videoLink'].dirty)">
+        <p
+          *ngIf="cardCreateForm.controls['videoLink'].errors?.['required']">
+          Please enter a link to the video
+        </p>
+        <p
+          *ngIf="cardCreateForm.controls['videoLink'].errors?.['pattern']">
+          The video link is invalid
+        </p>
+      </ng-container>
+    </div>
+
+    <div class="form-wrap__create-card-form__field">
+      <label for="create-card-form-date">Creation date</label>
+      <input
+      id="create-card-form-date"
+      type="date"
+      formControlName="creationDate">
+    </div>
+    <div class="form-wrap__create-card-form__error">
+      <ng-container
+        *ngIf="cardCreateForm.controls['creationDate'].invalid
+        && (cardCreateForm.controls['creationDate'].touched ||
+        cardCreateForm.controls['creationDate'].dirty)">
+        <p
+          *ngIf="cardCreateForm.controls['creationDate'].errors?.['required']">
+          Please enter a creation date
+        </p>
+        <p
+          *ngIf="cardCreateForm.controls['creationDate'].errors?.['date']">
+          The date is invalid
+        </p>
+      </ng-container>
     </div>
 
     <button type="submit">Create card</button>

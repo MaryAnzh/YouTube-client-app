@@ -1,6 +1,8 @@
 import { Component, } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CustomValidators } from 'src/app/shared/utils/CustomValidators';
 
 @Component({
   selector: 'app-login-page',
@@ -16,19 +18,21 @@ export class LoginPageComponent {
     "pass": new FormControl('', [
       Validators.required,
       Validators.minLength(8),
+      CustomValidators.passwordValidator(),
     ]),
-});
+  });
 
-constructor(
-  private authService: AuthService
-) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
-submitUserDataOnClick(name: string): void {
-  this.authService.logIn(name);
-}
-
-submit() {
-  console.log(this.loginForm);
-}
+  submit() {
+    const { userName, pass } = this.loginForm.value;
+    if (this.loginForm.valid) {
+      this.authService.logIn(userName);
+      this.router.navigateByUrl('/');
+    }
+  }
 
 }
