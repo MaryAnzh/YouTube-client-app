@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { customValidators } from 'src/app/shared/utils/CustomValidators';
+import { CustomValidators } from 'src/app/shared/utils/CustomValidators';
 
 const imgUrlReg = `(http(s?):)([a-zA-Z0-9-./_]+).(?:jpg|gif|png)`;
 const videoUrlReg = `(https:)\/\/(youtu.be/)([a-zA-Z0-9]{10})`;
@@ -31,7 +31,7 @@ export class AdminPageComponent {
     ]),
     "creationDate": new FormControl('', [
       Validators.required,
-      customValidators.dateValidators(),
+      CustomValidators.dateValidators(),
     ]),
   });
 

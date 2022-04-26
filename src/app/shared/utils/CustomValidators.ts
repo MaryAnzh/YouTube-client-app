@@ -2,7 +2,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 class CustomValidators {
 
-  passwordValidator(): ValidatorFn {
+  static passwordValidator(): ValidatorFn {
 
     return (control: AbstractControl): ValidationErrors | null => {
 
@@ -26,7 +26,7 @@ class CustomValidators {
     };
   }
 
-  dateValidators(): ValidatorFn {
+  static dateValidators(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const controlValue = control.value;
 
@@ -43,6 +43,4 @@ class CustomValidators {
 
 }
 
-const customValidators = new CustomValidators();
-
-export { customValidators };
+export { CustomValidators };
