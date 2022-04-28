@@ -1,5 +1,5 @@
 import { IVideoItemsSState, initVideoItemState } from "./video-items.state";
-import { ICustomCardsState, initCustomCard } from "./custom-cards.state";
+import { ICustomCardsState, initCustomCard } from "./custom-card.state";
 
 export interface IAppState {
   videoItemsSState: IVideoItemsSState,
