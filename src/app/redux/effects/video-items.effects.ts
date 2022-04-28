@@ -4,6 +4,8 @@ import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { DataService } from '../../core/services/data/data.service';
 
+@Injectable()
+
 export class videoItemsEffects {
 
   getVideoId$ = createEffect(() =>
