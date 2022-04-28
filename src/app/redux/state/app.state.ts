@@ -1,5 +1,5 @@
-import { IVideoItemsSState, initVideoItemState } from "./items.state";
-import { ICustomCardsState, initCustomCard } from "./custom-card.state";
+import { IVideoItemsSState, initVideoItemState } from "./video-items.state";
+import { ICustomCardsState, initCustomCard } from "./custom-cards.state";
 
 export interface IAppState {
   videoItemsSState: IVideoItemsSState,
@@ -10,3 +10,7 @@ export const initAppState: IAppState = {
   videoItemsSState: initVideoItemState,
   customCardsStat: initCustomCard
 }
+
+export function getInitialState(): IAppState {
+  return initAppState;
+ }

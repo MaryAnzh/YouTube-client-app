@@ -7,12 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     NotFoundPageComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
