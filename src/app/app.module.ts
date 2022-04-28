@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './core/guards/services/auth.guard';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './redux';
+import { reducers } from './redux/reducers/reducer';
 
 @NgModule({
   declarations: [
@@ -20,10 +20,7 @@ import { reducers, metaReducers } from './redux';
     BrowserAnimationsModule,
     CoreModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    }),
-
+    StoreModule.forRoot(reducers),
   ],
 
   providers: [

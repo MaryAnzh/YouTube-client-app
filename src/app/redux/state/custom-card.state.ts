@@ -1,9 +1,9 @@
-import { ICustomCard } from "src/app/youtube/model/custom-card model";
+import { ICustomCard } from "src/app/youtube/model/custom-card.model";
 
 export interface ICustomCardsState {
-  customCards: ICustomCard[]
+  customCards: ICustomCard[],
 }
 
-export const initCustomCard: ICustomCardsState {
+export const initCustomCard: ICustomCardsState = {
   customCards: [],
 }
