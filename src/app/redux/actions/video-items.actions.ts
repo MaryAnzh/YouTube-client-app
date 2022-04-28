@@ -1,19 +1,5 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { IVideoItem } from 'src/app/youtube/model/video-item.model';
 
-export enum EVideoItemActions {
-  GetVideoId = '[Search Component], Search Video',
-  GetVideoById = '[DataService], Search Video By Id',
-}
-
-export class GetVideoId implements Action {
-  public readonly type = EVideoItemActions.GetVideoId;
-  constructor(public searchString: string) {}
-}
-
-export class GetVideoById implements Action {
-  public readonly type = EVideoItemActions.GetVideoById;
-  constructor(public videoItems: IVideoItem[]) { }
-}
-
-export type VideoItemActions = GetVideoId | GetVideoById;
+export const getVideoById = createAction('[DataService], Search Video By Id',
+  props<{ videoItems: IVideoItem[]}>());
