@@ -1,4 +1,4 @@
-import { ICustomCard } from "src/app/youtube/model/custom-card.model";
+import { ICustomCard } from "src/app/youtube/model/custom-card.model"
 
 export interface ICustomCardsState {
   customCards: ICustomCard[],
