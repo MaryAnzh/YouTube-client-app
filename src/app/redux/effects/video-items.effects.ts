@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { DataService } from '../../core/services/data/data.service';
 
 export class videoItemsEffects {
 
-  getVideoId$ = createEffect(() =>
+  getVideo$ = createEffect(() =>
     this.actions$.pipe(
       ofType('[Search Component], Search Video'),
       mergeMap(() => this.dataService.items$
@@ -21,7 +21,7 @@ export class videoItemsEffects {
   )
 
   constructor(
-    private actions$: Actions,
+    @Inject(Actions) private actions$: Actions,
     private dataService: DataService,
   ) { }
 

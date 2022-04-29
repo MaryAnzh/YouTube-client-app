@@ -13,4 +13,4 @@ export const initAppState: IAppState = {
 
 export function getInitialState(): IAppState {
   return initAppState;
- }
+}

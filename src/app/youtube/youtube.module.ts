@@ -15,6 +15,8 @@ import { FilteringCriteriaBlockComponent } from './components/filtering-criteria
 import { DateColorDirective } from '../shared/directives/dateColor.directive';
 import { SortPipe } from '../shared/pipes/sort.pipe';
 import { FilterPipe } from '../shared/pipes/filter.pipe';
+import { StoreModule } from '@ngrx/store';
+import { videoItemsReducer } from '../redux/reducers/video-items.reducer';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { FilterPipe } from '../shared/pipes/filter.pipe';
     CommonModule,
     YoutubeRoutingModule,
     RouterModule,
+    StoreModule.forFeature('videoItems', videoItemsReducer),
   ]
 })
 

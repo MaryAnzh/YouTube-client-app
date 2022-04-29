@@ -1,7 +1,7 @@
  <div class="search-resuilt-block">
 
   <div class="search-resuilt-block__video-cards-wrap"
-  *ngIf="videoItems">
+  *ngIf="videoItems$ | async as videoItems">
 
     <div class="search-resuilt-block__video-cards-wrap__card"
       *ngFor="let videoItem of videoItems

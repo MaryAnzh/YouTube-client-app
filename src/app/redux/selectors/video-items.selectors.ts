@@ -9,4 +9,4 @@ const selectVideoItemsState = (state: IAppState): IVideoItemsSState => {
 export const selectItems = createSelector(
   selectVideoItemsState,
   (state) => state.videoItems,
-);
+) ;

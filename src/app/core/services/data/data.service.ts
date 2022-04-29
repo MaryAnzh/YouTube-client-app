@@ -14,8 +14,9 @@ export class DataService {
   public items$: Observable<IVideoItem[]> = this.search$$
     .pipe(switchMap((param => this.requestService.getVideoId(param ?? ""))))
     .pipe(switchMap(value => this.requestService.getVideoById(value)))
-    .pipe(map(element => element.items))
-    .pipe(shareReplay({ refCount: true, bufferSize: 10 }));
+    .pipe(map(element => element.items));
+
+  //.pipe(shareReplay({ refCount: true, bufferSize: 10 }));
 
 
   constructor(
