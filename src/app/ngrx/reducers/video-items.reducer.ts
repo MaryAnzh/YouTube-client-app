@@ -4,7 +4,7 @@ import { ExampleActions } from '../actions/example-actions';
 
 export const initialVideoItemsState: ReadonlyArray<IVideoItem> = [];
 
-export const videoItemSReducer = createReducer(
+export const videoItemsReducer = createReducer(
   initialVideoItemsState,
   on(ExampleActions.videoItemsAction, (state, { videoItems }) => ({
     ...state,
