@@ -5,5 +5,6 @@ export const initialVideoItemsState: ReadonlyArray<IVideoItem> = [];
 
 export const videoItemSReducer = createReducer(
   initialVideoItemsState,
-  // on(retrievedBookList, (state, { books }) => books) из примера
-);
+  on(***, (state, {{ videoItemS }) => videoItemS)
+  }
+}
