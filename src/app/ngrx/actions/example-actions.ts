@@ -9,8 +9,8 @@ export namespace ExampleActions {
     props<{ videoItems: IVideoItem[] }>()
   );
 
-  const customCardsAction = createAction(
+  export const customCardsAction = createAction(
     'Custom Cards',
-    props<{ customCard: ICustomCard[] }>()
+    props<{ customCards: ICustomCard[] }>()
   )
 }
