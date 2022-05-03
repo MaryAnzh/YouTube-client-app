@@ -6,18 +6,16 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
-import { videoItemsReducer } from './video-items.reducer';
-import { customCardsReducer } from './custom-cards.reducer';
+import { youtubeReducer } from './youtube.reducer';
 import { IVideoItem } from 'src/app/youtube/model/video-item.model';
 import { ICustomCard } from 'src/app/youtube/model/custom-card.model';
 
 export interface State {
-
+  items: (IVideoItem | ICustomCard)[]
 }
 
 export const reducers: ActionReducerMap<State> = {
-  videoItemsReducer,
-  customCardsReducer
+
 };
 
 
