@@ -1,7 +1,7 @@
 export interface ICustomCard {
   title: string,
   description: string,
-  imageLionk: string,
+  imageLink: string,
   videoLink: string,
   date: Date,
 }

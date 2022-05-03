@@ -4,9 +4,13 @@ import { IVideoItem } from "src/app/youtube/model/video-item.model";
 
 export namespace ExampleActions {
 
-  export const addYoutubeAction = createAction(
-    'Youtube Items',
-    props<{ youtube: (IVideoItem | ICustomCard)[] }>()
+  export const addCustomCardsAction = createAction(
+    'Custom Card',
+    props<{ customCards: IVideoItem[] }>()
   );
 
+  export const addVideoItemsAction = createAction(
+    'Video Items',
+    props<{ videoItems: IVideoItem[] }>()
+  );
 }

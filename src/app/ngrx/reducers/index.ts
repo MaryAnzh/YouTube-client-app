@@ -7,16 +7,11 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
 import { youtubeReducer } from './youtube.reducer';
-import { IVideoItem } from 'src/app/youtube/model/video-item.model';
-import { ICustomCard } from 'src/app/youtube/model/custom-card.model';
+import { IState } from '../state/youtube.state'
 
-export interface State {
-  youtube: (IVideoItem | ICustomCard)[]
-}
-
-export const reducers: ActionReducerMap<State> = {
-
+export const reducers: ActionReducerMap<IState> = {
+  youtube: youtubeReducer
 };
 
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<IState>[] = !environment.production ? [] : [];
