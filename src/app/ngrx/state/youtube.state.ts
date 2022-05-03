@@ -1,17 +1,10 @@
-import { IVideoItem } from "src/app/youtube/model/video-item.model"
-import { ICustomCard } from "src/app/youtube/model/custom-card.model"
+import { initialYoutubeState, IYoutubeState } from "../reducers/youtube.reducer";
 
 export interface IState {
-  youtube: {
-    videoItems: IVideoItem[],
-    customCards: ICustomCard[],
-  }
+  youtube: IYoutubeState
 }
 
-export const initialYoutube: IState = {
-  youtube: {
-    videoItems: [],
-    customCards: [],
-  }
+export const initialState: IState = {
+  youtube: initialYoutubeState
 }
 

@@ -2,15 +2,15 @@ import { createAction, props } from "@ngrx/store";
 import { ICustomCard } from "src/app/youtube/model/custom-card.model";
 import { IVideoItem } from "src/app/youtube/model/video-item.model";
 
-export namespace ExampleActions {
+export namespace YoutubeActions {
 
   export const addCustomCardsAction = createAction(
-    'Custom Card',
-    props<{ customCards: IVideoItem[] }>()
+    '[Youtube] Add Custom Card',
+    props<{ customCards: ICustomCard[] }>()
   );
 
   export const addVideoItemsAction = createAction(
-    'Video Items',
+    '[Youtube] Set Video Items',
     props<{ videoItems: IVideoItem[] }>()
   );
 }
