@@ -7,9 +7,9 @@ import { ExampleActions } from '../actions/example-actions';
 
 export const youtubeReducer = createReducer(
   initialYoutubeState,
-  on(ExampleActions.addYoutubeAction, (state, { items }) => ({
+  on(ExampleActions.addYoutubeAction, (state, { youtube }) => ({
     ...state,
-    items: items
+    youtube: youtube
   })
   )
 );

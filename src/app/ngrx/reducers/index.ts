@@ -11,7 +11,7 @@ import { IVideoItem } from 'src/app/youtube/model/video-item.model';
 import { ICustomCard } from 'src/app/youtube/model/custom-card.model';
 
 export interface State {
-  items: (IVideoItem | ICustomCard)[]
+  youtube: (IVideoItem | ICustomCard)[]
 }
 
 export const reducers: ActionReducerMap<State> = {
