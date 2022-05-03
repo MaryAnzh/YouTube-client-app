@@ -13,5 +13,4 @@ export const reducers: ActionReducerMap<IState> = {
   youtube: youtubeReducer
 };
 
-
 export const metaReducers: MetaReducer<IState>[] = !environment.production ? [] : [];
