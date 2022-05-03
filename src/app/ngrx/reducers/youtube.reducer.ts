@@ -9,7 +9,7 @@ export const youtubeReducer = createReducer(
   initialYoutubeState,
   on(ExampleActions.addYoutubeAction, (state, { youtube }) => ({
     ...state,
-    prop: youtube
+    youtube
   })
   )
 );
