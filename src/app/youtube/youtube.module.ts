@@ -9,7 +9,6 @@ import { SearchResultsBlockComponent } from './components/search-results-block/s
 import { VideoCardComponent } from './components/search-results-block/video-card/video-card.component';
 
 import { ArrowComponent } from './components/arrow/arrow.component';
-import { VideoStatisticsComponent } from './components/video-statistics/video-statistics.component';
 import { FilteringCriteriaBlockComponent } from './components/filtering-criteria-block/filtering-criteria-block.component';
 
 import { DateColorDirective } from '../shared/directives/dateColor.directive';
@@ -22,7 +21,6 @@ import { FilterPipe } from '../shared/pipes/filter.pipe';
     DetailedInformationPageComponent,
     MainPageComponent,
     ArrowComponent,
-    VideoStatisticsComponent,
     SearchResultsBlockComponent,
     VideoCardComponent,
     FilteringCriteriaBlockComponent,

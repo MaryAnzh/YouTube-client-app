@@ -5,6 +5,7 @@ import { SortService } from '../../services/sort/sort.service';
 import { DataService } from 'src/app/core/services/data/data.service';
 import { SubscriptionLike } from 'rxjs';
 import { IVideoItem } from '../../model/video-item.model';
+import { Store } from "@ngrx/store";
 
 
 @Component({
@@ -34,7 +35,8 @@ export class SearchResultsBlockComponent implements OnDestroy {
   constructor(
     private filterService: FilterService,
     private sortService: SortService,
-    private dataService: DataService) {
+    private dataService: DataService,
+    private store: Store) {
 
     this.subscriptionSort = this.sortService.sortAddFilterConfig$.subscribe(
       (value: ISortAddFilterConfig) => this.sortAddFilterConfig = value
