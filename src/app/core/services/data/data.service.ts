@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, map, mergeMap, switchMap, shareReplay } from 'rxjs';import { ICustomCard } from 'src/app/youtube/model/custom-card.model';
  import { IVideoItem } from 'src/app/youtube/model/video-item.model';
-import { IVideoYouTubeResults } from 'src/app/youtube/model/video-response.model';
 import { RequestService } from '../request/request.service';
 
 @Injectable({
@@ -22,9 +21,15 @@ export class DataService {
 
   public cards$: Observable<ICustomCard[] | null> = this._cards$$.asObservable();
 
+  public cards: ICustomCard[] = [];
+
   constructor(
     private requestService: RequestService
-  ) { }
+  ) {
+    this.cards$.subscribe(
+      value => this.cards = value ?? []
+    )
+   }
 
   getItemById(id: string): Observable<IVideoItem> {
     const itemIndex = 0;
@@ -47,7 +52,7 @@ export class DataService {
     if (this._cards$$) {
       this._cards$$.unsubscribe();
     }
-    if (this.items$) {
+    if (this._search$$) {
       this._search$$.unsubscribe();
     }
   }

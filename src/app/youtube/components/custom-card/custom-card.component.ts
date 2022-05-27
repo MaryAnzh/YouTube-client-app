@@ -12,19 +12,17 @@ export class CustomCardComponent implements OnInit {
 
   public color = '';
 
-  public url = '';
-
   safeSrc: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
-    this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+    this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl('');
+
    }
 
   ngOnInit(): void {
     if (this.customCard) {
       this.color = this.customCard.date.toString();
-      this.url = this.customCard.videoLink;
-      this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+      this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.customCard.videoLink);
     }
   }
 

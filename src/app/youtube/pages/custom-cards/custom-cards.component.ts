@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DataService } from 'src/app/core/services/data/data.service';
 import { ICustomCard } from '../../model/custom-card.model';
 
 @Component({
@@ -8,7 +10,7 @@ import { ICustomCard } from '../../model/custom-card.model';
 })
 
 export class CustomCardsComponent implements OnInit {
-  @Input() public customCards: ICustomCard[] | null = [
+  public test: ICustomCard[] = [
     {
       title: 'тестирование',
       description: 'карточка для тестирования',
@@ -18,7 +20,14 @@ export class CustomCardsComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  @Input() customCards: ICustomCard[] | null;
+
+  constructor(
+    private dataService: DataService) {
+    this.customCards = this.dataService.cards;
+    console.log('constructor');
+    console.log(this.dataService.cards);
+  }
 
   ngOnInit(): void {
   }
