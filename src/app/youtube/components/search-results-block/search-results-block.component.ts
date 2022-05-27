@@ -48,7 +48,10 @@ export class SearchResultsBlockComponent implements OnDestroy {
 
     this.videoItems = [];
     this.subscriptionisItems = this.dataService.items$.subscribe(
-      (value: IVideoItem[] | null) => this.videoItems = value ? value : []
+      (value: IVideoItem[] | null) => {
+        console.log(value);
+        this.videoItems = value ? value : []
+      }
     )
   }
 

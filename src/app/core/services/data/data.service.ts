@@ -24,7 +24,11 @@ export class DataService {
 
   getItemById(id: string): Observable<IVideoItem> {
     const itemIndex = 0;
-    return this.requestService.getVideoById(id).pipe(map(value => value.items[itemIndex]))
+    return this.requestService.getVideoById(id)
+      .pipe(
+        map((value) => {
+          return value.items[itemIndex]
+        }))
   }
 
   updateSearchString(search: string): void {
