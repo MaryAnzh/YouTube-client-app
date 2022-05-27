@@ -14,6 +14,8 @@ import { FilteringCriteriaBlockComponent } from './components/filtering-criteria
 import { DateColorDirective } from '../shared/directives/dateColor.directive';
 import { SortPipe } from '../shared/pipes/sort.pipe';
 import { FilterPipe } from '../shared/pipes/filter.pipe';
+import { CustomCardsComponent } from './pages/custom-cards/custom-cards.component';
+import { CustomCardComponent } from './components/custom-card/custom-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { FilterPipe } from '../shared/pipes/filter.pipe';
     DateColorDirective,
 
     SortPipe,
-    FilterPipe
+    FilterPipe,
+    CustomCardsComponent,
+    CustomCardComponent
   ],
   imports: [
     CommonModule,
