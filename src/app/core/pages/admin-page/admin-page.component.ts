@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { CustomValidators } from 'src/app/shared/utils/CustomValidators';
 import { ICustomCard } from 'src/app/youtube/model/custom-card.model';
 import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
+import { Store } from "@ngrx/store";
 
 const imgUrlReg = `(http(s?):)([a-zA-Z0-9-./_]+).(?:jpg|gif|png)`;
-const videoUrlReg = `(https:)\/\/(youtu.be/)([a-zA-Z0-9]{10})`;
+const videoUrlReg = `(https:)\/\/(youtu.be/)([a-zA-Z0-9]{11})`;
+// https://www.youtube.com/embed/SMKOxks4iDQ
 
 @Component({
   selector: 'app-admin-page',
@@ -41,7 +42,8 @@ export class AdminPageComponent {
 
   constructor(
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {  }
 
   submit() {

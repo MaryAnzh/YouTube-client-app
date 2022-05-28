@@ -15,7 +15,7 @@ export class CustomCardsComponent implements OnInit {
       title: 'тестирование',
       description: 'карточка для тестирования',
       imageLink: 'https://i.ytimg.com/vi/SMKOxks4iDQ/mqdefault.jpg',
-      videoLink: 'https://www.youtube.com/embed/SMKOxks4iDQ',
+      videoLink: 'https://www.youtu.be.com/SMKOxks4iDQ',
       date: new Date(),
     }
   ];

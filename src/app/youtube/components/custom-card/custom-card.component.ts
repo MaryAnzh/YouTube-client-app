@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ICustomCard } from '../../model/custom-card.model';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { Store } from "@ngrx/store";
 
 @Component({
   selector: 'app-custom-card',
@@ -14,7 +15,9 @@ export class CustomCardComponent implements OnInit {
 
   safeSrc: SafeResourceUrl;
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(
+    private sanitizer: DomSanitizer,
+    private store: Store) {
     this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl('');
 
    }
@@ -22,8 +25,16 @@ export class CustomCardComponent implements OnInit {
   ngOnInit(): void {
     if (this.customCard) {
       this.color = this.customCard.date.toString();
-      this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.customCard.videoLink);
+      const url = this.changeURL(this.customCard.videoLink);
+      this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     }
+  }
+
+  changeURL(url: string): string {
+    const videoId = url.substring(url.length - 11);
+    const iftameBaseURL = 'https://www.youtube.com/embed/';
+    console.log(iftameBaseURL + videoId);
+    return iftameBaseURL + videoId;
   }
 
 }
