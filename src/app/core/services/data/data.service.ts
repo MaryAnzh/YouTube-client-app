@@ -16,7 +16,16 @@ export class DataService {
   public items$: Observable<IVideoItem[]> = this._search$$
     .pipe(switchMap((param => this.requestService.getVideoId(param ?? ""))))
     .pipe(switchMap(value => this.requestService.getVideoById(value)))
-    .pipe(map(element => element.items))
+    .pipe
+    (map
+      ((element) => {
+        this.store.dispatch(
+          YoutubeActions.addVideoItemsAction({
+            videoItems: element.items
+          })
+        );
+        return element.items
+      }))
     .pipe(shareReplay({ refCount: true, bufferSize: 10 }));
 
   private _cards$$ = new Subject<ICustomCard[] | null>();
