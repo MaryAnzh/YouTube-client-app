@@ -31,7 +31,7 @@ export class CustomCardComponent implements OnInit {
   }
 
   changeURL(url: string): string {
-    const videoId = url.substring(url.length - 11);
+    const videoId = url.substring(url.indexOf('e/') + 2);
     const iftameBaseURL = 'https://www.youtube.com/embed/';
     console.log(iftameBaseURL + videoId);
     return iftameBaseURL + videoId;

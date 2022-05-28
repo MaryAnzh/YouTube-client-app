@@ -4,7 +4,6 @@ import { CustomValidators } from 'src/app/shared/utils/CustomValidators';
 import { ICustomCard } from 'src/app/youtube/model/custom-card.model';
 import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
-import { Store } from "@ngrx/store";
 
 const imgUrlReg = `(http(s?):)([a-zA-Z0-9-./_]+).(?:jpg|gif|png)`;
 const videoUrlReg = `(https:)\/\/(youtu.be/)([a-zA-Z0-9]{11})`;
@@ -43,8 +42,7 @@ export class AdminPageComponent {
   constructor(
     private dataService: DataService,
     private router: Router,
-    private store: Store
-  ) {  }
+  ) { }
 
   submit() {
     if (this.cardCreateForm.valid) {
@@ -56,9 +54,10 @@ export class AdminPageComponent {
         videoLink: this.cardCreateForm.value.videoLink,
         date: this.cardCreateForm.value.creationDate,
       }
+      const newCards = [...this.dataService.cards];
+      newCards.push(card);
 
-      this.dataService.cards.push(card);
-      this.dataService.updateCards(this.dataService.cards);
+      this.dataService.updateCards(newCards);
       this.router.navigateByUrl('youtube/custom-cards');
     }
   }

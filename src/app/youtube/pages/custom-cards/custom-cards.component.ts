@@ -25,8 +25,6 @@ export class CustomCardsComponent implements OnInit {
   constructor(
     private dataService: DataService) {
     this.customCards = this.dataService.cards;
-    console.log('constructor');
-    console.log(this.dataService.cards);
   }
 
   ngOnInit(): void {
