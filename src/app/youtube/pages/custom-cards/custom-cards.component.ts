@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DataService } from 'src/app/core/services/data/data.service';
 import { ICustomCard } from '../../model/custom-card.model';
+import { Store } from '@ngrx/store';
+import { selectCustomCards } from 'src/app/ngrx/selector/youtube.selectors';
+import { IState } from 'src/app/ngrx/state/youtube.state';
 
 @Component({
   selector: 'app-custom-cards',
@@ -20,11 +22,12 @@ export class CustomCardsComponent implements OnInit {
     }
   ];
 
-  @Input() customCards: ICustomCard[] | null;
+  @Input() public customCards$: Observable<ICustomCard[]> = this.store.select(selectCustomCards);
 
   constructor(
-    private dataService: DataService) {
-    this.customCards = this.dataService.cards;
+    private store: Store<IState>
+    ) {
+
   }
 
   ngOnInit(): void {

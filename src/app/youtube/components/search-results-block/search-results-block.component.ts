@@ -1,12 +1,13 @@
-import { Component, Output, OnDestroy } from '@angular/core';
-import { ISortAddFilterConfig, IWordsSearch } from 'src/app/shared/directives/filtering-model';
+import { Component, Output, OnDestroy, Input } from '@angular/core';
+import { ISortAddFilterConfig } from 'src/app/shared/directives/filtering-model';
 import { FilterService } from '../../services/filter/filter.service';
 import { SortService } from '../../services/sort/sort.service';
 import { DataService } from 'src/app/core/services/data/data.service';
-import { SubscriptionLike } from 'rxjs';
+import { SubscriptionLike, Observable } from 'rxjs';
 import { IVideoItem } from '../../model/video-item.model';
-import { Store } from "@ngrx/store";
-
+import { Store } from '@ngrx/store';
+import { selectVideoItems } from 'src/app/ngrx/selector/youtube.selectors';
+import { IState } from 'src/app/ngrx/state/youtube.state';
 
 @Component({
   selector: 'app-search-results-block',
@@ -24,6 +25,8 @@ export class SearchResultsBlockComponent implements OnDestroy {
 
   @Output() public videoItems: IVideoItem[];
 
+  @Input() public videoItems$: Observable<IVideoItem[]> = this.store.select(selectVideoItems);
+
   public words: string = '';
 
   public sortAddFilterConfig: ISortAddFilterConfig = {
@@ -36,7 +39,7 @@ export class SearchResultsBlockComponent implements OnDestroy {
     private filterService: FilterService,
     private sortService: SortService,
     private dataService: DataService,
-    private store: Store) {
+    private store: Store<IState>) {
 
     this.subscriptionSort = this.sortService.sortAddFilterConfig$.subscribe(
       (value: ISortAddFilterConfig) => this.sortAddFilterConfig = value

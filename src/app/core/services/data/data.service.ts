@@ -25,8 +25,7 @@ export class DataService {
           })
         );
         return element.items
-      }))
-    .pipe(shareReplay({ refCount: true, bufferSize: 10 }));
+      }));
 
   private _cards$$ = new Subject<ICustomCard[] | null>();
 
