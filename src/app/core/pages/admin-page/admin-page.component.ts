@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 
 const imgUrlReg = `(http(s?):)([a-zA-Z0-9-./_]+).(?:jpg|gif|png)`;
 const videoUrlReg = `(https:)\/\/(youtu.be/)([a-zA-Z0-9]{11})`;
-// https://www.youtube.com/embed/SMKOxks4iDQ
 
 @Component({
   selector: 'app-admin-page',
@@ -31,7 +30,7 @@ export class AdminPageComponent {
     ]),
     "videoLink": new FormControl('', [
       Validators.required,
-      //Validators.pattern(videoUrlReg),
+      Validators.pattern(videoUrlReg),
     ]),
     "creationDate": new FormControl('', [
       Validators.required,
