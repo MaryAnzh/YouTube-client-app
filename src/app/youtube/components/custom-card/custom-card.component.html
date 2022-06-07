@@ -1,0 +1,22 @@
+ <section class="custom-card"
+  *ngIf="customCard"
+  [appDateColor]="color">
+  <h4>{{customCard.title}}</h4>
+  <div class="custom-card__img-wrap">
+    <p>Image</p>
+    <img src="{{customCard.imageLink}}">
+  </div>
+  <p class="custom-card__text">Video</p>
+  <iframe width="250" height="150"
+    [src]="safeSrc"
+    title="YouTube video player"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+    encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <div class="custom-card__description">
+      <p>description</p>
+      <p class="custom-card__description__text">{{customCard.description}}</p>
+    </div>
+
+    <p class="custom-card__date">{{customCard.date | date: 'EEEE, MMMM d, y'}}</p>
+</section>

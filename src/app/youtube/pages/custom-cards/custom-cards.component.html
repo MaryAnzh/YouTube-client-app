@@ -1,0 +1,9 @@
+<section class="custom-cards">
+  <h2>Custom cards</h2>
+  <section class="custom-cards__wrap">
+  <app-custom-card
+  *ngFor="let customCard of customCards$ | async"
+  [customCard]="customCard"
+  ></app-custom-card>
+  </section>
+</section>

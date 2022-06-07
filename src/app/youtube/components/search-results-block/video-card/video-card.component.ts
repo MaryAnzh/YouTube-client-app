@@ -16,6 +16,7 @@ export class VideoCardComponent {
   constructor() {
     if (this.videoCard) {
       this.color = this.videoCard.snippet.publishedAt;
+      
     }
   }
 }

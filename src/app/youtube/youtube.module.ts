@@ -9,12 +9,13 @@ import { SearchResultsBlockComponent } from './components/search-results-block/s
 import { VideoCardComponent } from './components/search-results-block/video-card/video-card.component';
 
 import { ArrowComponent } from './components/arrow/arrow.component';
-import { VideoStatisticsComponent } from './components/video-statistics/video-statistics.component';
 import { FilteringCriteriaBlockComponent } from './components/filtering-criteria-block/filtering-criteria-block.component';
 
 import { DateColorDirective } from '../shared/directives/dateColor.directive';
 import { SortPipe } from '../shared/pipes/sort.pipe';
 import { FilterPipe } from '../shared/pipes/filter.pipe';
+import { CustomCardsComponent } from './pages/custom-cards/custom-cards.component';
+import { CustomCardComponent } from './components/custom-card/custom-card.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,6 @@ import { FilterPipe } from '../shared/pipes/filter.pipe';
     DetailedInformationPageComponent,
     MainPageComponent,
     ArrowComponent,
-    VideoStatisticsComponent,
     SearchResultsBlockComponent,
     VideoCardComponent,
     FilteringCriteriaBlockComponent,
@@ -32,7 +32,9 @@ import { FilterPipe } from '../shared/pipes/filter.pipe';
     DateColorDirective,
 
     SortPipe,
-    FilterPipe
+    FilterPipe,
+    CustomCardsComponent,
+    CustomCardComponent
   ],
   imports: [
     CommonModule,

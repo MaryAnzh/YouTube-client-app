@@ -118,7 +118,10 @@
       </ng-container>
     </div>
 
-    <button type="submit">Create card</button>
+    <button
+    type="submit"
+    [ngClass]="{'blocked': cardCreateForm.invalid}"
+    >Create card</button>
 
   </form>
 </div>

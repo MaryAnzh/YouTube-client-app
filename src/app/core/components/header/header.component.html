@@ -4,7 +4,8 @@
     <div class="header__wrap__center-block">
       <section class="header__wrap__center-block__logo">
         <div class="">
-          <img alt="logo" src="../../../assets/logo.png">
+          <img alt="logo" src="assets/logo.png"
+          routerLink="/">
         </div>
       </section>
 
@@ -36,10 +37,22 @@
       </section>
     </div>
 
+    <section class="header__wrap__center-block__admin"
+      *ngIf="isAuth$ | async">
+      <button
+      routerLink="admin">
+      Admin page
+    </button>
+          <button
+      routerLink="youtube/custom-cards">
+      Custom cards
+    </button>
+    </section>
+
     <section class="header__wrap__logo-info"
       *ngIf="(isAuth$ | async); else loginsection">
 
-     <div class="header__wrap__logo-info__logout">
+      <div class="header__wrap__logo-info__logout">
         <p>{{userName$ | async}}</p>
         <img alt="login" src="../../../assets/Subtract.svg">
         <button class="header__wrap__logo-info__logout__button"
@@ -52,7 +65,7 @@
     </section>
 
     <ng-template #loginsection>
-       <div class="header__wrap__logo-info__login">
+      <div class="header__wrap__logo-info__login">
         <button class="header__wrap__logo-info__login__button"
           type="button"
           routerLink="/auth">

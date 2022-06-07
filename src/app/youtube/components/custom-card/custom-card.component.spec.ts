@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VideoStatisticsComponent } from './video-statistics.component';
+import { CustomCardComponent } from './custom-card.component';
 
-describe('VideoStatisticsComponent', () => {
-  let component: VideoStatisticsComponent;
-  let fixture: ComponentFixture<VideoStatisticsComponent>;
+describe('CustomCardComponent', () => {
+  let component: CustomCardComponent;
+  let fixture: ComponentFixture<CustomCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VideoStatisticsComponent ]
+      declarations: [ CustomCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VideoStatisticsComponent);
+    fixture = TestBed.createComponent(CustomCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

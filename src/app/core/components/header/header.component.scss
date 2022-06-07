@@ -23,6 +23,16 @@
       color: white;
       background: #2F80ED;
       box-shadow: 2px 2px 2px 0px rgba(34, 60, 80, 0.3);
+      cursor: pointer;
+      transition: .3s;
+
+      &:hover {
+        transform: scale(110%, 110%);
+      }
+    }
+
+    img {
+      cursor: pointer;
     }
 
     &__center-block {
@@ -101,6 +111,13 @@
             background: white;
             transition: .5s;
           }
+        }
+      }
+
+      &__admin {
+        button {
+          margin-right: 10px;
+          width: 90px;
         }
       }
     }

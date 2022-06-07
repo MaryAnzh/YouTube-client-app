@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/shared/utils/CustomValidators';
+import { ICustomCard } from 'src/app/youtube/model/custom-card.model';
+import { DataService } from '../../services/data/data.service';
+import { Router } from '@angular/router';
 
 const imgUrlReg = `(http(s?):)([a-zA-Z0-9-./_]+).(?:jpg|gif|png)`;
-const videoUrlReg = `(https:)\/\/(youtu.be/)([a-zA-Z0-9]{10})`;
+const videoUrlReg = `(https:)\/\/(youtu.be/)([a-zA-Z0-9]{11})`;
 
 @Component({
   selector: 'app-admin-page',
@@ -35,9 +38,26 @@ export class AdminPageComponent {
     ]),
   });
 
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+  ) { }
+
   submit() {
     if (this.cardCreateForm.valid) {
-      console.log('The cardCreateForm is valid');
+
+      const card: ICustomCard = {
+        title: this.cardCreateForm.value.title,
+        description: this.cardCreateForm.value.description,
+        imageLink: this.cardCreateForm.value.imageLink,
+        videoLink: this.cardCreateForm.value.videoLink,
+        date: this.cardCreateForm.value.creationDate,
+      }
+      const newCards = [...this.dataService.cards];
+      newCards.push(card);
+
+      this.dataService.updateCards(newCards);
+      this.router.navigateByUrl('youtube/custom-cards');
     }
   }
 }
